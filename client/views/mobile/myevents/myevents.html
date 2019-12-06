@@ -1,0 +1,74 @@
+<template name="Myevents">
+	{{#HeaderFooterLayout headerSize="70" class="main" size=size4}}
+		{{>Surface template="myEventsContainerHeader" target="header" modifier="StateModifier" translate="[0,0,100]" size="[undefined,60]"}}
+		{{#Modifier target="content" modifier="StateModifier" translate="[0,0,0]"}}
+
+			{{>myEventCards data=this}}
+		{{/Modifier}}
+	{{/HeaderFooterLayout}}
+</template>
+
+<template name="myEventsContainerHeader">
+	<navbar class="navbar-fixed" role="navgation">
+		<div class="container-fluid green-bg">
+			<p class="navbar-text" id="backButton1">
+				<img src="images/icon_menu.png" width="30" height="20" class="">
+			</p>
+			<p class="navbar-text positionHeader1">
+				My Events
+			</p>
+		</div>
+	</navbar>
+</template>
+
+<template name="myEventCards">
+    
+	{{#Scrollview}}
+        {{#if data.events}}
+            {{#each data.events}}
+                {{>myeventsCard contentHeader=name content1=date content2=mosque_name _id=_id id="mosque"}}
+            {{/each}}
+        {{else}}
+            {{#Surface size="[undefined, true]"}}
+                {{>myeventsEmptyData}}
+            {{/Surface}}
+        {{/if}}
+	{{/Scrollview}}
+</template>
+
+
+<template name="myeventsCard">
+{{#Surface size="[undefined, true]"}}
+
+
+    <div class="listcontainer">
+            <div class="" id="center2">
+                    {{#if header}}
+                    <h3 class="cardHeader1 profileText2">
+                        {{#if lessthan}}
+                            &lt;
+                        {{/if}}
+                        {{header}}
+                    </h3>
+                    {{/if}}            
+                    <p>
+                    <a href="{{pathFor 'event' _id=_id}}" class="needsclick">
+                        <h4 class="cardTextHead">{{contentHeader}}</h4>
+                        <span class="smallerText4r">
+                            {{content1}}
+                                <br>
+                            {{content2}}
+                        </span>
+                    </a>
+                </p>
+            </div>
+        <div class="actionListContainer">
+            <span class="">
+                <!-- <i class="fa fa-stop rsvpBox fa-stack-2x"></i>Inherits design from rsvpBox of newsfeed card -->
+                <i class="fa iconaction"><img src="../images/icon_navigate_blue.png" style="width:35px"></i>
+            </span><br>
+            <span class="blueText">Navigate</span>
+        </div>
+    </div>
+{{/Surface}}
+</template>

@@ -1,0 +1,170 @@
+<template name="newsfeed">
+{{#HeaderFooterLayout headerSize="50" class="main"}}
+    <!-- {{#SequentialLayout target="header"}}
+        {{>Surface template="newsFeedHeader" modifier="StateModifier" translate="[0,0,100]" size=size1 }}
+        {{>Surface template="newsFeedContent" modifier="StateModifier" translate="[0,27.5,0]" size=size2 }}
+    {{/SequentialLayout}}
+    {{#Modifier target="content" modifier="StateModifier" translate="[0,-50,10]"}}
+        {{>newsfeedCardsContainer}}
+    {{/Modifier}} -->
+    <!-- {{#SequentialLayout target="header"}} -->
+        {{>Surface target="header" template="newsFeedHeader" modifier="StateModifier" translate="[0,0,100]" size=size1 }}
+    <!-- {{/SequentialLayout}} -->
+    {{#Scrollview target="content"}}
+        {{>Surface template="newsFeedContent" modifier="StateModifier" translate="[0,0,0]" size=size2 }}
+        {{#Modifier modifier="StateModifier" translate="[0,-50,10]"}}
+            {{>newsfeedCardsContainer}}
+        {{/Modifier}}
+    {{/Scrollview}}
+{{/HeaderFooterLayout}}
+</template>
+
+<template name="newsFeedContent">
+    {{>contentContainer}}
+</template>
+
+<template name="contentContainer">
+    <div id="container-wrapper">
+        <a href="{{pathFor 'nearbyevents'}}">
+            <div id="map" style="height: 150px"></div>
+        </a>
+        {{>latestPrayerCard id="dashBoardCard" content1="Nearby Mosques" content2="Qibla Direction"}}
+        <!-- <br> -->
+    </div>
+</template>
+
+<template name="newsFeedHeader">
+    <navbar class="navbar-fixed" role="navigation">
+        <div class="container-fluid green-bg">
+            <p class="navbar-text"><img src="images/icon_menu.png" width="30" height="20" id="bars"></p>
+            <a href="{{pathFor 'search'}}"><p class="navbar-text navbar-right moveright"><img src="images/icon_search.png" id="search" width="20" height="20"></p></a>
+        </div>
+    </navbar>
+</template>
+
+<template name="newsfeedCardsContainer">
+    {{>placeholdercards}}
+
+    {{#with nearestMosque clientPos}}
+        {{>checkinSurface mosqueId=this._id}}
+    {{/with}}
+</template>
+
+<template name="placeholdercards">
+   <!-- {{#Scrollview}} -->
+    {{#if contents}}     
+        {{#each contents}}
+                {{>card id=type imgId=imgID link=link route=route header=description contentHeader=content content1=content1 content2=content2 boxtext=action boxText='RSVP'}}
+        {{/each}}
+    {{else}}
+        {{#Surface size="[undefined, true]" translate="[0,50,0]"}}
+            {{>newsfeedEmptyData}}
+        {{/Surface}}
+    {{/if}}
+<!-- {{/Scrollview}} -->
+
+</template>
+
+<template name="checkinSurface">
+{{#Surface modifier="StateModifier" translate=checkinTranslate size="[50,50]" }}
+
+   <a href="{{#if mosqueId}}
+       {{pathFor 'checkinmosque' mosqueId=mosqueId}}
+       {{else}}
+       {{pathFor 'checkinevent' eventId=eventId}}
+       {{/if}}
+       " id="checkinButton">
+        <div class="checkinButton" ><img  src="images/icon_checkin.png" width="20" height="30" class="" id="checkinMarker"></div>
+    </a>
+    
+{{/Surface}}
+</template>
+
+<template name="rsvpModal">
+    <div class="anti-modal-box modalSize">
+        <div class="">
+            <h2 class="profileText2">RSVP for this event</h2>
+            <div class="eventDetails">
+                <p>[eventname]<br />
+                    [eventdate] [eventtime]<br />
+                    [locationname]</p>
+            </div>
+        </div>
+        <div class="anti-modal-body">
+            <div class="rsvpGroup">
+                <a class="btn btn-primary {{#if isgoing event._id}} disabled {{/if}}" id="yes">Yes</a>
+                <a class="btn btn-warning {{#if maybegoing event._id}} disabled {{/if}}" id="maybe">Maybe</a>
+                <a class="btn btn-danger" id="no">No</a><!-- {{#if isgoing event._id}}{{else}}disabled{{/if}} -->
+            </div>
+            <!-- <span id="yes" class="{{#if isgoing event._id}} disabled {{/if}}btn btn-primary">Yes</span>
+            <span id="no" class="{{#if isgoing event._id}}{{else}}disabled{{/if}} btn btn-danger">No</span>
+            <span id="maybe" class="{{#if maybegoing event._id}} disabled {{/if}} btn btn-warning">Maybe</span> -->
+        </div>
+    </div>
+</template>
+
+<!-- The News feed/profiles card boilerplate-->
+<template name="card">
+
+{{#Surface size="[undefined, true]" class="backWhite"}}
+    
+  <div class="cardContainer1" >
+        <span class="fa-stack fa-lg timelineCircle">
+            <i class="fa fa-circle fa-stack-2x {{id}}"></i>
+            <i class="fa-stack-1x"><img src="images/{{imgId}}.png" class="timelineImg" width="17" height="17"></i>
+        </span>
+      
+        <a href="{{pathFor route _id=link}}">
+            <div class="center1"  id="cardContainer">
+                <header class="cardHeader13" id="{{id}}">{{header}}</header><br>
+                <span>
+                    <a href="{{pathFor route _id=link}}" class="needsclick">
+                        <span class="cardContentHeader5">{{contentHeader}}</span> <br>
+                        <span class="smallerText4r">
+                            {{content1}}
+                        <br>
+                            {{content2}}
+                        </span>
+                    </a>
+                <hr class="hBar2"><br>
+                </span>
+            </div>
+        </a>
+        {{#if boxtext}}
+            {{>rsvpSide}}
+        {{/if}}
+    </div>
+{{/Surface}}
+</template>
+
+<template name="rsvpSide">
+    <div class="rsvpContainer3" id="rsvpContainer3">
+        <span class="">
+                <i class="fa iconaction"><img src="../images/icon_rsvp_blue.png"></i>
+        </span><br>
+            <span class="blueText" style="margin-top:10px">{{boxText}}</span>
+    </div>
+</template>
+
+<!-- The card below the map-->
+<template name="latestPrayerCard">
+    <div class="" id="{{id}}">
+        <div class="panel cardpart prayercardstyle" id="cardpart">
+                {{#with nextTime clientPos}}
+                <div class="cardin">{{fromNow}}</div>
+                    <a href="{{pathFor 'cardview'}}" class="needsclick">
+                        <div class="cardin1">{{name}}
+                        <i><span class="cardin2">{{time}}</span></i>
+                    </div>
+                    </a>
+                {{/with}}
+            <hr class="hBarLatest">
+            <!-- <div class="cardin34"><span class="cardin3"><a href="/mosquelocator" class="colorMeBlue2">Nearby Mosques</a> </span><span class="cardin4"><a href="/qiblat" class="colorMeBlue2">Qiblat direction</a> </span></div><br> -->
+            <div class="prayerQuickBtns">
+                <a class="btn-prayer pull-left" href="/mosquelocator">Nearby Mosques</a>
+                <a class="btn-prayer pull-right" href="/qiblat">Qiblat Direction</a>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</template>

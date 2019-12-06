@@ -1,0 +1,106 @@
+<template name="alquran">
+    {{#HeaderFooterLayout headerSize="110" size=size4  class="main"}}
+      {{>Surface target="header" modifier="StateModifier" translate="[0,0,100]" template="alQuranContainerHeader"}}
+      {{#Modifier target="content" modifier="StateModifier" translate="[0,0,10]"}}
+        {{>quranRenderer}}
+      {{/Modifier}}
+    {{/HeaderFooterLayout}}
+</template>
+
+<template name="alQuranContainerHeader">
+    <navbar class="navbar-fixed" role="navigation">
+        <div class="container-fluid green-bg">
+            <p class="navbar-text" id="backButton1">
+                <img src="images/icon_menu.png" width="30" height="20" class="">
+            </p>
+            <p class="navbar-text slideMiddle">
+              <span class=""> Al Quran </span>
+            </p>
+            <!--<p class="navbar-text">
+                Sura : {{sura}}
+            </p>
+            <p class="navbar-text">
+                <input style="display:inline" value="{{sura}}" type="range" min="0" max="113"/>
+            </p> -->
+        </div>
+    </navbar>
+    {{>alQuranHeaderBar}}
+</template>
+
+<template name="alQuranHeaderBar">
+  <div class="headerBar">
+    <ul class="nav nav-tabs navJustified1">
+      {{#each tabs}}
+        <li role="presentation" class="quranTab {{status}}" id="{{id}}">{{text}}</li>
+     <!--   <li role="presentation" class="quranTab quranTabActive">Surah</li> -->
+      {{/each}}
+    </ul>
+  </div>
+</template>
+
+<template name="quranRenderer">
+  {{#RenderController transition=quranTransition1}}
+      {{>showQuranTemplate}}
+  {{/RenderController}}
+</template>
+
+<template name="surahView">
+  {{#Scrollview}}
+    {{#each quranCard}}
+      {{#Surface size="[undefined,true]"}}
+        {{>quranCards index=index surahName=surahName }}
+      {{/Surface}}
+    {{/each}}
+  {{/Scrollview}}
+</template>
+
+<template name="bookmarkView">
+  {{#Scrollview}}
+    {{#if booked}}
+      {{#famousEach booked}}
+        {{#Surface size="[undefined,true]"}}
+          {{>surahCards var1=var1 var2=var2 var3=var3 var4=var4 var5='fa-bookmark'}}
+        {{/Surface}}
+      {{/famousEach}}
+    {{else}}
+      {{#Surface size="[undefined, true]" translate="[0,0,0]"}}
+          {{>bookmarkEmptyData}}
+      {{/Surface}}
+    {{/if}}
+  {{/Scrollview}}
+</template>
+
+<template name="quranCards">
+<a href="{{pathFor 'quranviewer' index=index}}">
+  <div class="quranCard" id="quranCard">
+      {{index}}. {{surahName}}
+  </div>
+</a>
+      <hr>
+</template>
+
+<template name="quranViewer">
+    {{#each aya sura}}
+      {{#Surface size="[undefined,250]"}}
+        <div>
+          {{arText}}
+        </div>
+        <div>
+            {{myText}}
+        </div>
+        <div>
+          {{text}}
+        </div>
+      {{/Surface}}
+    {{/each}}
+</template>
+
+<template name="surahCards1">
+  <div class="container cardContainer"><br>
+    <span lang="ur" class="var1 img-responsive">{{var1}}</span><br>
+    <span class="var2">{{var2}}</span><br>
+    <span class="var3"><i>{{var3}}</i></span><br>
+    <span class="var4">{{var4}}</span>
+    <span class="fa {{var5}} fa-2x var5 bookmark" id="bookmark"></span><br>
+  </div><hr><br>
+</template>

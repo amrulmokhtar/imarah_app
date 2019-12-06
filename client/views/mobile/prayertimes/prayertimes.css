@@ -1,0 +1,54 @@
+/*****************************************************************************/
+/* Prayertimes: Style */
+/*****************************************************************************/
+
+.latestHeader { 
+	width:100%;
+	height: 140px;
+	background-color: #16A085;
+	color: white;
+}
+
+.bolderText {
+	font-size: 1.6em;
+	font-family:  Gill Sans Extrabold, sans-serif;
+	font-weight: lighter;
+}
+
+.nextPrayerStyle {
+	font-size: 0.8em;
+}
+
+.positionHeaderText {
+	position: absolute;
+	top: 0;
+	left: 40vw;
+	color: white;
+}
+
+.positionLatest {
+	position: absolute;
+	margin-left: 40px;
+	margin-top: 30px;
+
+}
+
+.timesContainer {
+	padding: 6px;
+	background-color: white;
+}
+
+.nameStyle {
+	position: absolute;
+	margin-left: 30px;
+	font-family:  Gill Sans Extrabold, sans-serif;
+	font-weight: lighter;
+}
+
+.timeStyle {
+	position: absolute;
+	right: 30px;
+	font-family:  Gill Sans Extrabold, sans-serif;
+	font-weight: lighter;
+
+}

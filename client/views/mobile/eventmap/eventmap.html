@@ -1,0 +1,30 @@
+<template name="Eventmap">
+  {{#HeaderFooterLayout headerSize="210" class="main" size=size4 }}
+  	{{#SequentialLayout target="header"}}
+  		{{>Surface template="eventMapHeader" modifier="StateModifier" translate="[0,0,100]" size=size1 }}
+  		{{>Surface template="eventMapHeaderBar" modifier="StateModifier" translate="[0,27.5,0]" size=size2 }}
+  	{{/SequentialLayout}}
+  	{{#Modifier target="content"}}
+  		{{>eventsCard lessthan="true" header="1KM AWAY" contentHeader="Kuliah Maghrib" content1="Today @ 7:45PM" content2="Masjid Negeri Shah Alam, Shah Alam" id="mosque"}}
+  	{{/Modifier}}
+  {{/HeaderFooterLayout}}
+</template>
+
+<template name="eventMapHeader">
+	<navbar class="navbar-fixed" role="navigation">
+		<div class="container-fluid navbarColor">
+			<a href="javascript:void(0)">
+				<p class="navbar-text">
+					<span class="fa fa-chevron-left" id="backButton1"></span>
+				</p>
+			</a>
+			<p class="navbar-text stayFixed">
+				Tilawah, Tajwid & Tafsir
+			</p>	
+		</div>
+	</navbar>
+</template>
+
+<template name="eventMapHeaderBar">
+	<div id="map"></div>
+</template>

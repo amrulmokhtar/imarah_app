@@ -1,0 +1,96 @@
+/*****************************************************************************/
+/* Qiblat: Style */
+/*****************************************************************************/
+
+
+
+#barIcon {
+	color: white;
+}
+
+#navText {
+	color: white;
+}
+
+.contentCardSurface {
+	background-color: #16A085;
+}
+
+.compassSurface {
+
+}
+
+.stayFixed1 {
+	position: absolute;
+	left: 60px;
+	top: 0px;
+}
+
+.compassFace {
+	position: absolute;
+	height: 100vh;
+	width: 100vw;
+	bottom: -88%;
+	text-align: center;
+	/*-ms-transform: rotate(-45deg); /* IE 9 */
+   /* -webkit-transform: rotate(-45deg); /* Chrome, Safari, Opera */
+   /* transform: rotate(-45deg);*/
+}
+
+.kabaClass {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.sun {
+	position: absolute;
+	width: 400px;
+	height: 400px;
+	bottom: -60%;
+	left: 50%;
+	margin-left: -225px; 
+}
+
+.directioner{
+	position: absolute;
+	bottom: 60px;
+	left: 50%;
+	margin-left: -15px;
+}
+
+.circle {
+	position: absolute;
+	bottom: -60%;
+	left: 50%;
+	margin-left: -200px;
+	z-index: -1000; 
+	-webkit-transform-origin:  0% 0% 200 ;
+	-ms-transform-origin:  0% 0% 200 ;
+	transform-origin:  0% 0% 200 ;
+	/*-webkit-animation: spinZ 8s infinite;*/
+}
+
+.cardHeader {
+	font-size: 0.7em;
+}
+
+.cardcontentHeader {
+	font-size: 1.6em;
+	font-family:  Gill Sans Extrabold, sans-serif;
+	font-weight: lighter;
+}
+
+.cardContent {
+	font-size: 0.5em;
+}
+
+.prayerCard {
+	position: absolute;
+	left: 26px;
+	font-size: 1.3em;
+	margin-top: 40px;
+	color: white;
+}
+
+

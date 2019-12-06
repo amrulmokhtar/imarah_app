@@ -1,0 +1,25 @@
+<template name="Zakathanks">
+	{{#Modifier size=size1}}
+		{{#Surface size=size1 modifier="StateModifier" translate="[0,0,0]" class="green-bg"}}
+		{{/Surface}}
+		
+		{{#Surface size="[400, 400]" origin="[0.5, 0.5]" align="[0.5, 0.5]" translate="[0, 0, 1]"}}
+			{{>zakathanksText}}
+		{{/Surface}}
+	{{/Modifier}}
+</template>
+
+<template name="zakathanksText">
+	<div class="textToCenter1">
+		<h2>Thank you!</h2><br>
+		<p>
+			<span>You're contribution has been received by {{zakatTo}}.</span>
+		</p>
+		<p>
+			A reciept has been mailed to you.
+		</p><br>
+		<span>
+			<button class="btn zakatBtn" id="zakatBtn">Back to app</button>
+		</span>
+	</div>
+</template>

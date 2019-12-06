@@ -1,0 +1,141 @@
+<template name="Imam">
+    {{#HeaderFooterLayout header="370" class="main" size=size4}}
+    {{#SequentialLayout target="header"}}
+        {{>Surface template="imamHeader" modifier="StateModifier" translate="[0,0,100]" size=size1}}
+        {{>Surface template="imamProfileContainer" data=imam modifier="StateModifier" translate="[0,-40,0]" size=size2}}
+    {{/SequentialLayout}}
+    {{#Modifier target="content" modifier="StateModifier" translate="[0,-50,10]"}}
+        {{>imamProfileTabSlider data=imam}}
+    {{/Modifier}}
+    {{/HeaderFooterLayout}}
+</template>
+
+<template name="imamHeader">
+    <navbar class="navbar-fixed" role="navigation">
+        <div class="container-fluid green-bg">
+            <p class="navbar-text" id="backButton1">
+                <span class="fa fa-chevron-left"></span>
+            </p>
+        </div>
+    </navbar>
+</template>
+
+<template name="imamProfileContainer">
+    <!-- Profile Header -->
+    <div class="viewsTop1 "> <!--url('../images/dummymosqueimage.jpg');"> -->
+        
+        <div class="profileName imamuserBox">
+            <img class="picProfileImage" src="{{picture}}" />
+            <span class="picProfileName">{{title}} {{first_name}} {{last_name}}</span>   
+        </div>
+
+        {{#if following _id}}
+        <a class="profileActionBtn imamuserpositioning" id="followimam">
+            <img src="../images/icon_follow.png" alt="Follow Imam"/>
+            <span>Follow</span>
+        </a>
+        {{else}}
+        <a class="profileActionBtn imamuserpositioning" id="unfollowimam">
+            <img src="../images/icon_following.png" alt="Following Imam"/>
+            <span>Following</span>
+        </a>
+        {{/if}}
+        
+    </div>
+
+    <!-- Profile Tabs -->
+    <ul class="profiletabs">
+        {{#each tabs}}
+        <li class="{{status}}" id="{{id}}"><a>
+            <img src="../images/icon_{{imgId}}.png">
+            <span>{{text}}</span>
+        </a></li>
+        {{/each}}
+        <!-- <li><a href="#">
+            <img src="../images/icon_events.png">
+            <span>Events</span>
+        </a></li>
+        <li><a href="#">
+            <img src="../img/icon_amenities.png">
+            <span>Amenities</span>
+        </a></li> -->
+    </ul>
+    <!-- <div class="profileDisplay10">
+        <p class="well profileCenterAlign4">
+            <img src="{{picture}}" class="img-circle" width="50" height="50" /><br>
+            <span>{{title}} {{first_name}}  {{last_name}}</span><br>
+            <span><i class="locText1">{{city}}, {{country}}</i></span><br>
+            <span>
+                <button class="btn btn-default defaultBtn marginSide"><b>Ask Question</b></button>
+                {{#if following _id}}
+                    <button id='followimam' class="btn btn-warning followBtn marginSide"><b>Follow</b></button>
+                
+                    <button id="unfollowimam" class="btn btn-warning followBtn marginSide"><b>Unfollow</b></button>
+                {{/if}}
+            </span>
+        </p>
+    </div>
+    <div class="profileDownBar1">
+        <a href="{{pathFor 'imamprofilesearch'}}">
+            <span class="profileTab4"><img src="../images/icon_about_gray.png" width="32" height="32">
+                    <span class="profileText2 text2">ABOUT</span></span>
+            <span class="profileTab4"><img src="../images/icon_events_gray.png" width="32" height="32">
+                    <span class="profileText2 text2">EVENTS</span></span>
+        </a>
+    </div> -->
+</template>
+
+<template name="imamProfileTabSlider">
+        {{#RenderController transition=imamProfileTransition}}
+            {{>showImamSearchTemplate data=data}}
+        {{/RenderController}}
+</template>
+
+<!-- Feed / imamProfileSurface1 when implemented later -->
+<template name="imamProfileSurface3">
+
+    {{#Scrollview}}
+        {{#Surface size="[undefined, true]" class="backgroundWhite"}}
+            surface 2
+        {{/Surface}}
+    {{/Scrollview}}
+
+</template>
+
+<template name="imamProfileSurface1">
+    {{#Scrollview}}
+        {{>imamProfileCards header="About" contentTemplate="imamAboutTemplate"}}
+        {{>imamProfileCards header="Topics of Interest" contentTemplate="imamTopicsTemplate"}}
+        <!-- {{>imamProfileCards header="Links" contentTemplate="imamLinksTemplate"}} -->
+    {{/Scrollview}}
+</template>
+
+<template name="imamProfileSurface2">
+    {{#Scrollview}}
+        {{#with events data._id}}
+        {{#if this.count}}
+            {{#famousEach this}}
+                {{>eventsCard contentHeader=name content1=comb_date content2=location_format id="mosque" _id=_id}}
+            {{/famousEach}}
+        {{else}}
+            {{#Surface size="[undefined, true]" translate="[0,0,0]"}}
+                {{>noeventsmosqueEmptyData}}
+            {{/Surface}}
+        {{/if}}
+        {{/with}}
+
+
+    {{/Scrollview}}
+</template>
+
+<template name="imamProfileCardHolder">
+    {{#Scrollview}}
+    {{>profileCards id="event" imgId="../images/icon_events.png" header="Spoke at an event" contentTemplate="imamCard1"}}
+    {{>profileCards id="event" imgId="../images/icon_events.png" header="Answered a question in Solat" contentTemplate="imamCard1"}}
+    {{>profileCards id="event" imgId="../images/icon_events.png" header="Created an event" contentTemplate="imamCard1"}}
+    {{/Scrollview}}
+</template>
+
+<template name="imamCard1">
+    <div class="imamCard1"></div>
+</template>

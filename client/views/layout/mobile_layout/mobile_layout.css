@@ -1,0 +1,560 @@
+/* CSS declarations go here */
+div #prayer ,#alQuran ,#news, #events, #mosqueId, #qiblat {
+	color: white;
+}
+
+textarea:focus, input:focus{
+    outline: 0 !important;
+}
+
+.green-bg {
+	background-color: #16A085 !important;
+	font-size: 1.3em;
+	color: white !important;
+}
+
+.transparent-bg{
+	background-color: rgba(0,0,0,0.1);
+	font-size: 1.3em;
+	color: white !important;
+}
+
+.red-bg {
+	background-color: red;
+}
+
+.imam {
+	color: #3498db;
+}
+
+.main{
+	background-color: white;
+}
+
+#map { 
+	height: 123px; 
+}
+
+.bottomLinks {
+	color: white !important;
+	margin: 0 10px;
+}
+
+.greenfont {
+	color:#16A085;
+}
+
+.container{
+	padding: 0 20px;
+}
+
+.profileTab4 {
+	padding: 30px;
+}
+
+.widthauto{
+	width: auto;
+}
+
+.profileText2 {
+	position: relative;
+	color: #16A085;
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 11pt;
+}
+
+.listcontainer{
+	position: relative;
+	border-bottom: 1px solid #D8D8D8;
+	padding: 20px;
+	background: #fff;
+}
+
+.text2 {
+	margin-left: -43px;
+}
+
+.text3 {
+	margin-left: -34px;
+}
+
+.searchmoveup {
+	position: absolute;
+	top:10px;
+	left:58px;
+	color:white;
+	padding: 4px;
+	background-color: #33CC99;
+	border-radius: 5px;
+	border-width:0;
+	z-index: 10;
+}
+
+.modalSize {
+	width: 70%;
+}
+
+.setRight {
+	font-size: 1.7em;
+	color: white;
+	position: absolute;
+	right: 10px;
+	margin-top: -35px;
+}
+
+.stayFixed {
+	position: absolute;
+	left: 50px;
+	top: 0px;
+}
+
+.navbarColor {
+	background-color: whitesmoke;
+	font-size: 1.3em;
+}
+
+.viewsTop {
+	padding-top: 35px;
+	height: 180px;
+	width: 100%;
+	text-align: center;
+	background-color: #16A085;
+	color: white;
+}
+
+.profileText {
+	font-size: 0.3em;
+	color: black;
+}
+
+.alignCenter{
+	position: absolute;
+	z-index: 1000;
+	margin-left: 40%;
+	top: -2px;
+}
+
+.alignCenter1 {
+	text-align: center;
+	font-size: 2em;
+	background-color: #16A085;
+}
+
+.tabPills {
+	padding:6px;
+}
+
+#backButton1 {
+	width: 35px;
+}
+
+.checkinArea {
+	background-color: skyblue;
+}
+
+.select {
+	background-color: #007C7C;
+}
+
+.moveright {
+	position: absolute;
+	right: 25px;
+	top:1px;
+	z-index: 10;
+}
+
+#arrowleft {
+	width: 35px;
+}
+
+.fullSize {
+	z-index: -100;
+}
+
+.bg-purple {
+	background-color: purple;
+}
+
+.bg-red {
+	background-color: red;
+}
+
+.bg-skyblue {
+	background-color: skyblue;
+}
+
+.filterSpace {
+	padding: 8px;
+	background-color: whitesmoke;
+}
+
+.searchInput {
+	width: 85vw;
+	background-color: #16A085;
+	color: white;
+	border:0px;
+}
+
+.center{
+	padding-left: 14px;
+	padding-right: 14px;
+}
+
+.center1 {
+	padding-top: 10px;
+	padding-left: 30px;
+	border-left: solid #A8A8A8;
+	border-left-width: 1.3px;
+	background-color: white;
+}
+
+.center2 {
+	padding-top: 30px;
+	padding-left: 0px;
+}
+
+.colorw {
+	color:white;
+}
+
+.profileDisplay{
+	height: 170px;
+	width: 100%;
+	text-align: center;
+	color:white;
+	background-color: #16A085;
+}
+
+.slideRight {
+	position: absolute;
+	right: 20px;
+}
+
+.profileDownBar {
+	text-align: center;
+	color:silver;
+}
+
+
+.sharedButton {
+	font-size: 2.5em;
+	padding: 4px;
+}
+
+.facebookButton {
+	color: blue;
+}
+
+.twitterButton {
+	color: lightblue;
+}
+
+
+.setMargin {
+	margin: 20px;
+	text-align: center;
+}
+
+.cardpart {
+	background-color: #F8F8F8 ;
+	margin-top: 16px;
+	padding: 10px;
+	border-radius: 0px;
+}
+
+.cardViewArea {
+	background-color: #27ae60;
+}
+
+.cardin {
+	color:#16A085;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.welHeight {
+	height: 100%;
+}
+
+.profileBg{
+	background-image: none;
+	background-color: #000;
+	border: 0;
+	border-radius: 0;
+}
+
+.profileBg a {
+	color: #fff;
+}
+
+.profileBg span{
+	margin-left: 10px;
+}
+
+.cardin1 {
+	font-size: 1.5em;
+	color: #333;
+}
+
+.strip {
+	background: #4A4A4A;
+	color: white;
+	line-height: 70px;
+	font-family: verdana;
+	text-align: left;
+	//border-bottom: thin solid #717171;
+	padding-left: 10px; 
+}
+
+.menuActive {
+	background: #666;
+	color: white;
+	line-height: 70px;
+	font-family: verdana;
+	text-align: left;
+	//border-bottom: thin solid #717171;
+	padding-left: 10px; 
+}
+
+#profileView {
+
+}
+
+.stripLayout{
+	background-color: #989898 !important;
+}
+
+.photoSize {
+	font-size: 4.8em;
+	padding-left: 25px;
+	color: silver;
+}
+
+.photoSize1 {
+	font-size: 4.8em;
+	color: white;
+}
+
+.profileInfo {
+	position: absolute;
+	padding-left: 15px;
+	padding-top: 2px;
+}
+
+.cardin2 {
+	position: absolute;
+	right: 40px;
+	font-weight: 300;
+	color: #000;
+}
+
+.hr1 {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: -10px;
+    margin-right: -10px;
+    border-style: inset;
+    border-width: 2px;
+    opacity: 0.7;
+}
+
+
+.hr2 {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: -30px;
+    margin-right: -10px;
+    border-style: inset;
+    border-width: 1px;
+    background-color: #16A085;
+    color: #16A085;
+    border-color: #16A085;
+    opacity: 0.7;
+}
+
+.hr3 {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: -70px;
+    margin-right: -10px;
+    border-style: inset;
+} 
+
+.myEventsArea {
+	background-color: #34495e;
+}
+
+.mosqueLocatorArea {
+	background-color: #f39c12;
+}
+
+.qiblatArea {
+	background-color: #1abc9c;
+}
+
+.cardin34 {
+	font-size: 0.9em;
+	opacity: 0.8;
+}
+
+.cardin3 {
+	position: absolute;
+	left:40px;
+}
+
+.cardin4 {
+	position: absolute;
+	right:60px;
+}
+
+.paintgray {
+	background-color: #4A4A4A;
+}
+
+.profileBottom {
+	background: #4A4A4A;
+	color: white;
+	margin-bottom: -10px;
+	text-align: center;
+}
+
+.profileArea {
+	background-color: #e74c3c;
+}
+
+.timelineCircle {
+	position: absolute;
+	margin-top:-1px;
+	margin-left:-17px;
+	font-size: 1.3em;
+	z-index: 999;
+	text-align: center;
+}
+
+.timelineCircle1 {
+	position: absolute;
+	margin-left:-17px;
+	font-size: 1.3em;
+	z-index: 999;
+	text-align: center;
+}
+
+.timelineImg {
+	margin-top: -5px;	
+}
+
+.timeId1{
+	
+}
+.event {
+	color: #e74c3c;
+}
+
+.mosque {
+	color:#1abc9c;
+}
+
+.normalsize {
+	font-size: 0.35em;
+	position: relative;
+	bottom: 8.5px;
+	color: black;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+}
+
+.sideBorder {
+	border-left: solid #A8A8A8;
+	border-left-width: 1.3px;
+}
+
+.cardContainer1 {
+	padding-left: 30px;
+	background-color: white;
+}
+
+.cardContainer5 {
+	padding-left: 30px;
+
+}
+
+.center23 {
+	padding-left: 30px;
+	border-left: solid #A8A8A8;
+	border-left-width: 1.3px;
+
+}
+
+#cardContainer {
+	color: black;
+}
+
+.cardHeader1 {
+	font-size: 0.9em;
+	color: #16A085;
+}
+
+.cardHeader {
+	font-size: 0.9em;
+	margin-top: -10px;
+}
+
+.prayerTimesArea {
+	background-color: #e74c3c;
+}
+
+.alQuranArea {
+	background-color: #f1c40f;
+}
+
+.eventViewArea {
+	background-color: #2980b9;
+}
+
+
+.profileCenterAlign: {
+	text-align: center;
+}
+
+.cardContent {
+	font-size: 1em;
+}
+
+.smallerText4r {
+	font-size: 10.5pt;
+	color: #333;
+}
+
+
+/* modal */
+
+.anti-modal-box{
+	border-radius: 5px;
+	padding: 10px;
+}
+
+.anti-modal-header, .anti-modal-body{
+	background: none;
+}
+
+.anti-modal-box .eventDetails{
+	background: #ddd;
+	margin: 0 -10px;
+	padding: 10px 20px;
+}
+
+.anti-modal-body .rsvpGroup{
+	text-align: center;
+}
+
+
+
+
+
+
+

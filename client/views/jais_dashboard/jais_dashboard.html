@@ -1,0 +1,164 @@
+<template name="JaisDashboard">
+
+	<div class="page-container row-fluid">
+        <!-- BEGIN SIDEBAR -->
+        <div class="page-sidebar" id="main-menu">
+
+            <!-- BEGIN SIDEBAR MENU -->
+     	    {{> jais_menu}}
+
+        </div>
+    </div>
+    <div  class="page-content">
+        <div class="" id="content">
+            <h2 id="page_title">
+                Dashboard
+            </h2>
+            <!-- {{> yield region='MosqueDashboardSubcontent'}} -->
+            {{> jais_dashboard_content}}
+        </div>
+    </div>
+
+</template>
+
+
+<template name="jais_menu">
+    <ul>
+
+        <li id="menu-item-simple"  class="{{menuItemClass 'mosque_dashboard'}}">
+            <a href="{{pathFor 'jais_dashboard'}}">
+                <i class="icon-custom-dashboard"></i> <span class="title">Dashboard</span>
+            </a>
+        </li>
+        <li id="menu-item-simple" class="{{menuItemClass 'mosque_dashboard.events'}}">
+            <a href="{{pathFor 'jais_events'}}">
+                <i class="icon-custom-event"></i> <span class="title">Events</span>
+            </a>
+        </li>
+		<li class="{{menuItemClass 'mosque_dashboard.feedback'}}">
+            <a href="{{pathFor 'jais_feedback'}}">
+                <i class="icon-custom-feedback"></i> <span class="title">Feedback</span>
+            </a>
+        </li>
+    </ul>
+</template>
+
+<template name="jais_dashboard_content">
+
+	<div class="content">
+		
+		<div class="row wrap_top_pos">
+            <div class="col-md-8">
+                <h2>Jabatan Agama Islam Selangor (JAIS)</h2>
+                <p>{{islamicDate today}}</p>
+                <!--<p><span id="day">Wednesday</span>, <span id="currentdate">18</span> Safar 1436 A.H.</p>-->
+            </div>
+        </div>
+        <div class="clearfix"></div>
+
+	</div>
+
+	<!-- BEGIN GRAPH SECTION-->
+    <div class="row-fluid graph-col">
+        <div class="graph-left event_report">
+            {{#with mosque_stats}}
+            <h2>{{roundNumber avg_event}}</h2>
+            <p>Avg. events per Mosque</p>
+            <h2>{{roundNumber avg_check_in}}</h2>
+            <p>Avg. attendance per Event</p>
+            <h2>{{total_event}}</h2>
+            <p>Total events in {{formatDate today 'MMMM'}}</p>
+            {{/with}}
+        </div>
+        <div class="graph-right" style="background: #D8D8D8; padding: 10px;">{{>linechart id='jaischart' data_key=jaischartdata}}<!--<img src="/img/graph_event.png" alt="graph"/>--></div>
+    </div>
+    <!-- END GRAPH SECTION-->
+
+    <div class="clearfix"></div>
+
+    {{>filters_rows_list}}
+
+</template>
+
+
+<template name="filters_rows_list">
+
+	<div class="row-fluid mid-col">
+        <div class="col-md-2">
+            <div class="col_leftbar">
+                <input type="search" name="search" class="search">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs left_nav event_nav" id="" role="tablist">
+                    {{#each districts}}
+                    <li role="presentation"><a href="#{{whiteToUnder this}}" aria-controls="{{whiteToUnder this}}" role="tab" data-toggle="tab">{{this}}</a></li>
+                    {{/each}}
+
+                </ul>
+                <!-- Tab panes -->
+                <div class="fil_sel evt_sel">
+                    Sort by
+                    <select class="select_bx">
+                        <option>Total events: Highest to Lowest</option>
+                        <option>Total events: Lowest to Highest</option>
+                        <option>Average Rating</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-10">
+
+            <div class="tab-content">
+                <!-- Upcoming Events Tab Section -->
+                {{#each districts}}
+                <div role="tabpanel" class="tab-pane" id="{{whiteToUnder this}}">
+
+                    <table class="table tab-wrap">
+                        <tr>
+                            <th><div>Mosque Name</div></th>
+                            <th><div>Total No. of Events</div></th>
+                            <th><div>Avg. Checked-in</div></th>
+                            <th><div>Avg. Rating</div></th>
+                            <th><div></div></th>
+                        </tr>
+                        {{#each districtMosques this}}
+                        {{>mosqueDistrictListROW this}}
+                        {{/each}}
+
+
+                    </table>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+    <!-- END MID SECTION-->
+
+</template>
+
+<template name="mosqueDistrictListROW">
+    <tr>
+        {{#with stats_for_month this}}
+        <td><div>{{name}}</div></td>
+        <td><div>{{total_events}}</div></td>
+        <td><div>{{roundNumber avg_check_in}}</div></td>
+        <td><div>{{roundNumber avg_rating}}</div></td>
+        <td><div><a class="edit_btn" id="delete">View</a></div></td>
+        {{/with}}
+        <!--<td><div><a class="edit_btn" href="javascript:void()" id="edit">Edit</a></div></td> -->
+    </tr>
+</template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,22 @@
+/*****************************************************************************/
+/* Mosquelocator: Style */
+/*****************************************************************************/
+
+ #barIcon {
+	color: black;
+}
+
+.stayFixed1 {
+	position: absolute;
+	left: 50px;
+	top: 0px;
+}
+
+.settingsIcon2 {
+	height: 27.5px;
+}
+
+.iconContainer {
+	position: absolute;
+	right: 20px;
+}

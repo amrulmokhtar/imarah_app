@@ -1,0 +1,324 @@
+<template name="MosqueDashboardMosqueProfileMosqueProfileUpdate">
+	<div class="container" id="content">
+		<h2 id="page_title">
+			Update Profile
+		</h2>
+		{{> MosqueDashboardMosqueProfileMosqueProfileUpdateMosqueProfileForm}}
+	</div>
+</template>
+
+<template name="MosqueDashboardMosqueProfileMosqueProfileUpdateMosqueProfileForm">
+	<div class="">
+		<h2 id="component-title">
+			Update Profile
+		</h2>
+		<form id="form" role="form">
+			<div class="form-group">
+				<label for="name">
+					Mosque Name
+				</label>
+				<div class="input-div">
+					<input type="text" name="name" value="{{update_mosque.name}}" class="form-control" autofocus="autofocus" required="required">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="type">
+					Mosque Type
+				</label>
+				<div class="input-div">
+					<select class="form-control" name="type">
+						<option value="State Mosque" {{optionIsSelected update_mosque.type "State Mosque"}}>
+							State Mosque
+						</option>
+						<option value="District Mosque" {{optionIsSelected update_mosque.type "District Mosque"}}>
+							District Mosque
+						</option>
+						<option value="Institution Mosque" {{optionIsSelected update_mosque.type "Institution Mosque"}}>
+							Institution Mosque
+						</option>
+						<option value="Surau" {{optionIsSelected update_mosque.type "Surau"}}>
+							Surau
+						</option>
+						<option value="Musalla" {{optionIsSelected update_mosque.type "Musalla"}}>
+							Musalla
+						</option>
+					</select>
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="friday_prayers">
+					Does the Mosque offer Friday Khutbah?
+				</label>
+				<div class="input-div">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="description">
+					Mosque Description
+				</label>
+				<div class="input-div">
+					<textarea class="form-control" name="description">
+{{update_mosque.description}}
+					</textarea>
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="amenities">
+					Services and Amenities
+				</label>
+				<div class="input-div">
+					<input type="text" name="amenities" value="{{update_mosque.amenities}}" class="form-control">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="longitude">
+					Longitude
+				</label>
+				<div class="input-div">
+					<input type="text" name="longitude" value="{{update_mosque.longitude}}" class="form-control" required="required" data-type="number">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="latitude">
+					Latitude
+				</label>
+				<div class="input-div">
+					<input type="text" name="latitude" value="{{update_mosque.latitude}}" class="form-control" required="required" data-type="number">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="phone_number">
+					Phone Number
+				</label>
+				<div class="input-div">
+					<input type="text" name="phone_number" value="{{update_mosque.phone_number}}" class="form-control">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="email">
+					Email
+				</label>
+				<div class="input-div">
+					<input type="text" name="email" value="{{update_mosque.email}}" class="form-control" data-type="email">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="facebook">
+					Facebook
+				</label>
+				<div class="input-div">
+					<input type="text" name="facebook" value="{{update_mosque.facebook}}" class="form-control">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="twitter">
+					Twitter
+				</label>
+				<div class="input-div">
+					<input type="text" name="twitter" value="{{update_mosque.twitter}}" class="form-control">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="website">
+					Website
+				</label>
+				<div class="input-div">
+					<input type="text" name="website" value="{{update_mosque.website}}" class="form-control">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="address_1">
+					Address 1
+				</label>
+				<div class="input-div">
+					<input type="text" name="address_1" value="{{update_mosque.address_1}}" class="form-control">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="city">
+					City
+				</label>
+				<div class="input-div">
+					<select class="form-control" name="city">
+						{{#each mosque_city}}
+						<option value="{{_id}}" {{optionIsSelected ../update_mosque.city _id}}>
+							{{name}}
+						</option>
+						{{/each}}
+					</select>
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="district">
+					District
+				</label>
+				<div class="input-div">
+					<input type="text" name="district" value="{{update_mosque.district}}" class="form-control">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="postcode">
+					Postcode
+				</label>
+				<div class="input-div">
+					<input type="text" name="postcode" value="{{update_mosque.postcode}}" class="form-control">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="state">
+					State
+				</label>
+				<div class="input-div">
+					<input type="text" name="state" value="{{update_mosque.state}}" class="form-control" required="required">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="country">
+					Country
+				</label>
+				<div class="input-div">
+					<select class="form-control" name="country">
+						{{#each mosque_countries}}
+						<option value="{{name}}" {{optionIsSelected ../update_mosque.country name}}>
+							{{name}}
+						</option>
+						{{/each}}
+					</select>
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="timezone">
+					Timezone
+				</label>
+				<div class="input-div">
+					<select class="form-control" name="timezone">
+						{{#each mosque_timezones}}
+						<option value="{{_id}}" {{optionIsSelected ../update_mosque.timezone _id}}>
+							{{name}}
+						</option>
+						{{/each}}
+					</select>
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="managers">
+					User ID
+				</label>
+				<div class="input-div">
+					<select class="form-control" name="managers">
+						{{#each users}}
+						<option value="{{_id}}" {{optionIsSelected ../update_mosque.managers _id}}>
+							{{profile.email}}
+						</option>
+						{{/each}}
+					</select>
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="picture">
+					Picture
+				</label>
+				<div class="input-div">
+					<input type="text" name="picture" value="{{update_mosque.picture}}" class="form-control">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="submit-div">
+					<button id="form-submit-button" class="btn btn-success" type="submit">
+						<span class="fa fa-check">
+						</span>
+						Save
+					</button>
+					<a href="#" id="form-cancel-button" class="btn btn-default">
+						Cancel
+					</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</template>
+

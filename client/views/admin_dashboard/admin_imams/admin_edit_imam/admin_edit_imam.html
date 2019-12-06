@@ -1,0 +1,205 @@
+<template name="AdminDashboardAdminImamsAdminEditImam">
+	<div class="container" id="content">
+		<h2 id="page_title">
+			Edit Imam
+		</h2>
+		{{> AdminDashboardAdminImamsAdminEditImamImamEditForm}}
+	</div>
+</template>
+
+<template name="AdminDashboardAdminImamsAdminEditImamImamEditForm">
+	<div class="">
+		<h2 id="component-title">
+			Edit Imam
+		</h2>
+		<form id="form" role="form">
+			<div class="form-group">
+				<label for="title">
+					Imam Title
+				</label>
+				<div class="input-div">
+					<input type="text" name="title" value="{{admin_edit_imam.title}}" class="form-control" autofocus="autofocus">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="first_name">
+					First Name
+				</label>
+				<div class="input-div">
+					<input type="text" name="first_name" value="{{admin_edit_imam.first_name}}" class="form-control" required="required">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="last_name">
+					Last Name
+				</label>
+				<div class="input-div">
+					<input type="text" name="last_name" value="{{admin_edit_imam.last_name}}" class="form-control" required="required">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="specialities">
+					Imam Specialities
+				</label>
+				<div class="input-div">
+					<select class="form-control" name="specialities">
+						{{#each event_topics}}
+						<option value="{{_id}}" {{optionIsSelected ../admin_edit_imam.specialities _id}}>
+							{{name}}
+						</option>
+						{{/each}}
+					</select>
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="user_id">
+					User ID
+				</label>
+				<div class="input-div">
+					<select class="form-control" name="user_id">
+						{{#each users}}
+						<option value="{{_id}}" {{optionIsSelected ../admin_edit_imam.user_id _id}}>
+							{{profile.email}}
+						</option>
+						{{/each}}
+					</select>
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="description">
+					About Imam
+				</label>
+				<div class="input-div">
+					<input type="text" name="description" value="{{admin_edit_imam.description}}" class="form-control">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="phone_number">
+					Phone Number
+				</label>
+				<div class="input-div">
+					<input type="text" name="phone_number" value="{{admin_edit_imam.phone_number}}" class="form-control" required="required">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="country">
+					Country
+				</label>
+				<div class="input-div">
+					<select class="form-control" name="country">
+						{{#each imam_countries}}
+						<option value="{{name}}" {{optionIsSelected ../admin_edit_imam.country name}}>
+							{{name}}
+						</option>
+						{{/each}}
+					</select>
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="email">
+					Email
+				</label>
+				<div class="input-div">
+					<input type="text" name="email" value="{{admin_edit_imam.email}}" class="form-control">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="facebook">
+					Facebook
+				</label>
+				<div class="input-div">
+					<input type="text" name="facebook" value="{{admin_edit_imam.facebook}}" class="form-control">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="twitter">
+					Twitter
+				</label>
+				<div class="input-div">
+					<input type="text" name="twitter" value="{{admin_edit_imam.twitter}}" class="form-control">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="website">
+					Website
+				</label>
+				<div class="input-div">
+					<input type="text" name="website" value="{{admin_edit_imam.website}}" class="form-control">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="picture">
+					Picture
+				</label>
+				<div class="input-div">
+					<input type="text" name="picture" value="{{admin_edit_imam.picture}}" class="form-control">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="submit-div">
+					<button id="form-submit-button" class="btn btn-success" type="submit">
+						<span class="fa fa-check">
+						</span>
+						Save
+					</button>
+					<a href="#" id="form-cancel-button" class="btn btn-default">
+						Cancel
+					</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</template>
+

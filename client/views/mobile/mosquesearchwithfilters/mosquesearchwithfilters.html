@@ -1,0 +1,51 @@
+<template name="Mosquesearchwithfilters">
+ 	{{#HeaderFooterLayout headerSize="180" class="main" size=size4}}
+ 		{{>Surface template="amenitiesSearchHeader" target="header" modifier="StateModifier" translate="[0,0,100]" size=size1}}
+ 		{{#Modifier target="content" modifier="StateModifier" translate="[0,0,10]"}}
+ 			{{>amenitiesSearchContainer}}
+ 		{{/Modifier}}
+ 	{{/HeaderFooterLayout}}
+</template>
+
+<template name="amenitiesSearchHeader">
+	<navbar class="navbar-fixed" role="navigation">
+		<div class="container-fluid green-bg"> 
+			<a href="{{pathFor 'mosqueprofilesearch'}}">
+				<p class="navbar-text" id="backButton1">
+					<span class="fa fa-chevron-left"></span>
+				</p>
+			</a>
+			<p class="navbar-text positionText2">
+				Masjid Negeri Shah Alam
+			</p>
+			<p class="navbar-text moveright">
+				<span class="fa fa-search"></span>
+			</p>
+		</div>
+	</navbar>	
+	<div class="shiftMiddle">
+		<span class="fa fa-stop tabBtns select">
+			<br><span class="tabText">Amenities</span>
+		</span>
+	</div>
+	<div class="amenitiesSearchBar">
+		<button class="btn btn-default defaultStyle setWide3">Cafeteria</button>
+		<button class="btn btn-default defaultStyle setWide3">WiFi</button>
+		<button class="btn btn-default defaultStyle setWide3">Barber Shop</button>
+		<button class="btn btn-default defaultStyle setWide3">+</button>
+		<span><img src="images/settings1.ico" class="positionSetting"></span>
+	</div>
+</template>
+
+<!--Showing all mosques with the same ameninties-->
+<template name="amenitiesSearchContainer">
+	{{#Scrollview}}
+	   {{>mosquesCard  header="NEAREST MOSQUE" contentHeader="1  Masjid Negeri Shah Alam" content1="Jalan 1234, Shah Alam" content2="0.3km away"}}
+       {{>mosquesCard  header="NEAREST MOSQUE" contentHeader="1  Masjid Negeri Shah Alam" content1="Jalan 1234, Shah Alam" content2="0.3km away"}}
+       {{>mosquesCard  header="NEAREST MOSQUE" contentHeader="1  Masjid Negeri Shah Alam" content1="Jalan 1234, Shah Alam" content2="0.3km away"}}
+       {{>mosquesCard  header="NEAREST MOSQUE" contentHeader="1  Masjid Negeri Shah Alam" content1="Jalan 1234, Shah Alam" content2="0.3km away"}}
+       {{>mosquesCard  header="NEAREST MOSQUE" contentHeader="1  Masjid Negeri Shah Alam" content1="Jalan 1234, Shah Alam" content2="0.3km away"}}
+	   {{>mosquesCard  header="NEAREST MOSQUE" contentHeader="1  Masjid Negeri Shah Alam" content1="Jalan 1234, Shah Alam" content2="0.3km away"}}
+       {{>mosquesCard  header="OTHER MOSQUES NEARBY" contentHeader="2  Masjid Negeri Shah Alam" content1="Jalan 1234, Shah Alam" content2="0.3km away"}}
+	{{/Scrollview}}
+</template>

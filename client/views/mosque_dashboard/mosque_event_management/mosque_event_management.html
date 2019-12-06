@@ -1,0 +1,224 @@
+<template name="MosqueDashboardMosqueEventManagement">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12" id="content">
+				<h2 id="page_title">
+					Event Management
+				</h2>
+				{{> MosqueDashboardMosqueEventManagementEventView}}
+			</div>
+		</div>
+		<div class="row">
+			<div id="menu" class="col-sm-3 col-md-2">
+				<h2>
+				</h2>
+				{{> MosqueDashboardMosqueEventManagementMosqueMenu}}
+			</div>
+			<div id="subcontent" class="col-sm-9 col-md-10">
+				{{> yield region='MosqueDashboardMosqueEventManagementSubcontent'}}
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="MosqueDashboardMosqueEventManagementEventView">
+	<div id="dataview" class="">
+		<h2 id="component-title">
+			Events
+		</h2>
+		<form id="dataview-controls" class="form-inline">
+			<div id="dataview-controls-insert" class="form-group">
+				<button type="submit" id="dataview-insert-button" class="btn btn-success">
+					<span class="fa fa-plus">
+					</span>
+					Add new
+				</button>
+			</div>
+			<div id="dataview-controls-search">
+				{{#if isNotEmpty}}
+				<div id="dataview-controls-search-group" class="form-group">
+					<label class="sr-only" for="search">
+						Search
+					</label>
+					<input type="text" class="form-control" id="dataview-search-input" placeholder="Search" name="search" value="{{searchString}}" autofocus="autofocus">
+					<button type="button" id="dataview-search-button" class="btn btn-primary">
+						<span class="fa fa-search">
+						</span>
+					</button>
+				</div>
+				{{/if}}
+			</div>
+		</form>
+		{{#if isNotEmpty}}	
+			{{#if isNotFound}}
+		<div class="alert alert-warning">
+			"{{searchString}}" not found.
+		</div>
+		{{else}}
+		<div id="dataview-data">
+			{{#if viewAsTable}} {{> MosqueDashboardMosqueEventManagementEventViewTable}} {{/if}}
+		</div>
+		{{/if}}	
+		{{else}}
+		<div class="alert alert-info">
+			No Events Yet
+		</div>
+		{{/if}}
+	</div>
+</template>
+
+<template name="MosqueDashboardMosqueEventManagementEventViewTable">
+	<table id="dataview-table" class="table table-striped">
+		<thead id="dataview-table-header">
+			<tr id="dataview-table-header-row">
+				<th class="th-sortable" data-sort="name">
+					Event Name
+				</th>
+				<th class="th-sortable" data-sort="longitude">
+					Longitude (optional)
+				</th>
+				<th class="th-sortable" data-sort="latitude">
+					Latitude (optional)
+				</th>
+				<th class="th-sortable" data-sort="seats">
+					Seats Available
+				</th>
+				<th class="th-sortable" data-sort="type">
+					Event Type
+				</th>
+				<th class="th-sortable" data-sort="topic">
+					Event Topic
+				</th>
+				<th class="th-sortable" data-sort="picture">
+					Event Picture
+				</th>
+				<th class="th-sortable" data-sort="imams">
+					Imams
+				</th>
+				<th class="th-sortable" data-sort="mosque_id">
+					Mosque Hosting Event
+				</th>
+				<th class="th-sortable" data-sort="website">
+					Website
+				</th>
+				<th class="th-sortable" data-sort="address_1">
+					Address 1
+				</th>
+				<th class="th-sortable" data-sort="city">
+					City
+				</th>
+				<th class="th-sortable" data-sort="district">
+					District
+				</th>
+				<th class="th-sortable" data-sort="postcode">
+					Postcode
+				</th>
+				<th class="th-sortable" data-sort="state">
+					State
+				</th>
+				<th class="th-sortable" data-sort="country">
+					Country
+				</th>
+				<th class="th-sortable" data-sort="timezone">
+					Timezone
+				</th>
+				<th class="th-sortable" data-sort="date">
+					Date
+				</th>
+				<th class="th-sortable" data-sort="time">
+					Time
+				</th>
+				<th>
+					&nbsp;
+				</th>
+				<th>
+					&nbsp;
+				</th>
+			</tr>
+		</thead>
+		<tbody id="dataview-table-items">
+			{{#each tableItems}} {{> MosqueDashboardMosqueEventManagementEventViewTableItems}} {{/each}}
+		</tbody>
+	</table>
+</template>
+
+<template name="MosqueDashboardMosqueEventManagementEventViewTableItems">
+	<tr id="dataview-table-items-row">
+		<td>
+			{{name}}
+		</td>
+		<td>
+			{{longitude}}
+		</td>
+		<td>
+			{{latitude}}
+		</td>
+		<td>
+			{{seats}}
+		</td>
+		<td>
+			{{type}}
+		</td>
+		<td>
+			{{topic}}
+		</td>
+		<td>
+			{{picture}}
+		</td>
+		<td>
+			{{imams}}
+		</td>
+		<td>
+			{{mosque_id}}
+		</td>
+		<td>
+			{{website}}
+		</td>
+		<td>
+			{{address_1}}
+		</td>
+		<td>
+			{{city}}
+		</td>
+		<td>
+			{{district}}
+		</td>
+		<td>
+			{{postcode}}
+		</td>
+		<td>
+			{{state}}
+		</td>
+		<td>
+			{{country}}
+		</td>
+		<td>
+			{{timezone}}
+		</td>
+		<td>
+			{{formatDate date 'DD/MM/YYYY'}}
+		</td>
+		<td>
+			{{secondsToTime time 'hh:mm'}}
+		</td>
+		<td class="td-icon">
+			<span id="edit-button" class="fa fa-pencil" title="Edit">
+			</span>
+		</td>
+		<td class="td-icon">
+			<span id="delete-button" class="fa fa-trash-o" title="Delete">
+			</span>
+		</td>
+	</tr>
+</template>
+
+<template name="MosqueDashboardMosqueEventManagementMosqueMenu">
+	<ul id="menu-items" class="">
+		<li id="menu-item-simple" class="{{menuItemClass 'mosque_dashboard.mosque_event_management.mosque__event'}}">
+			<a href="{{pathFor 'mosque_dashboard.mosque_event_management.mosque_new_event'}}">
+				Create Event
+			</a>
+		</li>
+	</ul>
+</template>
+

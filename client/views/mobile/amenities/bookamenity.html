@@ -1,0 +1,65 @@
+
+<template name="Bookamenity">
+
+	{{#HeaderFooterLayout headerSize="56" class="main"}}
+		{{>Surface target="header" modifier="StateModifier" translate="[0,0,10]" template="bookingHeader"}}
+		
+		{{#Scrollview target="content"  modifier="StateModifier" translate="[0,0,0]"}}
+			<!-- {{#Surface class="grayColor"}} 
+				{{>BookingOfSurface}}
+			{{/Surface}} -->
+			{{>Surface size="[undefined,500]" data=amenity template="bookingSurface"}}
+		{{/Scrollview}}
+	{{/HeaderFooterLayout}}
+
+</template>
+
+<template name="BookingOfSurface">
+	<div class="container grayColor" style="padding: 20px">
+		<h4>{{data.name}}</h4>
+		<p><b>RM {{data.fee}}</b><br />
+		{{data.description}}
+		</p>
+	</div>
+</template>
+
+<template name="bookingHeader">
+	<navbar class="navbar-fixed" role="navigation">
+		<div class="container-fluid green-bg">
+			<p class="navbar-text" id="backButton1">
+				<a onclick="history.back()"> <span class="fa fa-chevron-left" id="backButton"></span></a>
+			</p>
+			<p class="navbar-text navbar-right moveright text-white" id="bookingButton">
+				<a href="{{pathFor 'bookingthanks'}}"><span id="makebooking" class="donateA">Make Booking</span></a>
+			</p>
+		</div>
+	</navbar>
+</template>
+
+
+<template name="bookingSurface">
+	{{> BookingOfSurface data=this}}
+	<div class="container">
+		<div id="bookingform" class="formSurface"><br>
+			<p>When will you like to book this amenity?</p>
+			<p>	
+				<div class="pull-left halfInput">
+					<h4 class="formInputLabel">Booking Date</h4>
+					<input name="date" type="date" id="bookingDate" class="formInput">
+				</div>
+				<div class="pull-right halfInput">
+					<h4 class="formInputLabel">Booking Time</h4>
+					<input name="time" type="time" class="formInput" id="bookingTime">
+				</div>
+			</p>
+			<div class="clear"></div>
+		</div>
+		<div class="formSurface">
+			<p>Why do you want to book this amenity?</p>
+			<textarea name="reason" class="formInput formInputTextarea" placeholder="Enter your reason to use this amenity . . ."></textarea>
+		</div>
+		<div class="formSurface textCenter">
+			<a id="bookingButton" class="btn btn-primary">Make Booking</a>
+		</div>
+	</div>
+</template>

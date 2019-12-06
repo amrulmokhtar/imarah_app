@@ -1,0 +1,62 @@
+<template name="selectPlan">
+
+	<div class="logincontainer">
+
+		<div class="boundingbox-login boundingbox-login-large">
+
+			<div class="account-form account-form-large">
+
+			    <h2>Select a plan</h2>
+			    <div class="helper-text">
+					Select a plan to use Imarah. You can start with the Basic plan (always free) and upgrade to Premium anytime and enjoy more features.
+				</div>
+
+			    <form id="selectplan_form" role="form">
+			      
+					<div class="plan-option">
+						<h3>Basic</h3>
+						<p>Free</p>
+
+						<ul class="plan-features">
+							<li>Feature 1</li>
+							<li>Feature 2</li>
+							<li>Feature 3</li>
+						</ul>
+
+						<input type="radio" name="plan" value="basic" />
+					</div>
+
+					<div class="plan-option">
+						<h3>Premium</h3>
+						<p>RM 50 / mth</p>
+
+						<ul class="plan-features">
+							<li>All features in Basic plan</li>
+							<li>Feature 2</li>
+							<li>Feature 3</li>
+						</ul>
+
+
+						<input type="radio" name="plan" value="premium" />
+					</div>
+
+					<div class="clear"></div>
+
+					<!-- Appears when they select Basic -->
+					<button class="btn btn-primary btn-block" type="submit" data-loading-text="Please wait...">
+			        Start using Imarah
+			      </button>
+			      <!-- Appears when they select Premium -->
+			      <button class="btn btn-primary btn-block" type="submit" data-loading-text="Please wait...">
+			        Proceed with Payment
+			      </button>
+			      
+			    </form>
+			</div>
+
+		</div>
+
+	</div>
+
+
+</template>

@@ -1,0 +1,83 @@
+/*****************************************************************************/
+/* Donate: Style */
+/*****************************************************************************/
+
+.upperMargin {
+	margin-top: 20px;
+}
+
+.overAuto {
+	overflow: auto;
+}
+
+.textCenter {
+	text-align: center;
+}
+
+.margtop {
+	margin-top: 16px;
+}
+
+.donateA{
+	color: white;
+}
+
+.grayColor {
+	background-color: #F8F8F8;
+}
+
+.input-addon {
+	z-index: 1000;
+	position: absolute;
+	margin-top: 4vh;
+}
+
+.expInput {
+	width: 50px;
+	border-top: 0px;
+	border-bottom: 1px solid #999999;
+	border-left: 0px;
+	border-radius: 0px;
+	border-right: 0px;
+	font-family: 'Open Sans';
+	font-weight: lighter;
+	height: 6vh;
+	font-size: 3vh;
+	text-align: center;
+}
+
+.cvvInp {
+	width: 60px;
+	border-top: 0px;
+	border-bottom: 1px solid #999999;
+	border-left: 0px;
+	border-radius: 0px;
+	border-right: 0px;
+	font-family: 'Open Sans';
+	font-weight: lighter;
+	height: 6vh;
+	font-size: 3vh;
+	text-align: center;
+}
+
+.numberInput {
+	width: 100%;
+	border-top: 0px;
+	border-bottom: 1px solid #999999;
+	border-left: 0px;
+	border-radius: 0px;
+	border-right: 0px;
+	font-family: 'Open Sans';
+	font-weight: lighter;
+}
+
+.inp1 {
+	text-indent: 30px;
+	height: 10vh;
+	font-size: 5vh;
+}
+
+.inp2 {
+	height: 8vh;
+	font-size: 4vh;
+}

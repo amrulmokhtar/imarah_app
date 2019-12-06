@@ -1,0 +1,109 @@
+<template name="AdminDashboardCitiesEditCity">
+	<div class="container" id="content">
+		<h2 id="page_title">
+			Edit City
+		</h2>
+		{{> AdminDashboardCitiesEditCityCityEditForm}}
+	</div>
+</template>
+
+<template name="AdminDashboardCitiesEditCityCityEditForm">
+	<div class="">
+		<h2 id="component-title">
+			Edit City
+		</h2>
+		<form id="form" role="form">
+			<div class="form-group">
+				<label for="name">
+					City Name
+				</label>
+				<div class="input-div">
+					<input type="text" name="name" value="{{edit_city.name}}" class="form-control" autofocus="autofocus" required="required">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="longitude">
+					Longitude
+				</label>
+				<div class="input-div">
+					<input type="text" name="longitude" value="{{edit_city.longitude}}" class="form-control" required="required" data-type="number">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="latitude">
+					Latitude
+				</label>
+				<div class="input-div">
+					<input type="text" name="latitude" value="{{edit_city.latitude}}" class="form-control" required="required" data-type="number">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="timezone">
+					Timezone
+				</label>
+				<div class="input-div">
+					<select class="form-control" name="timezone">
+						{{#each city_timezones}}
+						<option value="{{_id}}" {{optionIsSelected ../edit_city.timezone _id}}>
+							{{name}}
+						</option>
+						{{/each}}
+					</select>
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="num_mosques">
+					Number of Mosques in City
+				</label>
+				<div class="input-div">
+					<input type="text" name="num_mosques" value="{{edit_city.num_mosques}}" class="form-control">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="num_users">
+					Number of Users in City
+				</label>
+				<div class="input-div">
+					<input type="text" name="num_users" value="{{edit_city.num_users}}" class="form-control">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="submit-div">
+					<button id="form-submit-button" class="btn btn-success" type="submit">
+						<span class="fa fa-check">
+						</span>
+						Save
+					</button>
+					<a href="#" id="form-cancel-button" class="btn btn-default">
+						Cancel
+					</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</template>
+

@@ -1,0 +1,23 @@
+<template name="Bookingthanks">
+	{{#Modifier size=size1}}
+		{{#Surface size=size1 modifier="StateModifier" translate="[0,0,0]" class="green-bg"}}
+		{{/Surface}}
+
+		{{#Surface size="[400, 400]" origin="[0.5, 0.5]" align="[0.5, 0.5]" translate="[0, 0, 1]"}}
+			{{>donateThanksText}}
+		{{/Surface}}
+	{{/Modifier}}
+</template>
+
+<template name="bookingThanksText">
+	<div class="textToCenter1">
+		<h2>Thank You!</h2><br>
+		<p>
+			<span>Your request to book [amenityname] at [mosquename] has been sent for approval</span><br><br>
+			<span>The Mosque will reply you soon.</span>
+		</p><br>
+		<span class="">
+			<button class="btn appBtn" id="backButton10">Back to app</button>
+		</span>
+	</div>
+</template>

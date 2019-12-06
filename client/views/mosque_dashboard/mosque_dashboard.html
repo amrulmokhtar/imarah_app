@@ -1,0 +1,152 @@
+<template name="MosqueDashboard">
+    <div class="page-container row-fluid">
+        <!-- BEGIN SIDEBAR -->
+        <div class="page-sidebar" id="main-menu">
+
+            <!-- BEGIN SIDEBAR MENU -->
+     	    {{> mosque_menu}}
+
+        </div>
+    </div>
+    <div  class="page-content">
+        <div class="" id="content">
+            <h2 id="page_title">
+                Mosque Dashboard
+            </h2>
+            {{> yield region='MosqueDashboardSubcontent'}}
+        </div>
+    </div>
+</template>
+<template name="mosque_menu">
+    <ul>
+
+        <li id="menu-item-simple"  class="{{menuItemClass 'mosque_dashboard'}}">
+            <a href="{{pathFor 'mosque_dashboard_noid'}}"><i class="icon-custom-dashboard"></i> <span class="title">Dashboard</span></a>
+        </li>
+        <li id="menu-item-simple" class="{{menuItemClass 'mosque_dashboard.events'}}">
+            <a href="{{pathFor 'mosque_dashboard.events'}}"><i class="icon-custom-event"></i> <span class="title">Events</span></a>
+        </li>
+        <li class="{{menuItemClass 'mosque_dashboard.finance'}}"> 
+            <a  href="{{pathFor 'mosque_dashboard.finance'}}"> <i class="icon-custom-finance"></i> <span class="title">Finance</span>  </a>
+        </li>
+        <li class="{{menuItemClass 'mosque_dashboard.amenities'}}"> 
+            <a href="{{pathFor 'mosque_dashboard.amenities'}}"> <i class="icon-custom-amenities"></i> <span class="title">Amenities</span></a>
+        </li>
+    	<li class="{{menuItemClass 'mosque_dashboard.feedback'}}"> 
+            <a href="{{pathFor 'mosque_dashboard.feedback'}}"> <i class="icon-custom-feedback"></i> <span class="title">Feedback</span></a>
+        </li>
+        <li class="{{menuItemClass 'mosque_dashboard.community'}}"> 
+            <a href="{{pathFor 'mosque_dashboard.community'}}"> <i class="icon-custom-community"></i> <span class="title">Community</span></a>
+        </li>
+    </ul>
+</template>
+
+
+
+<template name="MosqueDashboardMosqueMenu">
+    <div class="content">
+        <div class="row wrap_top_pos">
+            <div class="col-md-8">
+                <h2>{{managed_mosque.name}}</h2>
+                <p>{{islamicDate}}</p>
+                <!--<p><span id="day">Wednesday</span>, <span id="currentdate">18</span> Safar 1436 A.H.</p>-->
+            </div>
+            <div class="col-md-4">
+                <a href="{{pathFor 'mosque_dashboard.add_events'}}" class="add_trans">Create Event</a>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row dash_board">
+            {{# with stats_for_month managed_mosque}}
+            <div class="col-md-4">
+                <div class="box">
+
+                    <h2>{{total_check_in}}</h2>
+                    <p>MOSQUE VISITORS</p>
+                    <span>{{currentdate}}</span>
+                    <!-- <p class="info"><i class="fa fa-info-circle"></i></p> -->
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h2>{{roundNumber avg_check_in}}</h2>
+                    <p>AVG. ATTENDEES PER EVENT</p>
+                    <span>{{currentdate}}</span>
+                    <!-- <p class="info"><i class="fa fa-info-circle"></i></p> -->
+                </div>
+            </div>
+            {{/with}}
+            <div class="col-md-4">
+                <div class="box">
+                    <h2>RM {{donations_for_month}}</h2>
+                    <p>DONATIONS</p>
+                    <span>{{currentdate}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-8">
+
+                <div class="update_box">
+                    <textarea name="txtbox" id="post_commit" class="posttextbox" placeholder="Have any news for your Community?"></textarea>
+                    <input type="button" class="post_btn" id="add_commit" value="Post Update">
+                </div>
+                <div class="clearfix"></div>
+                {{> comment_list managed_mosque=managed_mosque}}
+            </div>
+            <div class="col-md-4">
+                <h3 class="evnt_dash_head">Today's Events <span>{{eventcount}}</span></h3>
+                <!-- emptydata -->
+                <!-- IF: no today events -->
+                {{#if empty eventlist}}
+                <div class="emptydata">
+                    <img src="../img/icon_events_green.png" />
+                    <p>There are no events scheduled for today.</p>
+                    <a class="btn btn-primary" href="{{pathFor 'mosque_dashboard.add_events'}}">Create an Event</a>
+                </div>
+                {{/if}}
+                <ul class="list-group">
+                    {{#each eventlist}}
+                    <li class="list-group-item">
+                        <h2>{{name}}</h2>
+                        <p>{{formattime time}} - {{#each imam_names}}{{this}}{{/each}}</p>
+                        <!--<p>{{numrsvp _id}} People are going</p>-->
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+
+
+
+    </div>
+</template>
+
+<template name="comment_list">
+    <div class="time_home">
+        {{#each managed_mosque.posts}}
+            {{> mosque_dashboard_post this mid=managed_mosque._id}}
+        {{/each}}
+    </div>
+
+</template>
+
+<template name="mosque_dashboard_post">
+    <div class="timeline">
+        <div class="timeline-post">
+            <div class="timeline-post-content-holder">
+                <div class="timeline-post-icon"></div>
+                <div class="timeline-post-title">
+                    <h4>{{managed_mosque.name}}</h4>
+                    <p class="date">{{formatdate posted_date}}</p>
+                    <p>{{content}}</p>
+                    <div class="actionbtns">
+                        <button id="delPostBtn" class="btn">Delete</button>
+                        <button id="editPostBtn" class="btn">Edit</button>
+                    </div>
+                </div>
+            </div> <!-- /.timeline-post-content-holder end -->
+        </div>
+    </div>
+</template>

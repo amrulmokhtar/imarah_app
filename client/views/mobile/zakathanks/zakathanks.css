@@ -1,0 +1,19 @@
+/*****************************************************************************/
+/* Zakathanks: Style */
+/*****************************************************************************/
+
+/*.textToCenter1 {
+	text-align: center;
+	color: white;
+	font-family: 'Open Sans';
+	font-size: 1.6em;
+}*/
+
+.zakatBtn {
+	background-color: #C2E0E0;
+	color: black;
+	text-align: center;
+	width: 170px;
+	padding: 5px !important;
+	border-radius: 0px;
+}

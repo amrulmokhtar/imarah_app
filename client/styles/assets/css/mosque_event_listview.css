@@ -1,0 +1,160 @@
+
+.clear{
+	clear: both;
+}
+
+.pull-left{
+	float: left;
+}
+
+.pull-right{
+	float: right;
+}
+
+
+h4.top-text{
+	display: none;
+	color: #16a085;
+	text-transform: uppercase;
+	font-size: 12pt;
+	font-weight: 600;
+}
+
+h2.month{
+	text-align: center;
+	font-weight: normal;
+	margin: 30px 0 0;
+}
+
+h2.month span{
+	color: #666;
+}
+
+
+ul.toggleSwitch{
+	margin: 0 20px 0 0;
+	padding: 0;
+	border-radius: 3px;
+	overflow: hidden;
+	width: 120px;
+	float: right;
+}
+
+ul.toggleSwitch li{
+	display: inline;
+	list-style: none;
+	overflow: hidden;
+}
+
+ul.toggleSwitch li a{
+	background: #ccc;
+	padding: 20px 10px;
+	margin: 0 -4px 0 0;
+}
+
+ul.toggleSwitch li a img{
+	width: 30px;
+	height: 30px;
+	margin: 7px 5px;
+	padding: 3px;
+}
+
+ul.toggleSwitch li.active a{
+	background: #9b9b9b;
+	border-radius: 5px;
+}
+
+/* table */
+
+table.eventslist{
+	width: 100%;
+	margin: 50px 0;
+	text-align: center;
+	/*border-collapse: collapse;
+  	border-spacing: 0;*/
+}
+
+table.eventslist th{
+	text-align: center;
+	color: #16a085;
+	border-top: 2px solid #16a085;
+	border-bottom: 2px solid #16a085;
+	padding: 10px 5px;
+}
+
+table.eventslist tr td{
+	/*border-width: 0 1px 1px;
+	border-style: solid;
+	border-color: #bbb;*/
+	background: #f2f2f2;
+	padding: 15px 5px;
+	font-size: 11pt;
+}
+
+table.eventslist tr:nth-child(odd) td{
+	background: #ddd;
+}
+
+/* */
+
+.print-footer{
+	display: none;
+	border-top: 1px solid #aaa;
+	padding: 15px 0;
+	margin: 0 50px;
+	font-style: italic;
+	font-size: 11pt;
+	text-align: center;
+	color: #444;
+}
+
+
+
+/* print stylesheet */
+
+
+@media print{
+	h4.top-text{
+		display: block;
+		color: #666;
+	}
+
+	h2.month{
+		margin: 10px auto;
+		font-size: 16pt;
+	}
+
+	table.eventslist{
+		border-collapse: collapse;
+  		border-spacing: 0;
+	}
+
+	table.eventslist th, table.eventslist tr td{
+		font-size: 10pt;
+	}
+
+	table.eventslist th{
+		color: #666;
+		border-color: #666;
+	}
+
+	table.eventslist tr td{
+		border-width: 0 1px 1px;
+		border-style: solid;
+		border-color: #bbb;
+		background: none;
+	}
+
+	.print-footer{
+		display: block;
+	}
+
+
+}
+
+
+
+
+
+
+

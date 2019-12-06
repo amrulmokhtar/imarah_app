@@ -1,0 +1,24 @@
+/*****************************************************************************/
+/* Notification: Style */
+/*****************************************************************************/
+
+.imgMargin {
+	margin: 10px;
+}
+/*
+.textToCenter1 {
+	text-align: center;
+	color: white;
+	font-family: 'Open Sans';
+	font-size: 1.6em;
+}*/
+
+.rateBtn {
+	width: 180px;
+	font-size: 0.8em;
+	border-radius: 0px;
+	text-align: center;
+	color: white;
+	background-color: #FF9900;
+	padding: 7px !important; 
+}

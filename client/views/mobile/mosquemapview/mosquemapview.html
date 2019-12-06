@@ -1,0 +1,30 @@
+<template name="Mosquemapview">
+	{{#HeaderFooterLayout headerSize="210" class="main" size=size4}}
+		{{#SequentialLayout target="header"}}
+			{{>Surface template="mosqueMapHeader" modifier="StateModifier" translate="[0,0,100]" size=size1}}
+			{{>Surface template="mosqueMapHeaderBar" modifier="StateModifier" translate="[0,27.5,0]" size=size2}}
+		{{/SequentialLayout}}
+		{{#Modifier target="content"}}
+			{{>mosquesCard contentHeader="Masjid Negeri Shah Alam" content1="Jalan 1234, Shah Alam" content2="0.3km away"}}
+		{{/Modifier}}
+	{{/HeaderFooterLayout}}
+</template>
+
+<template name="mosqueMapHeader">
+	<navbar class="navbar-fixed" role="navigation">
+		<div class="container-fluid navbarColor">
+			<a href="javascript:void(0)">
+				<p class="navbar-text">
+					<span class="fa fa-chevron-left" id="backButton1"></span>
+				</p>
+			</a>
+			<p class="navbar-text stayFixed">
+				Masjid Negeri Shah Alam
+			</p>
+		</div>
+	</navbar>
+</template>
+
+<template name="mosqueMapHeaderBar">
+	<div id="map"></div>
+</template>

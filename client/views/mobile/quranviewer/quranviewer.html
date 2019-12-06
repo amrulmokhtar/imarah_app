@@ -1,0 +1,43 @@
+<template name="Quranviewer">
+  {{#HeaderFooterLayout headerSize="60" class="main" size="[undefined, undefined]"}}
+  	{{>Surface target="header" modifier="StateModifier" translate="[0,0,100]" template="quranViewerHeader"}}
+  	{{#Modifier target="content" modifier="StateModifier" translate="[0,32,10]"}}
+  		{{>surahContent}}
+  	{{/Modifier}}
+  {{/HeaderFooterLayout}}
+</template>
+
+<template name="quranViewerHeader">
+	<navbar class="navbar-fixed" role="navigation">
+		<div class="container-fluid green-bg">
+
+				<p class="navbar-text" id="backButton1">
+					<span class="fa fa-chevron-left"></span>
+				</p>
+
+			<p class="navbar-text positionText">
+				{{surah index}}
+			</p>
+		</div>
+	</navbar>
+</template>
+
+<template name="surahContent">
+	{{#Scrollview}}
+		{{#each cards index}}
+			{{#Surface size="[undefined, true]"}}
+				{{>surahCards var1=arText var2=myText var3=text var4=surahIndex var5=bookMarkSign }}
+			{{/Surface}}
+		{{/each}}
+	{{/Scrollview}}
+</template>
+
+<template name="surahCards">
+	<div class="cardContainer" style="padding: 0 30px 20px;"><br>
+		<span lang="ur" class="var1 img-responsive">{{var1}}</span><br>
+		<span class="var2">{{var2}}</span><br>
+		<span class="var3"><i>{{var3}}</i></span><br>
+		<span class="var4">{{var4}}</span>
+		<span class="fa {{var5}} fa-2x var5 bookmark" id="bookmark"></span><br>
+	</div><hr><br>
+</template>

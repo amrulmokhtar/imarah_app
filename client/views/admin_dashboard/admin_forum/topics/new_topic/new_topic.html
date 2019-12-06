@@ -1,0 +1,61 @@
+<template name="AdminDashboardAdminForumTopicsNewTopic">
+	<div class="container" id="content">
+		<h2 id="page_title">
+			Add Forum Topic
+		</h2>
+		{{> AdminDashboardAdminForumTopicsNewTopicForumTopicForm}}
+	</div>
+</template>
+
+<template name="AdminDashboardAdminForumTopicsNewTopicForumTopicForm">
+	<div class="">
+		<h2 id="component-title">
+			New Forum_Topic
+		</h2>
+		<form id="form" role="form">
+			<div class="form-group">
+				<label for="name">
+					Topic Name
+				</label>
+				<div class="input-div">
+					<input type="text" name="name" value="" class="form-control" autofocus="autofocus">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="category_id">
+					Category ID
+				</label>
+				<div class="input-div">
+					<select class="form-control" name="category_id">
+						{{#each forum_categories}}
+						<option value="{{_id}}">
+							{{name}}
+						</option>
+						{{/each}}
+					</select>
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="submit-div">
+					<button id="form-submit-button" class="btn btn-success" type="submit">
+						<span class="fa fa-check">
+						</span>
+						Save
+					</button>
+					<a href="#" id="form-cancel-button" class="btn btn-default">
+						Cancel
+					</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</template>
+

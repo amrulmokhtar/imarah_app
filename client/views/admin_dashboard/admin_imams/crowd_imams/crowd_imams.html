@@ -1,0 +1,147 @@
+<template name="AdminDashboardAdminImamsCrowdImams">
+    <div class="container" id="content">
+        <h2 id="page_title">
+            Crowd Sourced Imam Suggestions
+        </h2>
+        {{> AdminDashboardAdminImamsCrowdImamsCrowdImamView}}
+    </div>
+</template>
+
+<template name="AdminDashboardAdminImamsCrowdImamsCrowdImamView">
+    <div id="dataview" class="">
+        <h2 id="component-title">
+            Imam Suggestion
+        </h2>
+        <form id="dataview-controls" class="form-inline">
+            <div id="dataview-controls-search">
+                {{#if isNotEmpty}}
+                <div id="dataview-controls-search-group" class="form-group">
+                    <label class="sr-only" for="search">
+                        Search
+                    </label>
+                    <input type="text" class="form-control" id="dataview-search-input" placeholder="Search" name="search" value="{{searchString}}" autofocus="autofocus">
+                    <button type="button" id="dataview-search-button" class="btn btn-primary">
+                        <span class="fa fa-search">
+                        </span>
+                    </button>
+                </div>
+                {{/if}}
+            </div>
+        </form>
+        {{#if isNotEmpty}}
+        {{#if isNotFound}}
+        <div class="alert alert-warning">
+            "{{searchString}}" not found.
+        </div>
+        {{else}}
+        <div id="dataview-data">
+            {{#if viewAsTable}} {{> AdminDashboardAdminImamsCrowdImamsCrowdImamViewTable}} {{/if}}
+        </div>
+        {{/if}}
+        {{else}}
+        <div class="alert alert-info">
+            No Imam Suggestions Yet
+        </div>
+        {{/if}}
+    </div>
+</template>
+
+<template name="AdminDashboardAdminImamsCrowdImamsCrowdImamViewTable">
+    <table id="dataview-table" class="table table-striped">
+        <thead id="dataview-table-header">
+            <tr id="dataview-table-header-row">
+                <th>Actions</th>
+                <th class="th-sortable" data-sort="title">
+                    Imam Title
+                </th>
+                <th class="th-sortable" data-sort="first_name">
+                    First Name
+                </th>
+                <th class="th-sortable" data-sort="last_name">
+                    Last Name
+                </th>
+                <th class="th-sortable" data-sort="specialities">
+                    Imam Specialities
+                </th>
+                <th class="th-sortable" data-sort="user_id">
+                    User ID
+                </th>
+                <th class="th-sortable" data-sort="description">
+                    About Imam
+                </th>
+                <th class="th-sortable" data-sort="phone_number">
+                    Phone Number
+                </th>
+                <th class="th-sortable" data-sort="country">
+                    Country
+                </th>
+                <th class="th-sortable" data-sort="email">
+                    Email
+                </th>
+                <th class="th-sortable" data-sort="facebook">
+                    Facebook
+                </th>
+                <th class="th-sortable" data-sort="twitter">
+                    Twitter
+                </th>
+                <th class="th-sortable" data-sort="website">
+                    Website
+                </th>
+                <th class="th-sortable" data-sort="picture">
+                    Picture
+                </th>
+            </tr>
+        </thead>
+        <tbody id="dataview-table-items">
+            {{#each tableItems}} {{> AdminDashboardAdminImamsCrowdImamsCrowdImamViewTableItems}} {{/each}}
+        </tbody>
+    </table>
+</template>
+
+<template name="AdminDashboardAdminImamsCrowdImamsCrowdImamViewTableItems">
+    <tr id="dataview-table-items-row">
+        <td>
+            <button id="add_event">Confirm</button>
+            <button id="report_event">Report</button>
+        </td>
+        <td>
+            {{title}}
+        </td>
+        <td>
+            {{first_name}}
+        </td>
+        <td>
+            {{last_name}}
+        </td>
+        <td>
+            {{specialities}}
+        </td>
+        <td>
+            {{user_id}}
+        </td>
+        <td>
+            {{description}}
+        </td>
+        <td>
+            {{phone_number}}
+        </td>
+        <td>
+            {{country}}
+        </td>
+        <td>
+            {{email}}
+        </td>
+        <td>
+            {{facebook}}
+        </td>
+        <td>
+            {{twitter}}
+        </td>
+        <td>
+            {{website}}
+        </td>
+        <td>
+            {{picture}}
+        </td>
+    </tr>
+</template>

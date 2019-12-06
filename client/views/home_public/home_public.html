@@ -1,0 +1,167 @@
+<template name="HomePublic">
+ <div class="page-content">
+      <div class="col-lg-12">
+    <h2 id="page_title" class="title">
+      Home Page
+    </h2>
+	<div class="table-responsive">
+    {{> HomePublicEventViewTable}}
+    </div>
+  </div></div>
+</template>
+
+<template name="HomePublicEventView">
+
+  <div id="dataview" class="">
+    <h2 id="component-title">
+      Events
+    </h2>
+    <div id="dataview-data">
+      {{> HomePublicEventViewTable}}
+    </div>
+  </div>
+
+</template>
+
+<template name="HomePublicEventViewTable">
+  <table id="dataview-table" class="table table-striped">
+    <thead id="dataview-table-header">
+      <tr id="dataview-table-header-row">
+        <th class="th-sortable" data-sort="name">
+          Event Name
+        </th>
+        <th class="th-sortable" data-sort="longitude">
+          Longitude (optional)
+        </th>
+        <th class="th-sortable" data-sort="latitude">
+          Latitude (optional)
+        </th>
+        <th class="th-sortable" data-sort="seats">
+          Seats Available
+        </th>
+        <th class="th-sortable" data-sort="type">
+          Event Type
+        </th>
+        <th class="th-sortable" data-sort="topic">
+          Event Topic
+        </th>
+        <th class="th-sortable" data-sort="picture">
+          Event Picture
+        </th>
+        <th class="th-sortable" data-sort="imams">
+          Imams
+        </th>
+        <th class="th-sortable" data-sort="mosque_id">
+          Mosque Hosting Event
+        </th>
+        <th class="th-sortable" data-sort="website">
+          Website
+        </th>
+        <th class="th-sortable" data-sort="address_1">
+          Address 1
+        </th>
+        <th class="th-sortable" data-sort="city">
+          City
+        </th>
+        <th class="th-sortable" data-sort="district">
+          District
+        </th>
+        <th class="th-sortable" data-sort="postcode">
+          Postcode
+        </th>
+        <th class="th-sortable" data-sort="state">
+          State
+        </th>
+        <th class="th-sortable" data-sort="country">
+          Country
+        </th>
+        <th class="th-sortable" data-sort="timezone">
+          Timezone
+        </th>
+        <th class="th-sortable" data-sort="date">
+          Date
+        </th>
+        <th class="th-sortable" data-sort="time">
+          Time
+        </th>
+      </tr>
+    </thead>
+
+    <tbody id="dataview-table-items">
+      {{#each tableItems}}
+      {{>HomePublicEventViewTableItems}}
+      {{/each}}
+    </tbody>
+  </table>
+</template>
+
+<template name="HomePublicEventViewTableItems">
+  <tr id="dataview-table-items-row">
+    <td>
+      {{name}}
+    </td>
+    <td>
+      {{longitude}}
+    </td>
+    <td>
+      {{latitude}}
+    </td>
+    <td>
+      {{seats}}
+    </td>
+    <td>
+      {{type}}
+    </td>
+    <td>
+      {{topic}}
+    </td>
+    <td>
+     {{#each picture}}
+      <img src="{{this}}">
+      {{/each}}
+    </td>
+    <td>
+      {{formatDate date 'DD/MM/YYYY'}}
+    </td>
+    <td>
+      {{secondsToTime time 'hh:mm'}}
+    </td>
+  </tr>
+</template>
+
+<template name="prc">
+  <td>
+
+    </td>
+    <td>
+      {{imams}}
+    </td>
+    <td>
+      {{mosque_id}}
+    </td>
+    <td>
+      {{website}}
+    </td>
+    <td>
+      {{address_1}}
+    </td>
+    <td>
+      {{city}}
+    </td>
+    <td>
+      {{district}}
+    </td>
+    <td>
+      {{postcode}}
+    </td>
+    <td>
+      {{state}}
+    </td>
+    <td>
+      {{country}}
+    </td>
+    <td>
+      {{timezone}}
+    </td>
+
+</template>

@@ -1,0 +1,258 @@
+/*@media (min-width:1400px) and (max-width:1599px) {
+.page-content.condensed {
+    margin-left: 238px;
+}
+.graph-col .graph-left {width: 25%;}
+.graph-col .graph-right { width: 73%;}
+.graph-col .graph-right.graph_right_trans{ width: 73%;}
+.graph-left.graph_left_trans{width: 26%;}
+.graph-mid.graph_mid_trans{width: 23%;}
+.page-content.condensed  .graph-left.graph_left_trans .sub-head {font-size: 17px;}
+a.add_trans{right: 9%;}
+.page-content.condensed .graph-left.event_report > h2{font-size: 23px;}
+.page-content.condensed  .graph-left.event_report p{  font-size: 14px;}
+}
+
+@media (min-width:1200px) and (max-width:1399px) {
+.page-content.condensed {
+    margin-left: 224px;
+}
+.graph-col .graph-left {width: 25%;}
+.graph-col .graph-right { width: 73%;}
+.graph-left.graph_left_trans{width: 27%;}
+.graph-mid.graph_mid_trans{width: 24%;}
+.graph-col .graph-right.graph_right_trans{ width: 47.5%;}
+.page-content.condensed  .graph-left.graph_left_trans .sub-head {font-size: 15px;}
+.graph-left .sub-head {font-size: 18px;}
+a.add_trans{right: 9%;}
+.page-content.condensed .graph-left.event_report > h2{font-size: 23px;}
+.page-content.condensed  .graph-left.event_report p{  font-size: 13px;}
+.graph-left.event_report p{font-size: 14px;}
+.graph-left.event_report {padding: 12px 13px 15px 14px;}
+.graph-left.feedback_event > p { font-size: 15px;}
+.table.tab-wrap.tab_feed td div{min-height: 72px;}
+}
+
+
+@media (min-width:992px) and (max-width:1199px) {
+.page-content.condensed {
+    margin-left: 208px;
+}
+.page-sidebar.current{  width: 20%;}
+.table-responsive {
+    overflow-x: scroll;
+}
+.table.tab-wrap.tab_feed td div{min-height: 72px;}
+.graph-left.event_report p { font-size: 13px;}
+.graph-left.event_report > h2 {font-size: 20px;}
+.page-content {margin-left: 86px;}
+.page-content .content {padding-right: 18px;}
+.graph-col .graph-left { width: 36%;}
+.graph-col .graph-right {width: 66%;}
+.graph-col .graph-left {width: 32%;}
+.graph-mid.graph_mid_trans{width: 27%}
+.graph-right.graph_right_trans{ width: 39%}
+.page-content.condensed  .graph-left .sub-head { font-size: 14px;}
+a.add_trans{ right: 3%;}
+
+
+}
+
+@media (min-width:768px) and (max-width:991px) {
+.table-responsive {
+    overflow-x: scroll;
+}
+.table.tab-wrap.tab_feed td div{min-height: 72px;}
+.tab-content {
+    margin-top: 13px;
+}
+.graph-col .graph-left {padding: 20px 37px 44px 46px; width: 100%;}
+.graph-mid.graph_mid_trans{width: 100%;}
+.graph-col .graph-right { width: 100%;}
+.graph-left > h2 {color: #ffffff; font-size: 28px; line-height: 40px;}
+.mid-col .col-md-10 {padding-left: 0;}
+.page-content {margin-left: 88px; }
+.page-content .content {
+    padding-left: 26px;
+    padding-right: 29px;
+    padding-top: 95px;
+}
+.modal.mod_feedback .modal-dialog {
+    width: 97%;
+}
+.border {display: none;}
+}
+
+
+@media screen and (max-width:767px){
+
+.page-content .content {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 27px;
+}
+.border {display: none;}
+.modal.mod_feedback .modal-dialog {
+    width:96%;
+}
+.table.tab-wrap.tab_feed td div{min-height: 72px;}
+
+.col_leftbar{border-right:none}
+a.add_trans {
+    float: right;
+    font-size: 16px;
+    font-weight: normal;
+    margin-bottom: 12px;
+    margin-top: 0;
+    outline: medium none;
+    padding: 10px 14px;
+    position: absolute;
+    right: 37px;
+    text-decoration: none;
+    top: 35px;
+}
+
+.table.tab-wrap th:first-child {
+    display: none;
+}
+.table.tab-wrap td:first-child {
+    display: none;
+}
+
+.search{width:100%}
+.select_bx{margin-bottom: 15px;}
+.graph-left .spc-top {
+    margin-top: 18px;
+}
+.nav-tabs.left_nav li {
+    float: left;
+}
+.nav-tabs.left_nav li.active a {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #979797 #979797 #ffffff;
+    border-image: none;
+    border-style: solid;
+    border-width: 1px;
+}
+.mid-col .col-md-10 {
+    padding-left: 0;
+}
+.nav-tabs.left_nav{border-bottom:1px solid #979797}
+.graph-left.graph_left_trans .row .col-sm-6 {float: left; width: 44%;}
+.tab-content {
+    margin-top: 15px;
+}
+.graph-mid.graph_mid_trans{  width: 98%;}
+.page-sidebar.current{width: 68px;}
+
+.page-sidebar {width: 68px;}
+.page-sidebar.current ul li a span.title {display: none;}
+
+.graph-col .graph-left{width: 100%; padding: 20px 20px 54px; }
+.graph-col .graph-right{width: 100%;}
+.graph-left > h2{ font-size: 24px;}
+.graph-left p {color: #ffffff; font-size: 15px;}
+.page-sidebar{display:none}
+.page-content {
+    margin-left: 0;
+}
+.page-content.condensed{margin-left: 0;}
+.page-sidebar.current{display:block}
+.page-sidebar.current {
+    display: block;
+    position: fixed;
+    z-index: 99;
+	 height: 100%;
+}
+}
+
+@media (max-width:480px) {
+
+.table.tab-wrap.tab_feed td div {
+     border: medium none;
+    font-size: 12px;
+    min-height: inherit;
+    padding: 3px 12px;
+}
+.table.tab-wrap td {
+    border-bottom: 1px solid #ececec;
+    border-top: 1px solid #ececec;
+   padding: 0;
+}
+.table.tab-wrap tr:hover  {
+    border-bottom: 1px solid #979797;
+    border-top: 1px solid #979797;
+}
+.navbar-inner .header-seperation a {
+    margin-top: 2px;
+
+}
+#page_title.title {
+    margin-bottom: 12px;
+    margin-left: 0;
+}
+#dataview-table.table {
+    margin-top: 0px;
+}
+.page-content.condensed {
+    margin-left: 0;
+}
+.navbar-inner .header-seperation a {
+    margin-top: 2px;
+    outline: medium none;
+    width: 71px;
+}
+.page-sidebar.current {
+    display: block;
+    position: fixed;
+    z-index: 1;
+     height: 100%;
+}
+a.add_trans {
+    float: right;
+    font-size: 15px;
+    font-weight: normal;
+    margin-bottom: 12px;
+    margin-top: 0;
+    outline: medium none;
+    padding: 9px 11px;
+    position: relative;
+    right: 7px;
+    text-decoration: none;
+    top: -10px;
+}
+.page-sidebar{display:none}
+.page-content {
+    margin-left: 0;
+}
+.page-sidebar.current{display:block}
+.header-seperation h2 {
+    font-size: 16px;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-top: 8px;
+}
+.header-quick-nav a.dropdown-toggle {
+    font-size: 14px;
+    margin-right: 9px;
+    padding: 24px 10px;
+    text-decoration: none;
+}
+.header-seperation h2 { font-size: 16px; margin-bottom: 0; margin-left: 0; margin-top: 8px;}
+
+.graph-left > h2{ margin-top: 21px;}
+.graph-col .graph-left {padding: 12px 20px 27px; width: 100%;}
+
+}
+
+@media (max-width:320px) {
+
+.navbar-inner .header-seperation a {
+    width: 53px;
+}
+
+
+}*/

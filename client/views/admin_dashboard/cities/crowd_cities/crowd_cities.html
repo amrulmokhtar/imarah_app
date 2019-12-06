@@ -1,0 +1,105 @@
+ <template name="AdminDashboardCitiesCrowdCities">
+    <div class="container" id="content">
+        <h2 id="page_title">
+            Crowd Sourced City Suggestions
+        </h2>
+        {{> AdminDashboardCitiesCrowdCitiesView}}
+    </div>
+</template>
+
+<template name="AdminDashboardCitiesCrowdCitiesView">
+    <div id="dataview" class="">
+        <h2 id="component-title">
+            Crowd Events
+        </h2>
+        <form id="dataview-controls" class="form-inline">
+            <div id="dataview-controls-search">
+                {{#if isNotEmpty}}
+                <div id="dataview-controls-search-group" class="form-group">
+                    <label class="sr-only" for="search">
+                        Search
+                    </label>
+                    <input type="text" class="form-control" id="dataview-search-input" placeholder="Search" name="search" value="{{searchString}}" autofocus="autofocus">
+                    <button type="button" id="dataview-search-button" class="btn btn-primary">
+                        <span class="fa fa-search">
+                        </span>
+                    </button>
+                </div>
+                {{/if}}
+            </div>
+        </form>
+        <div id="dataview-data">
+            {{#if viewAsTable}} {{> CrowdCitiesViewTable}} {{/if}}
+        </div>
+    </div>
+</template>
+
+<template name="CrowdCitiesViewTable">
+    <table id="dataview-table" class="table table-striped">
+        <thead id="dataview-table-header">
+            <tr id="dataview-table-header-row">
+                <th>Controls</th>
+                <th class="th-sortable" data-sort="name">
+                    Event Name
+                </th>
+                <th class="th-sortable" data-sort="longitude">
+                    Longitude (optional)
+                </th>
+                <th class="th-sortable" data-sort="latitude">
+                    Latitude (optional)
+                </th>
+                <th class="th-sortable" data-sort="district">
+                    District
+                </th>
+                <th class="th-sortable" data-sort="postcode">
+                    Postcode
+                </th>
+                <th class="th-sortable" data-sort="state">
+                    State
+                </th>
+                <th class="th-sortable" data-sort="country">
+                    Country
+                </th>
+                <th class="th-sortable" data-sort="timezone">
+                    Timezone
+                </th>
+            </tr>
+        </thead>
+        <tbody id="dataview-table-items">
+            {{#each tableItems}} {{> CrowdCitiesItems}} {{/each}}
+        </tbody>
+    </table>
+</template>
+
+<template name="CrowdCitiesItems">
+    <tr id="dataview-table-items-row">
+        <td>
+            <button id="add_event">Confirm</button>
+            <button id="report_event">Report</button>
+        </td>
+        <td>
+            {{name}}
+        </td>
+        <td>
+            {{longitude}}
+        </td>
+        <td>
+            {{latitude}}
+        </td>
+        <td>
+            {{district}}
+        </td>
+        <td>
+            {{postcode}}
+        </td>
+        <td>
+            {{state}}
+        </td>
+        <td>
+            {{country}}
+        </td>
+        <td>
+            {{timezone}}
+        </td>
+    </tr>
+</template>

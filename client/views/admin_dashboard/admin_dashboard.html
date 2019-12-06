@@ -1,0 +1,71 @@
+<template name="AdminDashboard">
+  <!-- BEGIN CONTAINER -->
+<div class="page-container row-fluid">
+ <!-- BEGIN SIDEBAR -->
+  <div class="page-sidebar" id="main-menu">
+   
+      <!-- BEGIN SIDEBAR MENU -->
+     	 {{> AdminDashboardAdminMenu}}
+  
+    </div>
+  </div>
+   <!-- END SIDEBAR MENU -->
+  <div  class="page-content">
+  <div class="container" id="content">
+    <div class="row">
+      <div id="subcontent" class="">
+        {{> yield region='AdminDashboardSubcontent'}}
+      </div>
+    </div>
+  </div></div>
+</template>
+
+<template name="AdminDashboardAdminMenu">
+  
+  <ul id="menu-items" class="">
+   
+    
+    <li id="menu-item-simple" class="{{menuItemClass 'admin_dashboard.admin_mosques'}}">
+      <a href="{{pathFor 'admin_dashboard.admin_mosques'}}">
+         <i class="fa fa-user"></i> <span class="title"> Mosques</span>
+      </a>
+    </li>
+     <li id="menu-item-simple" class="{{menuItemClass 'admin_dashboard.admin_mosques'}}">
+      <a href="{{pathFor 'admin_dashboard.admin_events'}}">
+         <i class="icon-custom-event"></i> <span class="title"> Events</span>
+        
+      </a>
+    </li>
+    <li id="menu-item-simple" class="{{menuItemClass 'admin_dashboard.admin_imams'}}">
+      <a href="{{pathFor 'admin_dashboard.admin_imams'}}">
+         <i class="icon-custom-event"></i> <span class="title"> Imams</span>
+        
+      </a>
+    </li>
+    <li id="menu-item-simple" class="{{menuItemClass 'admin_dashboard.admin_forum'}}">
+      <a href="{{pathFor 'admin_dashboard.admin_forum'}}">
+         <i class="icon-custom-event"></i> <span class="title"> Forum</span>
+        
+      </a>
+    </li>
+    <li id="menu-item-simple" class="{{menuItemClass 'admin_dashboard.cities'}}">
+      <a href="{{pathFor 'admin_dashboard.cities'}}">
+         <i class="icon-custom-event"></i> <span class="title"> Cities</span>
+
+      </a>
+    </li>
+    <li id="menu-item-simple" class="{{menuItemClass 'admin_dashboard.countries'}}">
+      <a href="{{pathFor 'admin_dashboard.countries'}}">
+         <i class="icon-custom-event"></i> <span class="title"> Countries</span>
+        
+      </a>
+    </li>
+    <li id="menu-item-simple" class="{{menuItemClass 'admin_dashboard.timezones'}}">
+      <a href="{{pathFor 'admin_dashboard.timezones'}}">
+         <i class="icon-custom-event"></i> <span class="title">  Timezones</span>
+       
+      </a>
+    </li>
+ 
+  </ul>
+</template>

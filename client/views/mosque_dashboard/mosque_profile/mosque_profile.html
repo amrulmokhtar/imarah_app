@@ -1,0 +1,197 @@
+<template name="MosqueDashboardMosqueProfile">
+  <div class="container" id="content">
+    <h2 id="page_title">
+      Your Profile
+    </h2>
+    {{> MosqueDashboardMosqueProfileMosqueProfileView}}
+  </div>
+</template>
+
+<template name="MosqueDashboardMosqueProfileMosqueProfileView">
+  <div id="dataview" class="">
+    <h2 id="component-title">
+      Profile
+    </h2>
+    <form id="dataview-controls" class="form-inline">
+      <div id="dataview-controls-search">
+        {{#if isNotEmpty}}
+        <div id="dataview-controls-search-group" class="form-group">
+          <label class="sr-only" for="search">
+            Search
+          </label>
+          <input type="text" class="form-control" id="dataview-search-input" placeholder="Search" name="search" value="{{searchString}}" autofocus="autofocus">
+          <button type="button" id="dataview-search-button" class="btn btn-primary">
+            <span class="fa fa-search">
+            </span>
+          </button>
+        </div>
+        {{/if}}
+      </div>
+    </form>
+    {{#if isNotEmpty}}
+    {{#if isNotFound}}
+    <div class="alert alert-warning">
+      "{{searchString}}" not found.
+    </div>
+    {{else}}
+    <div id="dataview-data">
+      {{#if viewAsTable}} {{> MosqueDashboardMosqueProfileMosqueProfileViewTable}} {{/if}}
+    </div>
+    {{/if}}
+    {{else}}
+    <div class="alert alert-info">
+      Empty.
+    </div>
+    {{/if}}
+  </div>
+</template>
+
+<template name="MosqueDashboardMosqueProfileMosqueProfileViewTable">
+  <table id="dataview-table" class="table table-striped">
+    <thead id="dataview-table-header">
+      <tr id="dataview-table-header-row">
+        <th class="th-sortable" data-sort="name">
+          Mosque Name
+        </th>
+        <th class="th-sortable" data-sort="type">
+          Mosque Type
+        </th>
+        <th class="th-sortable" data-sort="friday_prayers">
+          Does the Mosque offer Friday Khutbah?
+        </th>
+        <th class="th-sortable" data-sort="description">
+          Mosque Description
+        </th>
+        <th class="th-sortable" data-sort="amenities">
+          Services and Amenities
+        </th>
+        <th class="th-sortable" data-sort="longitude">
+          Longitude
+        </th>
+        <th class="th-sortable" data-sort="latitude">
+          Latitude
+        </th>
+        <th class="th-sortable" data-sort="phone_number">
+          Phone Number
+        </th>
+        <th class="th-sortable" data-sort="email">
+          Email
+        </th>
+        <th class="th-sortable" data-sort="facebook">
+          Facebook
+        </th>
+        <th class="th-sortable" data-sort="twitter">
+          Twitter
+        </th>
+        <th class="th-sortable" data-sort="website">
+          Website
+        </th>
+        <th class="th-sortable" data-sort="address_1">
+          Address 1
+        </th>
+        <th class="th-sortable" data-sort="city">
+          City
+        </th>
+        <th class="th-sortable" data-sort="district">
+          District
+        </th>
+        <th class="th-sortable" data-sort="postcode">
+          Postcode
+        </th>
+        <th class="th-sortable" data-sort="state">
+          State
+        </th>
+        <th class="th-sortable" data-sort="country">
+          Country
+        </th>
+        <th class="th-sortable" data-sort="timezone">
+          Timezone
+        </th>
+        <th class="th-sortable" data-sort="managers">
+          User ID
+        </th>
+        <th class="th-sortable" data-sort="picture">
+          Picture
+        </th>
+        <th>
+          &nbsp;
+        </th>
+      </tr>
+    </thead>
+    <tbody id="dataview-table-items">
+      {{#each tableItems}} {{> MosqueDashboardMosqueProfileMosqueProfileViewTableItems}} {{/each}}
+    </tbody>
+  </table>
+</template>
+
+<template name="MosqueDashboardMosqueProfileMosqueProfileViewTableItems">
+  <tr id="dataview-table-items-row">
+    <td>
+      {{name}}
+    </td>
+    <td>
+      {{type}}
+    </td>
+    <td>
+      {{friday_prayers}}
+    </td>
+    <td>
+      {{description}}
+    </td>
+    <td>
+      {{amenities}}
+    </td>
+    <td>
+      {{longitude}}
+    </td>
+    <td>
+      {{latitude}}
+    </td>
+    <td>
+      {{phone_number}}
+    </td>
+    <td>
+      {{email}}
+    </td>
+    <td>
+      {{facebook}}
+    </td>
+    <td>
+      {{twitter}}
+    </td>
+    <td>
+      {{website}}
+    </td>
+    <td>
+      {{address_1}}
+    </td>
+    <td>
+      {{city}}
+    </td>
+    <td>
+      {{district}}
+    </td>
+    <td>
+      {{postcode}}
+    </td>
+    <td>
+      {{state}}
+    </td>
+    <td>
+      {{country}}
+    </td>
+    <td>
+      {{timezone}}
+    </td>
+    <td>
+      {{managers}}
+    </td>
+    <td>
+      {{picture}}
+    </td>
+    <td class="td-icon">
+      <span id="edit-button" class="fa fa-pencil" title="Edit">
+      </span>
+    </td>
+  </tr>
+</template>

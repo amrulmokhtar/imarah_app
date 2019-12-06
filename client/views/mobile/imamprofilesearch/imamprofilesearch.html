@@ -1,0 +1,109 @@
+<template name="Imamprofilesearch">
+	{{#HeaderFooterLayout headerSize="180" class="main" size=size4}}
+		{{>Surface template="imamProfileSearchHeader" target="header" modifier="StateModifier" translate="[0,0,100]" size=size1}}
+
+		{{#Modifier target="content" modifier="StateModifier" translate="[0,0,10]"}}
+			{{>imamProfileSlider}}
+		{{/Modifier}}
+	{{/HeaderFooterLayout}}
+</template>
+
+<template name="imamProfileSearchHeader">
+	<navbar class="navbar-fixed" role="navigation">
+		<div class="container-fluid green-bg">
+			<a href="javascript:void(0)">
+				<p class="navbar-text" id="backButton1"><span class="fa fa-chevron-left"></span></p>
+			</a>
+				<p class="navbar-text positionText2">Ustaz Azhar Idrus</p>
+			<a href="javascript:void(0)"> <!-- -->
+				<p class="navbar-text moveright"><span class="fa fa-search icoColor1"></span></p>
+			</a>
+		</div>
+	</navbar>
+	<div class="shiftMiddle">
+		{{#each tabs}}
+			<span class="fa fa-stop tabBtns {{status}}" id="{{id}}">
+				<br><span class="tabText">{{text}}</span>
+			</span>
+		{{/each}}
+	</div>
+	{{#if eventsOpen}}
+	<div class="imamSearchBar">
+		<button class="btn btn-default btn-xs defaultStyle setWide3">Nearby</button>
+		<button class="btn btn-default btn-xs defaultStyle setWide3">Today</button>
+		<button class="btn btn-default btn-xs defaultStyle setWide3">+</button>
+		<span><img src="images/settings1.ico" class="positionSetting"></span>
+	</div>
+	{{/if}}
+</template>
+
+<template name="imamProfileSlider">
+	{{#Scrollview direction="X"}}
+		{{#RenderController transition=imamProfileTransition}}
+			{{>showImamSearchTemplate}}
+		{{/RenderController}}
+	{{/Scrollview}}
+</template>
+
+<template name="imamProfileSearchSurface1">
+	{{#Scrollview}}
+			{{>imamProfileCards header="ABOUT" contentTemplate="imamAboutTemplate"}}
+			{{>imamProfileCards header="TOPICS OF INTEREST" contentTemplate="imamTopicsTemplate"}}
+			{{>imamProfileCards header="LINKS" contentTemplate="imamLinksTemplate"}}
+	{{/Scrollview}}
+</template>
+
+<template name="imamAboutTemplate">
+	<p>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quis maximus augue, in eleifend nisl. Suspendisse quis nisi tempus diam interdum laoreet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+	</p>
+</template>
+
+<template name="imamLinksTemplate">
+	<p>
+		<span class="fa fa-facebook"><span class="icoText1">&nbsp; Ustaz Azhar Idrus</span></span><br>
+		<span class="fa fa-twitter"><span class="icoText1">&nbsp; @ustazazharidrus</span></span><br>
+		<span class="fa fa-globe"><span class="icoText1">&nbsp; www.ustazazharidrus.com</span></span>
+	</p>
+</template>
+
+<template name="imamTopicsTemplate">
+	<span class="label labelTopics">Solat</span>
+	<span class="label labelTopics">Zakat</span>
+	<span class="label labelTopics">Al-Quran &amp; Hadis</span>
+	<span class="label labelTopics">Puasa</span>
+	<span class="label labelTopics">Haji &amp; Umrah</span>
+	<span class="label labelTopics">Nikah &amp; Kahwin</span>
+</template>
+
+
+
+<template name="imamProfileCards">
+{{#Surface size="[undefined, true]" class="backgroundWhite"}}
+<div class="listcontainer">
+    <span>
+        {{#if header}}
+           <header class="fa-lg fa-stack widthauto">
+                <span class="profileText2">{{header}}</span>
+            </header>
+        {{/if}}
+    </span>
+    <div>
+        {{> Template.dynamic template=contentTemplate }}
+    </div>
+</div>
+{{/Surface}}
+</template>
+
+
+<template name="imamProfileSearchSurface2">
+	{{#Scrollview}}
+		{{>eventsCard contentHeader="Kuliah Maghrib" content1="Today @ 7:45PM" content2="Masjid Negeri Shah Alam, Shah Alam" id="mosque"}}
+		{{>eventsCard contentHeader="Kuliah Maghrib" content1="Today @ 7:45PM" content2="Masjid Negeri Shah Alam, Shah Alam" id="mosque"}}
+		{{>eventsCard contentHeader="Kuliah Maghrib" content1="Today @ 7:45PM" content2="Masjid Negeri Shah Alam, Shah Alam" id="mosque"}}
+		{{>eventsCard contentHeader="Kuliah Maghrib" content1="Today @ 7:45PM" content2="Masjid Negeri Shah Alam, Shah Alam" id="mosque"}}
+		{{>eventsCard contentHeader="Kuliah Maghrib" content1="Today @ 7:45PM" content2="Masjid Negeri Shah Alam, Shah Alam" id="mosque"}}
+		{{>eventsCard contentHeader="Kuliah Maghrib" content1="Today @ 7:45PM" content2="Masjid Negeri Shah Alam, Shah Alam" id="mosque"}}
+	{{/Scrollview}}	
+</template>
+

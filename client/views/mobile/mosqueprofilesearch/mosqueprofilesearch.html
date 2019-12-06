@@ -1,0 +1,137 @@
+<template name="Mosqueprofilesearch">
+  {{#HeaderFooterLayout headerSize="160" class="main" size=size4}}
+  
+  	{{>Surface template="mosqueProfileSearchHeader" target="header" modifier="StateModifier" translate="[0,0,100]" size=size1}}
+
+  	{{#Modifier target="content" modifier="StateModifier" translate="[0,0,10]"}}
+  		{{>mosqueProfileSlider}}
+  	{{/Modifier}}
+  {{/HeaderFooterLayout}}
+</template>
+
+<template name="mosqueProfileSearchHeader">
+	<navbar class="navbar-fixed" role="navigation">
+		<div class="container-fluid green-bg">
+			<a href="javascript:void(0)">
+				<p class="navbar-text" id="backButton1"><span class="fa fa-chevron-left"></span></p>
+			</a>
+				<p class="navbar-text positionText2">Masjid Negeri Shah Alam</p>e
+		</div>
+	</navbar>
+	<div class="shiftMiddle">
+		{{#each tabs}} 
+			<span class="fa-lg fa-stack tabBtns {{status}}" id="{{id}}">
+                <span class="fa fa-stop fa-stack-2x">
+                </span>
+                <span class="fa-stack-1x"><img src="../images/icon_{{imgId}}.png" width="17" height="17"></span>
+            </span>
+		{{/each}}
+	</div>
+</template>
+
+<template name="mosqueProfileSlider">
+		{{#RenderController transition=mosqueProfileTransition}}
+			{{>showMosqueSearchTemplate}}
+		{{/RenderController}}
+</template>
+
+<template name="mosqueProfileSearchSurface2">
+	{{#Scrollview}}
+		{{>eventsCard contentHeader="Kuliah Maghrib" content1="Today @ 7:45PM" content2="Masjid Negeri Shah Alam, Shah Alam" id="mosque"}}
+		{{>eventsCard contentHeader="Kuliah Maghrib" content1="Today @ 7:45PM" content2="Masjid Negeri Shah Alam, Shah Alam" id="mosque"}}
+		{{>eventsCard contentHeader="Kuliah Maghrib" content1="Today @ 7:45PM" content2="Masjid Negeri Shah Alam, Shah Alam" id="mosque"}}
+		{{>eventsCard contentHeader="Kuliah Maghrib" content1="Today @ 7:45PM" content2="Masjid Negeri Shah Alam, Shah Alam" id="mosque"}}
+		{{>eventsCard contentHeader="Kuliah Maghrib" content1="Today @ 7:45PM" content2="Masjid Negeri Shah Alam, Shah Alam" id="mosque"}}
+		{{>eventsCard contentHeader="Kuliah Maghrib" content1="Today @ 7:45PM" content2="Masjid Negeri Shah Alam, Shah Alam" id="mosque"}}
+	{{/Scrollview}}
+</template>
+
+<template name="mosqueProfileSearchSurface1">
+	{{#Scrollview}}
+		{{>mosqueProfileCards header="ADDRESS" imgId="map" contentTemplate="addressTemplate"}}
+		{{>mosqueProfileCards header="CONTACT" imgId="" contentTemplate="contactTemplate1"}}
+		{{>mosqueProfileCards header="AMENITIES" imgId="" contentTemplate="amenitiesTemplate"}}
+		{{>mosqueProfileCards header="LINKS" imgId="" contentTemplate="linksTemplate"}}
+		{{>mosqueProfileCards header="DONATE" imgId="" contentTemplate="donateTemplate"}}
+	{{/Scrollview}}
+</template>
+
+<template name="donateTemplate">
+	<p>
+		<span> {{data.bank_details}} </span><br>
+		<a href="{{pathFor 'donate' mosqueId=data._id}}">
+            <button  class="btn btn-primary" id="donateBtn">Donate via Imarah</button></a>
+	</p>
+</template>
+
+<template name="linksTemplate">
+	<p>
+        {{#if data.facebook}}
+		<span>
+			<span class="fa fa-facebook"></span>
+			<span>{{data.facebook}}</span>
+		</span><br>
+        {{/if}}
+        {{#if data.twitter}}
+		<span>
+			<span class="fa fa-twitter"></span>
+			<span>{{data.twitter}}</span>
+		</span><br>
+        {{/if}}
+        {{#if data.website}}
+		<span>
+			<span class="fa fa-globe"></span>
+			<span>{{data.website}}</span>
+		</span>
+        {{/if}}
+	</p>
+</template>
+
+<template name="amenitiesTemplate">
+	<a href="{{pathFor 'mosquesearchwithfilters'}}">
+	<button class="btn btn-default amenBtns">Cafeteria</button>
+	</a>
+	<a href="{{pathFor 'mosquesearchwithfilters'}}">
+	<button class="btn btn-default amenBtns">WiFi</button>
+	</a>
+	<a href="{{pathFor 'mosquesearchwithfilters'}}">
+	<button class="btn btn-default amenBtns">Barber Shop</button>
+	</a>
+</template>
+
+<template name="contactTemplate1">
+	<p>
+		{{data.phone_number}}
+	</p>
+</template>
+
+<template name="addressTemplate">
+	<p>
+		<span>{{data.address}}</span><br>
+		<span>{{data.city_name}}</span><br>
+		<span>{{data.state}}</span>
+	</p>
+	<div class="actionListContainer">
+        <span class="">
+           <a onclick='window.open("http://maps.google.com/?q={{data.location.geometry.coordinates.[1]}},{{data.location.geometry.coordinates.[0]}}","_system")'> <i class="iconaction"><img src="../images/icon_map_blue.png"></i>
+        </a></span><br>
+        <span class="blueText">Map</span>
+    </div>
+</template>
+
+<template name="mosqueProfileCards">
+{{#Surface size="[undefined, true]" class="backgroundWhite"}}
+<div class="listcontainer">
+    <span>
+        {{#if header}}
+           <header class="fa-lg fa-stack widthauto">
+                <span class="profileText2">{{header}}</span>
+            </header>
+        {{/if}}
+    </span>
+    <div>
+        {{> Template.dynamic template=contentTemplate }}
+    </div>
+</div>
+{{/Surface}}
+</template>

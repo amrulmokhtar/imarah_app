@@ -1,0 +1,117 @@
+/*****************************************************************************/
+/* Userprofile: Style */
+/*****************************************************************************/
+
+.photoSize2 {
+	font-size: 5.5em;
+	color: lightgrey;
+	padding-right: 14px;
+}
+
+.cardsRectangle {
+	background-color: lightgrey;
+	height: 70px;
+	width: 90%;
+}
+
+.wellsContainer {
+	position: center;
+	width: 300px;
+	margin: 0 auto;
+	color: black;
+}
+
+.profileTab9 {
+	padding: 6px;
+}
+
+.profileText12 {
+	position: relative;
+	font-size: 0.84em;
+	color: black;
+	bottom: -30px;
+}
+
+/* */
+
+.viewsTopSmaller{
+	height: 350px;
+}
+
+.userProfileName{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -50px 0 0 -35%;
+	text-align: center;
+	width: 70%;
+}
+
+.userProfileName img.profileImage{
+	width: 70px;
+	height: 70px;
+	border-radius: 35px;
+	background-color: #eee;
+}
+
+.userProfileName h3{
+	margin: 20px 0;
+	color: #fff;
+	font-size: 18pt;
+}
+
+.userProfileName h3.imam{
+	font-size: 14pt;
+}
+
+.userProfileActionBtn{
+	background: #f39c12;
+	padding: 5px 10px;
+	border-radius: 3px;
+	width: 180px;
+	margin: 0 auto;
+}
+
+.userProfileActionBtn.activeBg{
+	background: #9b59b6;
+}
+
+.userProfileActionBtn img{
+	width: 30px;
+	height: 30px;
+}
+
+.userProfileActionBtn span{
+	color: #fff;
+	font-size: 13pt;
+	font-weight: 600;
+	margin-left: 10px;
+}
+
+.replyLabel{
+	background: #666;
+	color: #fff;
+	padding: 5px 10px;
+	border-radius: 3px;
+}
+
+.replyWaiting{
+	background: #f39c12;
+}
+
+.replyApproved{
+	background: #16A085;
+}
+
+.replyRejected{
+	background: #e74c3c;
+}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,226 @@
+<template name="Userprofile">
+	{{#HeaderFooterLayout headerSize="370" class="main" size=size4}}
+        <!-- {{#Scrollview target="header"}} -->
+		{{#SequentialLayout target="header"}}
+			{{>Surface template="profileContainerHeader" modifier="StateModifier" translate="[0,0,100]" size=size1}}
+			{{>Surface template="userProfileContainer" modifier="StateModifier" translate="[0,-40,0]" size=size2}}
+		{{/SequentialLayout}}
+		{{#Modifier target="content" modifier="StateModifier" translate="[0,-60,10]"}}
+			{{>userProfileTabSlider}}
+		{{/Modifier}}
+        <!-- {{/Scrollview}} -->
+	{{/HeaderFooterLayout}}
+</template>
+
+<template name="profileContainerHeader">
+	<navbar class="navbar-fixed" role="navgation">
+		<div class="container-fluid green-bg">
+			<p class="navbar-text" id="backButton1">
+				<img src="images/icon_menu.png" height="20" width="30" class="">
+			</p>
+		</div>
+	</navbar>
+</template>
+
+<!-- Profile -->
+<template name="userProfileContainer">
+	<!-- Profile Header -->
+    <div class="viewsTop1"> <!--url('../images/dummymosqueimage.jpg');"> -->
+        <div class="profileName imamuserBox">
+            <img class="picProfileImage" src="#" />
+            <span class="picProfileName">Amrul Mokhtar</span>   
+        </div>
+        <!-- <a class="userProfileActionBtn">
+            <img src="../images/icon_joined.png" alt="Joined Mosque"/>
+            <span>Joined</span>
+        </a> -->
+    </div>
+
+    <!-- Profile Tabs -->
+    <ul class="profiletabs">
+        {{#each tabs}}
+        <li class="{{status}}" id="{{id}}"><a>
+            <img src="../images/icon_{{imgId}}.png">
+            <span>{{text}}</span>
+        </a></li>
+        {{/each}}
+        <!-- <li><a href="#">
+            <img src="../images/icon_events.png">
+            <span>Events</span>
+        </a></li>
+        <li><a href="#">
+            <img src="../img/icon_amenities.png">
+            <span>Amenities</span>
+        </a></li> -->
+    </ul>
+	<!-- <div class="profileDisplay">
+		<p class="wellsContainer well">
+			<img src="http://lorempixel.com/50/50" height="50" width="50" class="img-circle" ><br>
+			<span>User Placeholder</span>
+		</p>
+	</div>
+	<div class="profileDownBar">
+		<span class="profileTab9"><img src="../images/icon_badge_gray.png" width="32" height="32">
+                    <span class="profileText12 text2">10 BADGES</span></span>
+        <span class="profileTab9"><img src="../images/icon_credit_gray.png" width="32" height="32">
+                    <span class="profileText12 text2">200 CREDITS</span></span>
+		<a href="{{pathFor 'profilesearch'}}">
+			<span class="profileTab9"><img src="../images/icon_mosque_gray.png" width="32" height="32">
+                    <span class="profileText12 text2">5 MOSQUES</span></span>
+            <span class="profileTab9"><img src="../images/icon_imam_gray.png" width="32" height="32">
+                    <span class="profileText12 text2">17 IMAMS</span></span>
+		</a>
+	</div>
+	<br> -->
+</template>
+
+
+<template name="userProfileTabSlider">
+        {{#RenderController transition=userProfileTransition}}
+            {{>showUserSearchTemplate}}
+        {{/RenderController}}
+</template>
+
+<template name="userProfileSurface1">
+
+	{{#Scrollview}}
+        {{#Surface size="[undefined, true]" class="backgroundWhite"}}
+        	surface 1
+        {{/Surface}}
+    {{/Scrollview}}
+
+</template>
+
+<template name="userProfileSurface2">
+
+	{{#Scrollview}}
+        {{#Surface size="[undefined, true]" class="backgroundWhite"}}
+        	surface 2
+        {{/Surface}}
+    {{/Scrollview}}
+
+</template>
+
+<template name="userProfileSurface3">
+
+	{{#Scrollview options=scrollviewopts}}
+        {{#Surface size="[undefined, true]" translate="[0,0,0]"}}
+            {{>noamenitiesuserEmptyData}}
+        {{/Surface}}
+        {{>bookedAmenityCard}}
+    {{/Scrollview}}
+
+</template>
+
+
+<template name="bookedAmenityCard">
+    {{#Surface size="[undefined, true]"}}
+        <!-- {{#each amenities}} -->
+        <div class="listcontainer">
+                <div class="" id="center2">         
+                    <p>
+                    <a href="#" class="needsclick">
+                        <h4 class="cardTextHead">Amenity Name</h4>
+                        <span class="smallerText4r">
+                            <b>RM 200</b>
+                            <br>
+                            Booked for [date], [time]
+                        </span>
+                    </a>
+                    </p>
+                </div>
+            <div class="actionListContainer">
+                <div class="replyLabel replyWaiting">Waiting for Reply</div>
+            </div>
+        </div>
+        <div class="listcontainer">
+                <div class="" id="center2">         
+                    <p>
+                    <a href="#" class="needsclick">
+                        <h4 class="cardTextHead">Amenity Name</h4>
+                        <span class="smallerText4r">
+                            <b>RM 200</b>
+                            <br>
+                            Booked for [date], [time]
+                        </span>
+                    </a>
+                    </p>
+                </div>
+            <div class="actionListContainer">
+                <div class="replyLabel replyApproved">Approved</div>
+            </div>
+        </div>
+        <div class="listcontainer">
+                <div class="" id="center2">         
+                    <p>
+                    <a href="#" class="needsclick">
+                        <h4 class="cardTextHead">Amenity Name</h4>
+                        <span class="smallerText4r">
+                            <b>RM 200</b>
+                            <br>
+                            Booked for [date], [time]
+                        </span>
+                    </a>
+                    </p>
+                </div>
+            <div class="actionListContainer">
+                <div class="replyLabel replyRejected">Rejected</div>
+            </div>
+        </div>
+        <!-- {{/each}} -->
+    {{/Surface}}
+</template>
+
+
+
+
+
+
+
+
+
+
+
+
+<template name="profileCardsContainer">
+	{{#Scrollview}}
+    	{{>profileCards id="mosque" imgId="images/icon_mosque.png" header="Checked in at Masjid Darul Ehsan" contentTemplate="cardsMosqueTemplate1"}}
+    	{{>profileCards id="imam" imgId="images/icon_imam.png" header="Followed 3 Imams" contentTemplate="cardsImamTemplate1"}}
+    	{{>profileCards id="mosque" imgId="images/icon_mosque.png" header="Joined Masjid Shah Alam" contentTemplate="cardsMosqueTemplate1"}}
+    	{{>profileCards id="event" imgId="images/icon_events.png" header="Going for Tilawah Tajwid & Tafsir" contentTemplate="cardsEventTemplate1"}}
+    	{{>profileCards id="mosque" imgId="images/icon_mosque.png" header="Checked in at Masjid Darul Ehsan" contentTemplate="cardsMosqueTemplate1"}}
+    	{{>profileCards id="imam" imgId="images/icon_imam.png" header="Followed 3 Imams" contentTemplate="cardsImamTemplate1"}}
+    	{{>profileCards id="mosque" imgId="images/icon_mosque.png" header="Joined Masjid Shah Alam" contentTemplate="cardsMosqueTemplate1"}}
+    	{{>profileCards id="event" imgId="images/icon_events.png" header="Going for Tilawah Tajwid & Tafsir" contentTemplate="cardsEventTemplate1"}}
+    {{/Scrollview}}
+</template>
+
+<template name="cardsMosqueTemplate1">
+	<div class="cardsRectangle">
+	</div>
+</template>
+
+<template name="cardsEventTemplate1">
+	<div class="cardsRectangle">
+	</div>
+</template>
+
+<template name="cardsImamTemplate1">
+	<div>
+		<span class="fa fa-circle photoSize2"></span>
+		<span class="fa fa-circle photoSize2"></span>
+		<span class="fa fa-circle photoSize2"></span>
+	</div>
+</template>
+
+
+
+
+
+
+
+
+
+
+
+

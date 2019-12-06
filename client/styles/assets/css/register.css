@@ -1,0 +1,168 @@
+
+body.register{
+    background: #16a085;
+}
+
+.logincontainer{
+    background: #16a085;
+    width: 100%;
+    height: 110%;
+}
+
+.boundingbox-login{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -300px 0 0 -200px;
+}
+
+.boundingbox-login img.logo{
+    width: 70px;
+    height: auto;
+    display: block;
+    margin: 0 auto 50px;
+}
+
+.account-form {
+    
+    width: 400px;
+    //padding: 10px 20px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+}
+
+.account-form form{
+    padding: 20px;
+}
+
+.account-form h2 {
+    font-size: 20pt;
+    line-height: 60px;
+    text-transform: capitalize;
+    font-weight: bold;
+    text-align: center;
+}
+.account-form .form-control {
+    width: 90%;
+    margin: 20px auto;
+    border: 1px solid #979797;
+    padding: 10px 20px;
+    height: auto;
+}
+
+.account-form select.form-control{
+    height: 40px;
+}
+
+.account-form .check.check_register{
+    font-weight: normal;
+    font-size: 10pt;
+    margin-left: 20px;
+}
+
+.account-form input[type="checkbox"]{
+    margin-right: 10px;
+}
+
+.account-form .form-control:focus{
+    outline: none;
+    box-shadow: none;
+    border-color: #16a085;
+    color: #16a085;
+}
+
+.account-form .btn.btn-block {
+    background: none repeat scroll 0 0 #16a085;
+    border: medium none #16a085;
+    width: 50%;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 11pt;
+}
+.account-form-text-after {
+    margin: 15px 15px 10px 0;
+    text-align: right;
+}
+
+
+.account-form-text-below{
+    border-top: 1px solid #ddd;
+    padding: 20px 10px 0;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.account-form-text-after a, .account-form-text-below  a{
+    color:#16a085;
+    text-decoration: none;
+}
+
+.account-form-text-after a:hover, .account-form-text-below  a:hover{
+    color:#16a085;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* remove padding from account-form */
+/* new */
+
+
+.helper-text{
+    background: #eee;
+    width: 100%;
+    padding: 20px 30px;
+    text-align: center;
+}
+
+.helper-text span{
+    font-weight: bold;
+    color: #444;
+}
+
+
+/* setup profile */
+
+.boundingbox-login.boundingbox-login-large{
+    margin: -300px 0 0 -20%;
+}
+
+.account-form.account-form-large{
+    
+    width: 70%;
+}
+
+/* select plan */
+
+.plan-option{
+    float: left;
+    width:48%;
+    text-align: center;
+    margin: 0 1% 30px;
+    padding: 0 1% 2%;
+    background: #f2f2f2;
+    border-radius: 5px;
+}
+
+.plan-option h3{
+    color: #16a085;
+}
+
+.plan-option p{
+    font-style: italic;
+    font-weight: 600;
+    color: #444;
+    margin-top: -10px;
+    font-size: 12pt;
+}
+
+ul.plan-features{
+    text-align: left;
+    margin: 20px auto;
+    width: 90%;
+}
+
+
+
+

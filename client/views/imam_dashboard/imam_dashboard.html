@@ -1,0 +1,44 @@
+<template name="ImamDashboard">
+	<div class="container" id="content">
+		<h2 id="page_title">
+			Imam Dashboard
+		</h2>
+		{{> ImamDashboardImamMenu}}
+	</div>
+</template>
+
+<template name="ImamDashboardImamMenu">
+	<ul id="menu-items" class="">
+		<li id="menu-item-simple" class="{{menuItemClass 'imam__dashboard_.imam__profile_/_:imam_id'}}">
+			<a href="{{pathFor 'imam__dashboard_.imam__profile_/_:imam_id'}}">
+				Profile
+			</a>
+		</li>
+		<li id="menu-item-simple" class="{{menuItemClass 'imam__dashboard_.imam__setup__donation_/_:imam_id'}}">
+			<a href="{{pathFor 'imam__dashboard_.imam__setup__donation_/_:imam_id'}}">
+				Setup Donation
+			</a>
+		</li>
+		<li id="menu-item-simple" class="{{menuItemClass 'imam__dashboard_.imam__event__management_/_:imam_id'}}">
+			<a href="{{pathFor 'imam__dashboard_.imam__event__management_/_:imam_id'}}">
+				Event Management
+			</a>
+		</li>
+		<li id="menu-item-simple" class="{{menuItemClass 'imam__dashboard_.imam__community__management_/_:imam_id'}}">
+			<a href="{{pathFor 'imam__dashboard_.imam__community__management_/_:imam_id'}}">
+				Community Management
+			</a>
+		</li>
+		<li id="menu-item-simple" class="{{menuItemClass 'imam__dashboard_.imam__comitee__management_/_:imam_id'}}">
+			<a href="{{pathFor 'imam__dashboard_.imam__comitee__management_/_:imam_id'}}">
+				Commitee Management
+			</a>
+		</li>
+		<li id="menu-item-simple" class="{{menuItemClass 'imam__dashboard_.imam__event__management_/_:imam_id'}}">
+			<a href="{{pathFor 'imam__dashboard_.imam__event__management_/_:imam_id'}}">
+				Booking Management
+			</a>
+		</li>
+	</ul>
+</template>
+

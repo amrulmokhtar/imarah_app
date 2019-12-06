@@ -1,0 +1,31 @@
+this.AccountControllerverified = RouteController.extend({
+    template: "MosqueDashboard",
+    yieldTemplates: {
+        /*YIELD_TEMPLATES*/
+        'verificaltionpass': { to: 'MosqueDashboardSubcontent'}
+    },
+    onBeforeAction: function() {
+        /*BEFORE_FUNCTION*/
+        this.next();
+    },
+    action: function() {
+        this.render();
+        /*ACTION_FUNCTION*/
+    },
+    waitOn: function() {
+        return [
+            Meteor.subscribe("user_manages_mosques",Meteor.userId())
+        ];
+        /*WAIT_FUNCTION*/
+    },
+    data: function() {
+        return {
+            //TODO: make this work for array of managers instead of single manager
+            managed_mosque: Mosques.find({managers:Meteor.userId()},{}),
+            params: this.params || {}
+        };
+        /*DATA_FUNCTION*/
+    },
+    onAfterAction: function() {
+    }
+});

@@ -1,0 +1,80 @@
+<template name="qiblat">
+    {{#HeaderFooterLayout headerSize="55"  class="main" modifier="StateModifier" size=size4}}
+      {{>Surface target="header" template="qiblatHeader" translate="[0,0,100]" size=size1}}
+      {{#SequentialLayout size=size2 target="content"}}
+        {{>Surface template="greenPrayerCard" size=size3 class="contentCardSurface" translate="[0,0,10]"}}
+        {{>Surface template="compassSurface" size=size4 class="compassSurface" translate="[0,0,50]"}}
+      {{/SequentialLayout}}
+    {{/HeaderFooterLayout}}
+</template>
+
+<template name="qiblatHeader">
+    <navbar class="navbar-fixed" role="navgation">
+        <div class="container-fluid green-bg">
+            <p class="navbar-text" >
+                <img src="images/icon_menu.png"  width="30" height="20" class="" id="barIcon">
+                <span class="navbar-text stayFixed1" id="navText">QIBLAT</span>
+            </p>
+        </div>
+    </navbar>
+</template>
+
+<template name="compassSurface">
+   <div>
+        <div class="centerAlign">
+            <div class="sun" style="-webkit-transform:rotate({{clientBearing}}deg);-ms-transform: rotate({{clientBearing}}deg);transform: rotate({{clientBearing}}deg);">
+              <span><img  class="kabaClass" src="images/kaba.png" width="60" height="60"></span>
+            </div>
+            <span><img  class="directioner" src="images/pointer.png"  width="30" height="40"></span>
+            <span><img  class="circle" src="images/face.png" style="-webkit-transform: rotateZ({{compassDir}}deg);-ms-transform: rotate({{compassDir}}deg);transform: rotate({{compassDir}}deg);" width="400" height="400"></span>
+        </div>
+    </div>
+</template>
+
+<template name="greenPrayerCard">
+    <div>
+        <p class="prayerCard container">
+            {{#with nextTime clientPos}}
+                <span class="cardHeader"><b>NEXT PRAYER TIME</b></span><br>
+                <span class="cardcontentHeader">{{name}}
+                    <span class="cardContent"><i>{{time}}</i></span>
+                </span>
+            {{/with}}
+        </p>
+    </div>
+</template>
+
+<template name="contentCard">
+    {{>latestPrayerCard id="dashBoardCard"}}
+</template>
+
+<template name="contentCompass">
+ <!-- {{#Surface}}
+  <div id="distance">{{clientDist clientPos}}</div>
+  <div id="bearing">{{clientBearing clientPos}}</div>
+  {{compassDir}}
+  {{/Surface}}
+  {{#Surface modifier="StateModifier" rotateZ=compassDir}}
+  <img src="images/face.png" class="compassCircle">
+<img src="images/kaba.png" class="compassKaba" style="-webkit-transform: {{clientBearing clientPos}}" />
+  {{/Surface}}
+  {{#Surface}}
+  <img src="images/pointer.png" class="compassPointer" />
+  {{/Surface}} -->
+</template>
+
+<template name="CSScontentCompass">
+        {{#Surface modifier="StateModifier" size="[50,50]" origin="[0.25,.5]"
+        align="[0.5,1]"}}
+    rotateZ=compassDir
+        <div class="centerAlign squareSpace">
+            <span class="fa fa-stop"></span>
+        </div>
+        {{/Surface}}
+        {{#Surface}}
+        <div class="centerAlign">
+            <span class="fa fa-caret-up directioner"></span><br>
+            <span class="circle"></span>
+        </div>
+        {{/Surface}}
+</template>

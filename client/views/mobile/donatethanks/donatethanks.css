@@ -1,0 +1,20 @@
+/*****************************************************************************/
+/* Donatethanks: Style */
+/*****************************************************************************/
+
+.backBtn {
+	background-color:  #C2E0E0; 
+	color: black;
+	padding-left: 43px;
+	padding-right: 43px;
+	height: 38px;
+	border-radius: 0px;
+	font-size: 0.9em;
+}
+/*
+.textToCenter1 {
+	text-align: center;
+	color: white;
+	font-family: 'Open Sans';
+	font-size: 1.6em;
+}*/

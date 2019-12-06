@@ -1,0 +1,218 @@
+/*****************************************************************************/
+/* Search: Style */
+/*****************************************************************************/
+
+#backButton {
+	color: white;
+}
+
+.alignCenter1 {
+	text-align: center;
+}
+
+.active2 {
+	color: #007C7C;
+}
+
+.iconBox2 {
+	color: #16A085;
+}
+
+.searchHead6 {
+	font-size: 12pt;
+	color: #333;
+}
+
+.rsvpContainerSearch {
+	margin-top: -15px;
+}
+
+.searchInpIcon {
+	position: absolute;
+	font-size: 1em;
+	color: white;
+	margin-top: 9px;
+	margin-left: 8px;
+}
+
+.searchAddon {
+	color: white;
+	border: 0px;
+	background-color: #16A085;
+}
+
+.setRight1 {
+	z-index: 1000;
+	position: absolute;
+	right: 25px;
+	margin-top: -28.5px;
+}
+
+.SetSize {
+	height: 20px;
+}
+
+.searchContainer1 {
+	padding: 10px;
+	background-color: #007C7C;
+}
+
+.smallerText {
+	font-size: 10.5pt;
+	color: #333;
+}
+
+.alignButton {
+	position: absolute;
+	right: 40px;
+	margin-top: -45px;
+	text-align: center;
+}
+
+.square {
+	font-size: 2.2em;
+	color: silver;
+}
+
+.cardSurface {
+	z-index: -10000;
+}
+
+.imamCircle {
+	font-size: 3em;
+	color: lightgrey;
+	width: 50px;
+	height: 50px;
+	background-color: #979797;
+	background-size: cover;
+	display: block;
+	border-radius: 50px;
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	float: left;
+}
+
+.imamText{
+	font-size: 1.0em;
+	float: left;
+	margin-left: 20px;
+	line-height: 1.2em;
+	word-wrap: break-word;
+	height: 50px;
+	width: 60%;
+	padding-top: 15px;
+}
+
+.alignTabs1 {
+	color: white;
+	position: absolute;
+	left: 50%;
+	margin-left: -77.8595px;
+	top: 10.5px;
+}
+
+.alignTabs1Back {
+
+}
+
+/*
+	CSS for Search placeholder
+*/
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #909;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #909;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #909;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+   color:    #909;
+}
+
+#name_2::-webkit-input-placeholder,
+#textarea_2::-webkit-input-placeholder
+{
+  color:    white;
+  font-family:  Gill Sans Extrabold, sans-serif;
+  font-weight: lighter;
+  font-size: 0.9em;
+}
+
+#name_2:-moz-placeholder,
+#textarea_2:-moz-placeholder 
+{
+  color:    white;
+  font-family:  Gill Sans Extrabold, sans-serif;
+  font-size: 0.9em;
+  font-weight: lighter;
+}
+
+#name_2::-moz-placeholder,
+#textarea_2::-moz-placeholder 
+{
+  color:    white;
+  font-family:  Gill Sans Extrabold, sans-serif;
+  font-size: 0.9em;
+  font-weight: lighter;
+}
+
+#name_2:-ms-input-placeholder,
+#textarea_2:-ms-input-placeholder 
+{
+  color:    white;
+  font-family:  Gill Sans Extrabold, sans-serif;
+  font-size: 0.9em;
+  font-weight: lighter;
+}
+
+ul.searchtabs{
+	margin:0;
+	padding: 0;
+	position: absolute;
+	left: 50%;
+	top: 5px;
+	margin-left: -80px;
+}
+
+ul.searchtabs li{
+	display: inline-block;
+	list-style: none;
+	width: 70px;
+	height: 60px;
+	margin: -3px;
+	text-align: center;
+}
+
+ul.searchtabs li img{
+	width: 50px;
+	height: 50px;
+	padding: 10px;
+}
+
+ul.searchtabs li.active2{
+	background: #007c7c;
+}
+
+ul.searchtabs li.iconBox2{
+	background: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

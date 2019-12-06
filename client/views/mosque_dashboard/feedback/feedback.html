@@ -1,0 +1,265 @@
+<template name="Mosqufeedback">
+
+    {{> feedbackhtml}}
+
+</template>
+
+<template name="feedbackhtml">
+    <div class="content">
+        <!-- Modal -->
+        <div class="modal modal_pop mod_feedback fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="border"></div>
+                        <!-- Feedback popup panes -->
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="pop_left">
+                                    <label>Feedback From</label>
+                                    <p>Amrul Mokhtar</p>
+                                    <label class="msg_field"> Message</label>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sagittis sed velit vel
+                                        elementum. Ut maximus nec orci suscipit dignissim. Donec lacinia ligula id volutpat lobortis.
+                                        Nulla faucibus finibus est, non convallis ante facilisis sit amet. Vestibulum nibh libero, hendrerit vel volutpat eu, scelerisque
+                                        sit amet dui. Aenean vel bibendum risus, quis aliquam lectus.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Your Reply</label>
+                                    <textarea class="form-control textarea" placeholder="Type your Message here..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-cancel" data-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-add">Reply</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div role="tabpanel">
+
+            <div class="content-top">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs nav-wrap" role="tablist">
+                <li role="presentation"><a href="#mosque-feedback" aria-controls="mosque-feedback" role="tab" data-toggle="tab">Mosque Feedback</a></li>
+                <li role="presentation" class="active" ><a href="#event-feedback" aria-controls="event-feedback" role="tab" data-toggle="tab">Event Feedback</a></li>
+            </ul>
+
+                <div class="clear"></div>
+            </div>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+
+                <div role="tabpanel" class="tab-pane" id="mosque-feedback">
+
+                    <!-- BEGIN GRAPH SECTION-->
+                    <div class="row-fluid graph-col">
+                        <div class="graph-left feedback_event">
+                            {{#with monthly_feedback 'mosque'}}
+                            <h2>{{average_of 'rating' this}}/5.0</h2>
+                            {{/with}}
+                            <p>Mosque Rating in {{month}}</p>
+                            {{#with monthly_feedback 'event'}}
+                            <h2>{{average_of 'rating' this}}/5.0</h2>
+                            {{/with}}
+                            <p>Event Rating in {{month}}</p>
+                            {{# with feedback 'mosque' 'all'}}
+                            <h2>{{average_of 'rating' this}}/5.0</h2>
+                            {{/with}}
+                            <p>Overall Mosque Rating</p>
+                        </div>
+                        <div class="graph-right" style="background: #D8D8D8; padding: 10px;">
+                            {{#with chartdata 'mosque'}}
+                            {{>linechart data_key=this id='mosqueratingchart'}}
+                            {{/with}}
+                        </div>
+                    </div>
+                    <!-- END GRAPH SECTION-->
+
+                    <div class="clearfix"></div>
+
+                    <!-- BEGIN MID SECTION-->
+                    <div class="row-fluid mid-col">
+                        <div class="col-md-2">
+                            <div class="col_leftbar">
+                                <input type="search" name="search" class="search">
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs left_nav" role="tablist">
+                                    <li class="active" role="presentation"><a href="#unread_mosque_feedback" aria-controls="unread_mosque_feedback" role="tab" data-toggle="tab">Inbox</a></li>
+                                    <li role="presentation"><a href="#read_mosque_feedback" aria-controls="read_mosque_feedback" role="tab" data-toggle="tab">Read</a></li>
+                                    <li role="presentation"><a href="#sent_mosque_feedback" aria-controls="sent_mosque_feedback" role="tab" data-toggle="tab">Sent</a></li>
+
+                                </ul>
+                                <!-- Tab panes -->
+                                <div class="fil_sel">
+                                    Filter
+                                    <select class="select_bx">
+                                        <option>With Message</option>
+                                        <option>Without Message</option>
+                                        <option>Event</option>
+                                    </select>
+                                </div>
+                                <div class="fil_sel">
+                                    Sort by
+                                    <select class="select_bx">
+                                        <option>Highest Rating</option>
+                                        <option>Lowest Rating</option>
+                                        <option>Date</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-10">
+
+                            <div class="tab-content">
+                                {{#with feedback 'mosque' 'unread'}}
+                                    {{>feedback_container id='unread_mosque_feedback' active='active' feedback=this}}
+                                {{/with}}
+                                {{#with feedback 'mosque' 'read'}}
+                                    {{>feedback_container id='read_mosque_feedback' feedback=this}}
+                                {{/with}}
+                                {{#with feedback 'mosque' 'sent'}}
+                                    {{>feedback_container id='sent_mosque_feedback' feedback=this}}
+                                {{/with}}
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- END MID SECTION-->
+
+                </div>
+
+
+
+
+                <div role="tabpanel" class="tab-pane active" id="event-feedback">
+
+                    <!-- BEGIN GRAPH SECTION-->
+                    <div class="row-fluid graph-col">
+                        <div class="graph-left feedback_event">
+                            {{#with monthly_feedback 'mosque'}}
+                                <h2>{{average_of 'rating' this}}/5.0</h2>
+                            {{/with}}
+                            <p>Mosque Rating in {{month}}</p>
+                            {{#with monthly_feedback 'event'}}
+                                <h2>{{average_of 'rating' this}}/5.0</h2>
+                            {{/with}}
+                            <p>Event Rating in {{month}}</p>
+                            {{# with feedback 'event' 'all'}}
+                                <h2>{{average_of 'rating' this}}/5.0</h2>
+                            {{/with}}
+                            <p>Overall Event Rating</p>
+                        </div>
+                        <div class="graph-right" style="background: #D8D8D8; padding: 10px;">
+                        {{#with chartdata 'event'}}
+                        {{>linechart id='event_feedback_chart' data_key=this}}
+                        {{/with}}
+                        </div>
+                    </div>
+                    <!-- END GRAPH SECTION-->
+
+                    <div class="clearfix"></div>
+
+                    <!-- BEGIN MID SECTION-->
+                    <div class="row-fluid mid-col">
+                        <div class="col-md-2">
+                            <div class="col_leftbar">
+                                <input type="search" name="search" class="search">
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs left_nav" role="tablist">
+                                    <li class="active" role="presentation"><a href="#unread_event_feedback" aria-controls="unread_event_feedback" role="tab" data-toggle="tab">Inbox</a></li>
+                                    <li role="presentation"><a href="#read_event_feedback" aria-controls="read_event_feedback" role="tab" data-toggle="tab">Read</a></li>
+                                    <li role="presentation"><a href="#sent_event_feedback" aria-controls="sent_event_feedback" role="tab" data-toggle="tab">Sent</a></li>
+
+                                </ul>
+                                <!-- Tab panes -->
+                                <div class="fil_sel">
+                                    Filter
+                                    <select class="select_bx">
+                                        <option>With Message</option>
+                                        <option>Without Message</option>
+                                        <option>Event</option>
+                                    </select>
+                                </div>
+                                <div class="fil_sel">
+                                    Sort by
+                                    <select class="select_bx">
+                                        <option>Highest Rating</option>
+                                        <option>Lowest Rating</option>
+                                        <option>Date</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="tab-content">
+                                {{#with feedback 'event' 'unread'}}
+                                    {{>feedback_container id='unread_event_feedback' active='active' feedback=this}}
+                                {{/with}}
+                                {{#with feedback 'event' 'read' }}
+                                    {{>feedback_container id='read_event_feedback' feedback=this}}
+                                {{/with}}
+                                {{#with feedback 'event' 'sent' }}
+                                    {{>feedback_container id='sent_event_feedback' feedback=this}}
+                                {{/with}}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END MID SECTION-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</template>
+
+<template name="feedback_container">
+    <div role="tabpanel" class="tab-pane {{active}}" id="{{id}}">
+
+        <!-- emptydata -->
+        <!-- IF: no feedback -->
+        <!-- {{#if feedback}} -->
+        <table class="table tab-wrap tab_feed">
+            <tr>
+                <th><div>Date</div></th>
+                <th><div>Name</div></th>
+                <th><div>Event</div></th>
+                <th><div>Message</div></th>
+                <th><div>Rating</div></th>
+                <th><div></div></th>
+            </tr>
+            {{#each feedback}}
+                {{>feedback_row this}}
+            {{/each}}
+        </table>
+        
+    
+        <!-- {{else}} -->
+        <div class="emptydata">
+            <img src="../img/icon_events_green.png" />
+            <p>Your mosque and event attendees are able to provide feedback through the Imarah app.<br />You will be able to view them here.</p>
+            <!-- <a class="btn btn-primary" data-target="#newMemberModal" data-toggle="modal">Add a member</a> -->
+        </div>
+        
+        <!-- {{/if}} -->
+    </div>
+</template>
+
+<template name="feedback_row">
+    <tr>
+        <td><div>{{format_date date}}</div></td>
+        <td><div>{{user_name}}</div></td>
+        <td><div>{{event_name}}</div></td>
+        <td><div>{{comments}}</div></td>
+        <td><div>{{rating}}</div></td>
+        <td><div><a id="feedback_reply" class="edit_btn">Reply</a></div></td>
+    </tr>
+</template>

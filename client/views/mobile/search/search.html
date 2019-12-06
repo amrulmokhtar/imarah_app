@@ -1,0 +1,182 @@
+<template name="search">
+    {{#HeaderFooterLayout headerSize="160" class="main" modifier="StateModifier" }}
+        {{>Surface template="searchHeader" target="header"  translate="[0,0,100]"}}
+            {{#Scrollview target="content" translate="[0,-40,0]"}}
+                {{>searchSurfaceHandler}}
+            {{/Scrollview}}
+    {{/HeaderFooterLayout}}
+</template>
+
+<template name="searchHeader">
+    <navbar class="navbar-fixed" role="navigation">
+        <div class="container-fluid green-bg">
+                <p class="navbar-text" id="arrowleft">
+                    <span class="fa fa-chevron-left" id="backButton"></span>
+                </p>
+            <!-- <div class="alignTabs1Back navbar-text"> -->
+                
+                <ul class="searchtabs">
+                    {{#each tab}}
+                    <li id="{{id}}" class="{{select}}"><img src="../images/icon_{{text}}1.png" /></li>
+                    {{/each}}
+                </ul>
+                
+                <!-- <p class="alignTabs1">
+                    {{#each tab}}
+                        <span class="fa-stack fa-lg " id="{{id}}">
+                            <span class="fa fa-stop fa-stack-2x   {{select}}"></span>
+                            <span class="fa-stack-1x"><img src="images/icon_{{text}}1.png" height="30" width="30"></span>
+                        </span>
+                    {{/each}}
+                </p> -->
+            <!-- </div> -->
+        </div>
+    </navbar>
+    
+    {{>searchBar}}
+    {{>filterBar}}
+</template>
+
+<template name="tags">
+    <button class="btn btn-primary btn-xs">{{name}}</button>
+</template>
+
+<template name="searchBar">
+    <div class="searchContainer1">
+        <div class="input-group">
+            <span class="input-group-addon searchAddon"><img src="images/icon_search.png" width="14" height="14" class=""></span>
+            <input type="text" class="form-control searchInput" id="name_2" placeholder="Search here...">
+            <span class="input-group-addon searchAddon"><span><img class="SetSize" src="images/icon_settings.png"></span></span>
+        </div>
+    </div>
+</template>
+
+<template name="filterBar">
+    {{#if filters}}
+    <div class="filterSpace">
+        {{>tags name="filter1"}}
+        {{>tags name="filter2"}}
+    </div>
+    {{/if}}
+</template>
+
+<template name="searchSurfaceHandler">
+        {{#RenderController transition=menuTransition1}}
+                {{>showTemplate1}}
+        {{/RenderController}}
+</template>
+
+<template name="searchSurface1">
+    {{#Scrollview}}
+        {{#if mosques}}
+            {{#each mosques}}
+                {{>mosqueCard id=_id name=name address=address joinStatus="join"}}
+            {{/each}}
+        {{else}}
+            {{#Surface size="[undefined, true]" translate="[0,0,0]"}}
+                {{>searchEmptyData}}
+            {{/Surface}}
+        {{/if}}
+    {{/Scrollview}}
+</template>
+
+<template name="mosqueCardSurface">
+
+
+</template>
+
+<template name="mosqueCard">
+{{#Surface size="[undefined, true]"}}
+    <a href="{{pathFor 'mosque' _id=id}}">
+    <div class="listcontainer">
+        <p>
+            <span class="searchHead6">{{name}}</span><br>
+            <span class="smallerText">{{address}}, {{city}}</span>
+        </p>
+        <div class="actionListContainer">
+            <span class="">
+                <i class="fa iconaction"><img src="../images/icon_{{joinStatus}}_blue.png" style="width:40px"></i>
+            </span>
+            <span class="blueText">{{joinStatus}}</span>
+        </div>
+    </div>
+    </a>
+{{/Surface}}
+</template>
+
+<template name="searchSurface2">
+    {{#Scrollview}}
+        {{#if imams}}
+            {{#each imams}}
+                    {{>imamCard id=_id first_name=first_name title=title last_name=last_name picture=picture}}
+            {{/each}}
+        {{else}}
+            {{#Surface size="[undefined, true]" translate="[0,0,0]"}}
+                {{>bookmarksEmptyData}}
+            {{/Surface}}
+        {{/if}}
+    {{/Scrollview}}
+
+</template>
+
+<template name="imamCard">
+    {{#Surface size="[undefined, true]"}}
+    <a href="{{pathFor 'imam' _id=id}}">
+    <div class="listcontainer">
+        <p>
+            <span class="imamCircle" style="background-image: url('{{picture}}');"></span>
+            <span class="imamText">{{title}} {{first_name}} {{last_name}}</span>
+            <div class="clear"></div>
+        </p>
+        <div class="actionListContainer">
+            <span class="">
+                <i class="fa iconaction"><img src="../images/icon_follow_blue.png"></i>
+            </span>
+            <span class="blueText">Follow</span>
+        </div>
+    </div>
+    </a>
+    {{/Surface}}
+</template>
+
+<template name="searchSurface3">
+        {{#Scrollview}}
+            {{#if events}}
+                {{#each events}}
+                        {{>eventCard2 _id=_id time=time date=date name=name city=city mosque=mosque_id}}
+                {{/each}}
+            {{else}}
+                {{#Surface size="[undefined, true]" translate="[0,0,0]"}}
+                    {{>searchEmptyData}}
+                {{/Surface}}
+            {{/if}}
+        {{/Scrollview}}
+</template>
+
+<template name="eventCard2">
+    {{#Surface size="[undefined, true]"}}
+    <a href="{{pathFor 'event' _id=_id}}">
+    <div class="listcontainer">
+        <p>
+            <span class="searchHead6">{{name}}</span>
+            <p class="smallerText">
+                {{formatDate date time}}<br>
+                {{mosquedetails mosque}}
+            </p>
+        </p>
+        <div class="actionListContainer">
+            <span class="">
+                <i class="fa iconaction"><img src="../images/icon_rsvp_blue.png"></i>
+            </span>
+            <span class="blueText" style="margin-top:10px">RSVP</span>
+        </div>
+    </div>
+    </a>
+    {{/Surface}}
+</template>
+
+<template name="searchSurface4">
+        {{#Surface}}
+                Surface4
+        {{/Surface}}
+</template>

@@ -1,0 +1,28 @@
+<template name="verificaltionpass">
+    
+    {{> verficaltion}}
+</template>
+
+<template name="verficaltion">
+
+    <div class="alert alert-warning">
+    </div>
+
+
+  <div class="container">
+    <form id="verfication" class="account-form" role="form">
+      <h2>
+        Please enter password
+      </h2>
+      {{#if errorMessage}}
+      <div class="alert alert-warning">
+        {{errorMessage}}
+      </div>
+      {{/if}}
+      <input id="password" type="password" class="form-control" placeholder="Password" required>
+      <button class="btn btn-lg btn-primary btn-block" type="submit" data-loading-text="Please wait...">
+        Submit password
+      </button>
+    </form>
+  </div>
+</template>

@@ -1,0 +1,146 @@
+/*****************************************************************************/
+/* Event: Style */
+/*****************************************************************************/
+
+.wellContainer {
+	width: 300px;
+	color: black;
+	margin: 0 auto;
+}
+
+.eventsSurface{
+	padding: 20px;
+}
+
+.profileDownBar1 a {
+	color: silver;
+}
+
+.backgroundWhite {
+	background-color: white;
+	width: 100%;
+}
+
+.profileText7 {
+	color: black;
+}
+
+.viewsTop3 {
+	text-align: center;
+	background-color: #16A085;
+	height: 210px;
+}
+
+.profileDownBar1 {
+	font-size: 0.7em;
+	margin-top: 15px; 
+}
+
+.profileDownBar1 span.fa-stop {
+	color: silver;
+}
+
+.profileText1 {
+	font-size: 0.4em;
+	color: black;
+	text-align: center;
+}
+
+.JoinStyle {
+	border-radius: 0;
+	background-color: grey;
+	color: white;
+	width: 120px;
+}
+
+.JoinStyle1 {
+	border-radius: 0;
+	background-color: grey;
+	color: white;
+	width: 140px;
+}
+
+.fixState {
+	position: absolute;
+	right: 40px;
+	margin-top: -40px;
+}
+
+.fixState1 {
+	position: absolute;
+	margin-top: -40px;
+}
+
+.rsvpBtn1 {
+	background-color:#FFD700;
+	color: black;
+	width: 200px;
+	margin-top: 10px;
+	border-radius-left: 10px;
+	border-radius-right: 10px;
+}
+
+.resizeCircle {
+	color: lightgrey;
+	font-size: 4em;
+	position: absolute;
+}
+
+.shiftRight3 {
+	margin-left: 70px;
+}
+
+img.goingPeople{
+	float: left;
+	margin-right: 10px;
+	padding-top: 10px;
+	background: #16A085;
+	width: 50px;
+	height: 50px;
+	border-radius: 30px;
+}
+
+img.goingPeople:nth-child(even){
+	background: #9013FE;
+}
+
+img.goingPeople:nth-child(5){
+	background: #4A90E2;
+}
+
+img.goingPeople:nth-child(1){
+	background: #F39C12;
+}
+
+.goingCount{
+	float: right;
+	margin: 20px 10px;
+	font-size: 12pt;
+	font-weight: 600;
+	text-transform: uppercase;
+	padding: 5px;
+	background: #F39C12;
+	color: #fff;
+	border-radius: 5px;
+}
+
+.label{
+	background-color: #4A90E2;
+	font-size: 9pt;
+	margin-right: 10px;
+}
+
+.labelTopics{
+	font-size: 11pt;
+	font-weight: normal;
+	margin: 0 5px 5px 0;
+	display: inline-block;
+	padding: .4em .6em;
+}
+
+
+
+
+
+
+

@@ -1,0 +1,99 @@
+<template name="Profilesearch">
+  	{{#HeaderFooterLayout headerSize="160" class="main" size=size4}}
+  		{{>Surface template="profileSearchHeader" target="header" translate="[0,0,100]"}}
+  		{{#Scrollview target="content"}}
+  			{{>profileSearchSurface}}
+  		{{/Scrollview}}
+  	{{/HeaderFooterLayout}}
+</template>
+
+<template name="profileSearchHeader">
+	<navbar class="navbar-fixed" role="navgation">
+		<div class="container-fluid green-bg">
+			<a href="javascript:void(0)">
+				<p class="navbar-text" id="arrowleft">
+					<span class="fa fa-chevron-left" id="backButton"></span>
+				</p>
+			</a>
+			<p class="navbar-text stayup1">Amrul Mokhtar</p>
+		</div>
+	</navbar>
+	{{>profileSearchBar}}
+</template>
+
+<template name="profileSearchBar">
+	<div class="searchContainer2 shiftMiddle">
+		{{#each tabs}}	
+			<span class="fa-stack fa-lg  setMargin optionButtons {{select}}" id="{{button}}">
+				<span class="fa fa-stop fa-stack-2x">
+				</span>
+				<span class="fa-stack-1x fa intheMiddle1"><img src="images/icon_{{id}}.png" width="13" height="13"></span>
+			</span>
+		{{/each}}
+	</div>
+</template>
+
+<template name="profileSearchSurface">
+	{{#Scrollview direction="X"}}
+		{{#RenderController transition=profileMenuTransition1}}
+			{{>profileShowTemplate1}}
+		{{/RenderController}}
+	{{/Scrollview}}
+</template>
+
+<template name="profileSearch1">
+	{{#Scrollview}}
+		{{>profileSearchMosqueCard2}}
+		{{>profileSearchMosqueCard2}}
+		{{>profileSearchMosqueCard2}}
+		{{>profileSearchMosqueCard2}}
+		{{>profileSearchMosqueCard2}}
+		{{>profileSearchMosqueCard2}}
+		{{>profileSearchMosqueCard2}}
+		{{>profileSearchMosqueCard2}}
+		{{>profileSearchMosqueCard2}}
+		{{>profileSearchMosqueCard2}}
+		{{>profileSearchMosqueCard2}}
+	{{/Scrollview}}
+</template>
+
+<template name="profileSearchMosqueCard2">
+	{{#Surface size="[undefined, true]"}}
+		<div class="center cardSurface">
+			<p>
+				<span>Masjid Negeri Shah Alam</span><br>
+            	<span class="smallerText">Jalan 1234, Shah Alam</span>
+			</p>
+		</div>
+		<hr>
+	{{/Surface}}
+</template>
+
+<template name="profileSearch2">
+	{{#Scrollview}}
+		{{>profileSearchImamCard2}}
+		{{>profileSearchImamCard2}}
+		{{>profileSearchImamCard2}}
+		{{>profileSearchImamCard2}}
+		{{>profileSearchImamCard2}}
+		{{>profileSearchImamCard2}}
+		{{>profileSearchImamCard2}}
+		{{>profileSearchImamCard2}}
+		{{>profileSearchImamCard2}}
+		{{>profileSearchImamCard2}}
+		{{>profileSearchImamCard2}}
+		{{>profileSearchImamCard2}}
+	{{/Scrollview}}
+</template>
+
+<template name="profileSearchImamCard2">
+	{{#Surface size="[undefined, true]"}}
+		 <div class="center cardSurface">
+        	<p>
+            	<span class="imamCircle fa fa-circle"></span>
+            	<span>Ustaz Syed Norhisham</span>
+        	</p>
+    	</div>
+		<hr>
+	{{/Surface}}
+</template>

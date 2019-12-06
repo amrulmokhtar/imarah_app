@@ -1,0 +1,8 @@
+{
+  "bootstrap-timepicker":{
+    "bower": "bootstrap-timepicker"
+  },
+  "c3": {
+    "bower": "c3"
+  }
+} 

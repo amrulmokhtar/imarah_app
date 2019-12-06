@@ -1,0 +1,24 @@
+/*****************************************************************************/
+/* Eventtopicview: Style */
+/*****************************************************************************/
+
+.filterBtns {
+	background-color: grey;
+	color: white;
+	padding-left:9px; 
+	padding-right:9px;
+}
+
+.eventTopicsFiltersBar {
+	padding: 9px;
+	background-color: whitesmoke;
+}
+
+.shiftToRight {
+	position: absolute;
+	right: 20px;
+}
+
+.imageSize {
+	height: 25px;
+}

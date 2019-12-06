@@ -1,0 +1,426 @@
+<template name="mosqueevents">
+ {{mosqueId}}
+ {{> eventhtml}}
+</template>
+
+<template name="eventhtml">
+ <div class="content">
+	       
+		 <div role="tabpanel">
+
+			  <!-- Nav tabs -->
+			  <ul class="nav nav-tabs nav-wrap" role="tablist">
+				<li role="presentation"><a href="#event-schedule" aria-controls="event-schedule" role="tab" data-toggle="tab">Event Schedule</a></li>
+				<li role="presentation" class="active" ><a href="#event-report" aria-controls="event-report" role="tab" data-toggle="tab">Event Reports</a></li>
+			  </ul>
+
+			  <!-- Tab panes -->
+			  <div class="tab-content">
+			    
+				<div role="tabpanel" class="tab-pane" id="event-schedule">
+				    
+                       
+						  
+					 <!-- BEGIN GRAPH SECTION--> 
+						  <div class="row-fluid graph-col">
+							  <div class="graph-left event_report">
+								  <h2>58</h2>
+								  <p>Avg. Attendees per Event</p>
+								  <h2>1,200</h2>
+								  <p>Attendees in January</p>
+								  <h2>Kisah - Kisah dalam Al Quran</h2>
+								  <p>Most Popular Event in January</p>
+							  </div>
+						  <div class="graph-right"><img src="/img/graph.jpg" alt="graph"/></div>
+						</div>		   
+                     <!-- END GRAPH SECTION-->    
+                   
+                   <div class="clearfix"></div>
+				   
+				  <!-- BEGIN MID SECTION--> 
+				  <div class="row-fluid mid-col">
+					 <div class="col-md-2">
+						  <div class="col_leftbar"> 
+						 <input type="search" name="search" class="search">
+						    <!-- Nav tabs -->
+							<ul class="nav nav-tabs left_nav event_nav" role="tablist">
+								<li role="presentation"><a href="#upcoming-event" aria-controls="home" role="tab" data-toggle="tab">Upcoming Events</a></li>
+								<li class="active" role="presentation"><a href="#past-event" aria-controls="profile" role="tab" data-toggle="tab">Past Events</a></li>
+							</ul>
+                            <!-- Tab panes -->
+							<div class="fil_sel evt_sel">
+							Filter
+						    <select class="select_bx">
+							  <option>Event Category</option>
+							  <option>Event Category</option>
+							  <option>Event Category</option>
+							</select>
+							</div>
+							<div class="fil_sel evt_sel">
+							Sort by
+						    <select class="select_bx">
+							  <option>Amount of Attendees</option>
+							  <option>Amount of Attendees</option>
+							  <option>Amount of Attendees</option>
+							</select>
+					    	</div>	
+						 </div>	
+					  </div>
+					  <div class="col-md-10">
+			        
+						    <div class="tab-content">
+							  <!-- Upcoming Events Tab Section --> 
+								<div role="tabpanel" class="tab-pane" id="upcoming-event">
+													 
+									      <table class="table tab-wrap">
+										  <tr>
+											<th><div>Date</div></th>
+											<th><div>Time</div></th>
+											<th><div>Event Name</div></th>
+											<th><div>Imam</div></th>
+											<th><div>RSVP</div></th>
+											<th><div>Checked-In</div></th>
+											<th><div>Rating</div></th>
+											<th><div></div></th>
+										 </tr>
+										  
+										  <tr>
+											<td><div>1 Jan</div></td>
+											<td><div>8:00PM</div></td>
+											<td><div>Figh Solat</div></td>
+											<td><div>Ustaz Abdul Fatah</div></td>
+											<td><div>43</div></td>
+											<td><div>30</div></td>
+											<td><div>7.4</div></td>
+											<td><div><a class="edit_btn" href="javascript:void()">Edit</a></div></td>
+										 </tr>
+										 
+										<tr>
+											<td><div>1 Jan</div></td>
+											<td><div>8:00PM</div></td>
+											<td><div>Figh Solat</div></td>
+											<td><div>Ustaz Abdul Fatah</div></td>
+											<td><div>43</div></td>
+											<td><div>30</div></td>
+											<td><div>7.4</div></td>
+											<td><div><a class="edit_btn" href="javascript:void()">Edit</a></div></td>
+										 </tr>
+										 
+										 <tr>
+											<td><div>1 Jan</div></td>
+											<td><div>8:00PM</div></td>
+											<td><div>Figh Solat</div></td>
+											<td><div>Ustaz Abdul Fatah</div></td>
+											<td><div>43</div></td>
+											<td><div>30</div></td>
+											<td><div>7.4</div></td>
+											<td><div><a class="edit_btn" href="javascript:void()">Edit</a></div></td>
+										 </tr>
+										 
+										  <tr>
+											<td><div>1 Jan</div></td>
+											<td><div>8:00PM</div></td>
+											<td><div>Figh Solat</div></td>
+											<td><div>Ustaz Abdul Fatah</div></td>
+											<td><div>43</div></td>
+											<td><div>30</div></td>
+											<td><div>7.4</div></td>
+											<td><div><a class="edit_btn" href="javascript:void()">Edit</a></div></td>
+										 </tr>
+										 
+										 <tr>
+											<td><div>1 Jan</div></td>
+											<td><div>8:00PM</div></td>
+											<td><div>Figh Solat</div></td>
+											<td><div>Ustaz Abdul Fatah</div></td>
+											<td><div>43</div></td>
+											<td><div>30</div></td>
+											<td><div>7.4</div></td>
+											<td><div><a class="edit_btn" href="javascript:void()">Edit</a></div></td>
+										 </tr>
+									   </table>											
+								</div>
+							  <!-- Past Events Tab Section --> 	
+									<div role="tabpanel" class="tab-pane active" id="past-event">
+									    <table class="table tab-wrap">
+										  <tr>
+											<th><div>Date</div></th>
+											<th><div>Time</div></th>
+											<th><div>Event Name</div></th>
+											<th><div>Imam</div></th>
+											<th><div>RSVP</div></th>
+											<th><div>Checked-In</div></th>
+											<th><div>Rating</div></th>
+											<th><div></div></th>
+										 </tr>
+										  
+										  <tr>
+											<td><div>1 Jan</div></td>
+											<td><div>8:00PM</div></td>
+											<td><div>Figh Solat</div></td>
+											<td><div>Ustaz Abdul Fatah</div></td>
+											<td><div>43</div></td>
+											<td><div>30</div></td>
+											<td><div>7.4</div></td>
+											<td><div><a class="edit_btn" href="javascript:void()">Edit</a></div></td>
+										 </tr>
+										 
+										<tr>
+											<td><div>1 Jan</div></td>
+											<td><div>8:00PM</div></td>
+											<td><div>Figh Solat</div></td>
+											<td><div>Ustaz Abdul Fatah</div></td>
+											<td><div>43</div></td>
+											<td><div>30</div></td>
+											<td><div>7.4</div></td>
+											<td><div><a class="edit_btn" href="javascript:void()">Edit</a></div></td>
+										 </tr>
+										 
+										 <tr>
+											<td><div>1 Jan</div></td>
+											<td><div>8:00PM</div></td>
+											<td><div>Figh Solat</div></td>
+											<td><div>Ustaz Abdul Fatah</div></td>
+											<td><div>43</div></td>
+											<td><div>30</div></td>
+											<td><div>7.4</div></td>
+											<td><div><a class="edit_btn" href="javascript:void()">Edit</a></div></td>
+										 </tr>
+										 
+										  <tr>
+											<td><div>1 Jan</div></td>
+											<td><div>8:00PM</div></td>
+											<td><div>Figh Solat</div></td>
+											<td><div>Ustaz Abdul Fatah</div></td>
+											<td><div>43</div></td>
+											<td><div>30</div></td>
+											<td><div>7.4</div></td>
+											<td><div><a class="edit_btn" href="javascript:void()">Edit</a></div></td>
+										 </tr>
+										 
+										 <tr>
+											<td><div>1 Jan</div></td>
+											<td><div>8:00PM</div></td>
+											<td><div>Figh Solat</div></td>
+											<td><div>Ustaz Abdul Fatah</div></td>
+											<td><div>43</div></td>
+											<td><div>30</div></td>
+											<td><div>7.4</div></td>
+											<td><div><a class="edit_btn" href="javascript:void()">Edit</a></div></td>
+										 </tr>
+										 
+									   </table>											
+									</div>
+							</div>
+			  </div>
+					</div>		   
+              <!-- END MID SECTION--> 
+				  
+				</div>
+		
+	      	    
+
+
+				 <div role="tabpanel" class="tab-pane active" id="event-report">
+				   <a class="add_trans" href="javascript:void();" >Create Event</a> 					
+					
+				   <!-- BEGIN GRAPH SECTION--> 
+						  <div class="row-fluid graph-col">
+							  <div class="graph-left event_report">
+								  <h2>58</h2>
+								  <p>Avg. Attendees per Event</p>
+								  <h2>1,200</h2>
+								  <p>Attendees in January</p>
+								  <h2>Kisah - Kisah dalam Al Quran</h2>
+								  <p>Most Popular Event in January</p>
+							  </div>
+						  <div class="graph-right"><img src="/img/graph.jpg" alt="graph"/></div>
+						</div>		   
+                     <!-- END GRAPH SECTION-->     
+                    
+					 <div class="clearfix"></div> 
+
+            <!-- BEGIN MID SECTION--> 
+		  <div class="row-fluid mid-col">
+             <div class="col-md-2">
+			       <div class="col_leftbar"> 
+						 <input type="search" name="search" class="search">
+						    <!-- Nav tabs -->
+							<ul class="nav nav-tabs left_nav event_nav" role="tablist">
+								<li role="presentation"><a href="#upcoming-event" aria-controls="home" role="tab" data-toggle="tab">Upcoming Events</a></li>
+								<li class="active" role="presentation"><a href="#past-event" aria-controls="profile" role="tab" data-toggle="tab">Past Events</a></li>
+							</ul>
+                            <!-- Tab panes -->
+							<div class="fil_sel evt_sel">
+							Filter
+						    <select class="select_bx">
+							  <option>Event Category</option>
+							  <option>Event Category</option>
+							  <option>Event Category</option>
+							</select>
+							</div>
+							<div class="fil_sel evt_sel">
+							Sort by
+						    <select class="select_bx">
+							  <option>Amount of Attendees</option>
+							  <option>Amount of Attendees</option>
+							  <option>Amount of Attendees</option>
+							</select>
+					    	</div>	
+						 </div>	
+				  </div>
+			  <div class="col-md-10">
+			        
+						    <div class="tab-content">
+							  <!-- Upcoming Events Tab Section --> 
+								<div role="tabpanel" class="tab-pane" id="upcoming-event">
+													 
+									      <table class="table tab-wrap">
+										  <tr>
+											<th><div>Date</div></th>
+											<th><div>Time</div></th>
+											<th><div>Event Name</div></th>
+											<th><div>Imam</div></th>
+											<th><div>RSVP</div></th>
+											<th><div>Checked-In</div></th>
+											<th><div>Rating</div></th>
+											<th><div></div></th>
+										 </tr>
+										  
+										  <tr>
+											<td><div>1 Jan</div></td>
+											<td><div>8:00PM</div></td>
+											<td><div>Figh Solat</div></td>
+											<td><div>Ustaz Abdul Fatah</div></td>
+											<td><div>43</div></td>
+											<td><div>30</div></td>
+											<td><div>7.4</div></td>
+											<td><div><a class="edit_btn" href="javascript:void()">Edit</a></div></td>
+										 </tr>
+										 
+										<tr>
+											<td><div>1 Jan</div></td>
+											<td><div>8:00PM</div></td>
+											<td><div>Figh Solat</div></td>
+											<td><div>Ustaz Abdul Fatah</div></td>
+											<td><div>43</div></td>
+											<td><div>30</div></td>
+											<td><div>7.4</div></td>
+											<td><div><a class="edit_btn" href="javascript:void()">Edit</a></div></td>
+										 </tr>
+										 
+										 <tr>
+											<td><div>1 Jan</div></td>
+											<td><div>8:00PM</div></td>
+											<td><div>Figh Solat</div></td>
+											<td><div>Ustaz Abdul Fatah</div></td>
+											<td><div>43</div></td>
+											<td><div>30</div></td>
+											<td><div>7.4</div></td>
+											<td><div><a class="edit_btn" href="javascript:void()">Edit</a></div></td>
+										 </tr>
+										 
+										  <tr>
+											<td><div>1 Jan</div></td>
+											<td><div>8:00PM</div></td>
+											<td><div>Figh Solat</div></td>
+											<td><div>Ustaz Abdul Fatah</div></td>
+											<td><div>43</div></td>
+											<td><div>30</div></td>
+											<td><div>7.4</div></td>
+											<td><div><a class="edit_btn" href="javascript:void()">Edit</a></div></td>
+										 </tr>
+										 
+										 <tr>
+											<td><div>1 Jan</div></td>
+											<td><div>8:00PM</div></td>
+											<td><div>Figh Solat</div></td>
+											<td><div>Ustaz Abdul Fatah</div></td>
+											<td><div>43</div></td>
+											<td><div>30</div></td>
+											<td><div>7.4</div></td>
+											<td><div><a class="edit_btn" href="javascript:void()">Edit</a></div></td>
+										 </tr>
+									   </table>											
+								</div>
+							  <!-- Past Events Tab Section --> 	
+									<div role="tabpanel" class="tab-pane active" id="past-event">
+									    <table class="table tab-wrap">
+										  <tr>
+											<th><div>Date</div></th>
+											<th><div>Time</div></th>
+											<th><div>Event Name</div></th>
+											<th><div>Imam</div></th>
+											<th><div>RSVP</div></th>
+											<th><div>Checked-In</div></th>
+											<th><div>Rating</div></th>
+											<th><div></div></th>
+										 </tr>
+										  
+										  <tr>
+											<td><div>1 Jan</div></td>
+											<td><div>8:00PM</div></td>
+											<td><div>Figh Solat</div></td>
+											<td><div>Ustaz Abdul Fatah</div></td>
+											<td><div>43</div></td>
+											<td><div>30</div></td>
+											<td><div>7.4</div></td>
+											<td><div><a class="edit_btn" href="javascript:void()">Edit</a></div></td>
+										 </tr>
+										 
+										<tr>
+											<td><div>1 Jan</div></td>
+											<td><div>8:00PM</div></td>
+											<td><div>Figh Solat</div></td>
+											<td><div>Ustaz Abdul Fatah</div></td>
+											<td><div>43</div></td>
+											<td><div>30</div></td>
+											<td><div>7.4</div></td>
+											<td><div><a class="edit_btn" href="javascript:void()">Edit</a></div></td>
+										 </tr>
+										 
+										 <tr>
+											<td><div>1 Jan</div></td>
+											<td><div>8:00PM</div></td>
+											<td><div>Figh Solat</div></td>
+											<td><div>Ustaz Abdul Fatah</div></td>
+											<td><div>43</div></td>
+											<td><div>30</div></td>
+											<td><div>7.4</div></td>
+											<td><div><a class="edit_btn" href="javascript:void()">Edit</a></div></td>
+										 </tr>
+										 
+										  <tr>
+											<td><div>1 Jan</div></td>
+											<td><div>8:00PM</div></td>
+											<td><div>Figh Solat</div></td>
+											<td><div>Ustaz Abdul Fatah</div></td>
+											<td><div>43</div></td>
+											<td><div>30</div></td>
+											<td><div>7.4</div></td>
+											<td><div><a class="edit_btn" href="javascript:void()">Edit</a></div></td>
+										 </tr>
+										 
+										 <tr>
+											<td><div>1 Jan</div></td>
+											<td><div>8:00PM</div></td>
+											<td><div>Figh Solat</div></td>
+											<td><div>Ustaz Abdul Fatah</div></td>
+											<td><div>43</div></td>
+											<td><div>30</div></td>
+											<td><div>7.4</div></td>
+											<td><div><a class="edit_btn" href="javascript:void()">Edit</a></div></td>
+										 </tr>
+										 
+									   </table>											
+									</div>
+							</div>
+			  </div>
+			</div>		   
+            <!-- END MID SECTION--> 
+				
+			</div>
+	  </div>
+	 </div>
+   </div>
+</template>

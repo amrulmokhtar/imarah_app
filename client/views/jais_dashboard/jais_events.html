@@ -1,0 +1,221 @@
+<template name="JaisEvents">
+
+	<div class="page-container row-fluid">
+        <!-- BEGIN SIDEBAR -->
+        <div class="page-sidebar" id="main-menu">
+
+            <!-- BEGIN SIDEBAR MENU -->
+     	    {{> jais_menu}}
+
+        </div>
+    </div>
+    <div  class="page-content">
+        <div class="" id="content">
+            <h2 id="page_title">
+                Events
+            </h2>
+
+            {{> jais_dashboard_content_events}}
+        </div>
+    </div>
+
+</template>
+
+
+<template name="jais_dashboard_content_events">
+
+    <div class="content">
+        
+        <div role="tabpanel">
+
+            <div class="content-top">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs nav-wrap" role="tablist">
+                <li role="presentation" class="active"><a href="#event-schedule" aria-controls="event-schedule" role="tab" data-toggle="tab">Event Schedule</a></li>
+                <li id="eventreport" role="presentation"><a href="#event-report"   aria-controls="event-report" role="tab" data-toggle="tab">Event Reports</a></li>
+            </ul>
+
+
+
+            <!-- <a class="add_trans" href="{{pathFor 'mosque_dashboard.add_events'}}">Select</a> -->
+            <select id='mosque_select' class="select-large">
+                <option>Select a Mosque</option>
+                {{#each mosques}}
+                <option value={{_id}}>{{name}}</option>
+                {{/each}}
+            </select>
+
+            <ul class="toggleSwitch" role="tablist">
+                <li role="presentation" class="active"><a href="#jais-event-schedule-calendar" aria-controls="jais-event-schedule-calendar" role="tab" data-toggle="tab"><img src="../img/icon_calendarview.png" /></a></li>
+                <li id="eventreport" role="presentation"><a href="#jais-event-schedule-listview"  aria-controls="jais-event-schedule-listview" role="tab" data-toggle="tab"><img src="../img/icon_listview.png" /></a></li>
+            </ul>
+
+            <div class="clear"></div>
+            </div>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+
+                <div role="tabpanel" class="tab-pane active" id="event-schedule">
+
+                    <div class="tab-content">
+                        
+                        <div role="tabpanel" class="tab-pane active" id="jais-event-schedule-calendar">
+                            <!-- BEGIN MID SECTION-->
+                            <div class="row-fluid mid-col">
+                               <!--<div id='calendar'></div> -->
+                                {{> fullcalendar caloptions events}}
+                            </div>
+                            <!-- END MID SECTION-->
+                        </div>
+
+                        <div role="tabpanel" class="tab-pane" id="jais-event-schedule-listview">
+
+
+                           <div class="row-fluid mid-col">
+
+                                <h4 class="top-text pull-left">{{t_mosque.name}}</h4>
+                                <h4 class="top-text pull-right">Events</h4>
+                                <div class="clear"></div>
+
+                                <h2 class="month"><span>{{islamicDate today}} /</span> {{formatDate today 'MMMM YYYY'}}</h2>
+
+
+                                <table class="eventslist">
+                                    <tr>
+                                        <th colspan="2" style="width:20%">Date</th>
+                                        <th>Day</th>
+                                        <th>Time</th>
+                                        <th style="width:25%">Event</th>
+                                        <th style="width:25%">Imam</th>
+                                    </tr>
+                                    {{#each eventsForMonth}}
+                                    {{> eventlistviewROW this}}
+                                    {{/each}}
+                                </table>
+
+
+                                <div class="print-footer">
+                                    Download Imarah for iOS and Android at http://imarah.my
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div role="tabpanel" class="tab-pane " id="event-report">
+
+
+                    <!-- BEGIN GRAPH SECTION-->
+                    <div class="row-fluid graph-col">
+                        <div class="graph-left event_report">
+{{#with stats_for_month mosque}}
+                            <h2>{{roundNumber avg_rating}}</h2>
+                            <p>Avg. Rating per Event</p>
+                            <h2>{{roundNumber avg_check_in}}</h2>
+                            <p>Avg. Attendees per Event</p>
+                            <h2>{{total_events}}</h2>
+                            <p>Total events in {{formatDate today 'MMMM'}}</p>
+{{/with}}
+                        </div>
+                        <div class="graph-right" style="background: #D8D8D8; padding: 10px;">{{>linechart id='eventchart' data_key=chartdata}}<!--<img src="/img/graph_event.png" alt="graph"/>--></div>
+                    </div>
+                    <!-- END GRAPH SECTION-->
+
+                    <div class="clearfix"></div>
+
+                    <!-- BEGIN MID SECTION-->
+                    <div class="row-fluid mid-col">
+                        <div class="col-md-2">
+                            <div class="col_leftbar">
+                                <input type="search" name="search" class="search">
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs left_nav event_nav" id="" role="tablist">
+                                    <li class="active"  role="presentation"><a href="#upcoming-event" aria-controls="home" role="tab" data-toggle="tab">Upcoming Events</a></li>
+                                    <li id="postevent" role="presentation"><a href="#past-event" aria-controls="profile" role="tab" data-toggle="tab">Past Events</a></li>
+                                </ul>
+                                <!-- Tab panes -->
+                                <div class="fil_sel evt_sel">
+                                    Sort by
+                                    <select class="select_bx">
+                                        <option>Amount of Attendees</option>
+                                        <option>Amount of RSVP</option>
+                                        <option>Event Rating</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-10">
+
+                            <div class="tab-content">
+                                <!-- Upcoming Events Tab Section -->
+                                <div role="tabpanel" class="tab-pane" id="past-event">
+
+                                    <table class="table tab-wrap">
+                                        <tr>
+                                            <th><div>Date</div></th>
+                                            <th><div>Time</div></th>
+                                            <th><div>Event Name</div></th>
+                                            <th><div>Imam</div></th>
+                                            <th><div>RSVP</div></th>
+                                            <th><div>Checked-In</div></th>
+                                            <th><div>Rating</div></th>
+                                            <th><div></div></th>
+                                        </tr>
+                                        {{#each pastEvents }}
+                                        {{>jaiseventlistROW this}}
+                                        {{/each}}
+
+
+                                    </table>
+                                </div>
+                                <div role="tabpanel" class="tab-pane active" id="upcoming-event">
+
+                                    <table class="table tab-wrap">
+                                        <tr>
+                                            <th><div>Date</div></th>
+                                            <th><div>Time</div></th>
+                                            <th><div>Event Name</div></th>
+                                            <th><div>Imam</div></th>
+                                            <th><div>RSVP</div></th>
+                                            <th><div>Checked-In</div></th>
+                                            <th><div>Rating</div></th>
+                                            <th><div></div></th>
+                                        </tr>
+                                        {{#each upcomingEvents }}
+                                        {{>jaiseventlistROW this}}
+                                        {{/each}}
+
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END MID SECTION-->
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="jaiseventlistROW">
+    <tr>
+        <td><div>{{formatDate date 'DD MMM'}}</div></td>
+        <td><div>{{formatDate time 'HH:mm A'}}</div></td>
+        <td><div>{{name}}</div></td>
+        <td><div>{{imam_names.[0]}}</div></td>
+        <td><div>{{totalRSVP}}</div></td>
+        <td><div>{{totalCheckins}}</div></td>
+        <td><div>{{roundNumber rating}}</div></td>
+        <td><div></div></td>
+        <!-- <td><div><a class="edit_btn" id="delete">Delete</a></div></td> -->
+        <!--<td><div><a class="edit_btn" href="javascript:void()" id="edit">Edit</a></div></td> -->
+    </tr>
+</template>

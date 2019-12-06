@@ -1,0 +1,41 @@
+
+.formInput {
+	width: 100%;
+	border-top: 0px;
+	border-bottom: 1px solid #999999;
+	border-left: 0px;
+	border-radius: 0px;
+	border-right: 0px;
+	font-family: 'Open Sans';
+	font-weight: lighter;
+	height: 40px;
+}
+
+h4.formInputLabel{
+	font-size: 11pt;
+	font-weight: bold;
+	color: #333;
+	text-transform: uppercase;
+}
+
+.halfInput{
+	width: 45%;
+}
+
+.formInputTextarea{
+	height: 80px;
+	padding-top: 40px;
+}
+
+.formInputTextarea::-webkit-input-placeholder{
+	color: #aaa;
+}
+
+.formSurface{
+	padding: 20px 0;
+}
+
+.formSurface p{
+	font-style: italic;
+	margin: 0;
+}

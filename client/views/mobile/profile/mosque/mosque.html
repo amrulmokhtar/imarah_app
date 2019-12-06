@@ -1,0 +1,180 @@
+<template name="Mosque">
+    {{#HeaderFooterLayout headerSize="370" class="main" size=size4}}
+    {{#SequentialLayout target="header"}}
+        {{>Surface template="cardHeader" data=mosque modifier="StateModifier" translate="[0,0,100]" size=size1}}
+        {{>Surface template="mosqueProfileContainer" data=mosque modifier="StateModifier" translate="[0,-40,0]" size=size2}}
+    {{/SequentialLayout}}
+
+    {{#Modifier target="content" modifier="StateModifier" translate="[0,-65,0]"}}
+        {{>mosqueProfileTabSlider data=mosque}}
+        <!-- {{>mosqueCardHolder}} -->
+    {{/Modifier}}
+    {{/HeaderFooterLayout}}
+</template>
+
+<template name="cardHeader">
+    <navbar class="navbar-fixed" role="navigation">
+        <div class="container-fluid transparent-bg">
+            <p class="navbar-text" id="backButton1">
+                <span class="fa fa-chevron-left"></span>
+            </p>
+            <!-- Action Buttons -->
+            <ul class="actionbtns">
+                <li><a href="{{pathFor 'donate' mosqueId=_id}}"><img src="../img/icon_finance.png" /></a></li>
+                <li><a href="/feedback"><img src="../images/icon_feedback.png" /></a></li>
+                <li><a onclick='window.open("http://maps.google.com/?q={{location.geometry.coordinates.[1]}},{{location.geometry.coordinates.[0]}}","_system")'><img src="../images/icon_map.png" /></a></li>
+            </ul>
+        </div>
+    </navbar>
+</template>
+
+<template name="mosqueProfileContainer">
+
+    <!-- Profile Header -->
+    <div class="viewsTop1" style="background-image: url('{{picture.[0]}}')"> <!--url('../images/dummymosqueimage.jpg');"> -->
+        <div class="overlaygradient"></div>
+        <div class="profileName">
+            <h3>{{name}}</h3>
+            <p>{{city}}, {{state}}</p>
+        </div>
+        {{#if notJoined _id}}
+        <a id="joinmosque" class="profileActionBtn">
+            <img src="../images/icon_join.png" alt="Join Mosque"/>
+            <span>Join</span>
+        </a>
+        {{else}}
+        <a id="leavemosque" class="profileActionBtn">
+            <img src="../images/icon_joined.png" alt="Joined Mosque"/>
+            <span>Joined</span>
+        </a>
+        {{/if}}
+    </div>
+
+    <!-- Profile Tabs -->
+    <ul class="profiletabs">
+        {{#each tabs}}
+        <li class="{{status}}" id="{{id}}"><a>
+            <img src="../images/icon_{{imgId}}.png">
+            <span>{{text}}</span>
+        </a></li>
+        {{/each}}
+        <!-- <li><a href="#">
+            <img src="../images/icon_events.png">
+            <span>Events</span>
+        </a></li>
+        <li><a href="#">
+            <img src="../img/icon_amenities.png">
+            <span>Amenities</span>
+        </a></li> -->
+    </ul>
+</template>
+
+<!-- <div class="shiftMiddle">
+        {{#each tabs}} 
+            <span class="fa-lg fa-stack tabBtns {{status}}" id="{{id}}">
+                <span class="fa fa-stop fa-stack-2x">
+                </span>
+                <span class="fa-stack-1x"><img src="../images/icon_{{imgId}}.png" width="17" height="17"></span>
+            </span>
+        {{/each}}
+    </div> -->
+
+<template name="mosqueProfileTabSlider">
+        {{#RenderController transition=mosqueProfileTransition}}
+            {{>showMosqueSearchTemplate data=data}}
+        {{/RenderController}}
+</template>
+
+<template name="mosqueProfileSurface1">
+    {{#Scrollview}}
+        {{>mosqueProfileCards header="Address" data=data imgId="map" contentTemplate="addressTemplate"}}
+    {{#if data.phone_number}}
+        {{>mosqueProfileCards header="Phone" data=data imgId="" contentTemplate="contactTemplate1"}}
+    {{/if}}
+    {{#if hasLinks data}}
+        {{>mosqueProfileCards header="Links" data=data imgId="" contentTemplate="linksTemplate"}}
+    {{/if}}
+        {{>mosqueProfileCards header="Donate" data=data imgId="" contentTemplate="donateTemplate"}}
+    {{/Scrollview}}
+</template>
+
+<template name="mosqueProfileSurface2">
+    {{#Scrollview}}
+        {{#if events}}
+            {{#famousEach events}}
+                {{>eventsCard contentHeader=name content1=comb_date content2=location_format id="mosque" _id=_id}}
+            {{/famousEach}}
+        {{else}}
+            {{#Surface size="[undefined, true]" translate="[0,0,0]"}}
+              {{>noeventsmosqueEmptyData}}
+            {{/Surface}}
+        {{/if}}
+    {{/Scrollview}}
+</template>
+
+<template name="mosqueProfileSurface3">
+    {{#Scrollview}}
+        {{#Surface size="[undefined, true]" translate="[0,0,0]"}}
+            {{>noamenitiesmosqueEmptyData}}
+        {{/Surface}}
+        {{>amenityCard}}
+    {{/Scrollview}}
+</template>
+
+
+
+<template name="donateModal">
+    <div class="anti-modal-box modalSize">
+        <div class="anti-modal-header">
+            <div class="anti-modal-title"><b>Enter Donation Amount</b></div>
+            <div class="anti-modal-closer">&times;</div>
+        </div>
+        <div class="anti-modal-body">
+            <input id="donationamount" type="number" class="form-control" placeholder="Enter Amount..."><br>
+            <span id="confirm" class="btn btn-primary">Confirm</span>
+        </div>
+    </div>
+</template>
+
+<template name="mosqueCardHolder">
+    {{#Scrollview}}
+    {{>profileCards imgId="../images/icon_mosque.png" id="event" header="Organized an event" contentTemplate="mosqueCard1"}}
+    {{>profileCards imgId="../images/icon_mosque.png" id="event" header="Posted in Mosque Community" contentTemplate="mosqueCard1"}}
+    {{>profileCards imgId="../images/icon_mosque.png" id="event" header="Created an event" contentTemplate="mosqueCard1"}}
+    {{/Scrollview}}
+</template>
+
+<template name="amenityCard">
+    {{#Surface size="[undefined, true]"}}
+        {{#each amenities}}
+        <div class="listcontainer">
+                <div class="" id="center2">         
+                    <p>
+                    <a href="#" class="needsclick">
+                        <h4 class="cardTextHead">{{name}}</h4>
+                        <span class="smallerText4r">
+                            <b>RM {{fee}}</b>
+                            <br>
+                            {{description}}
+                        </span>
+                    </a>
+                    </p>
+                </div>
+            <div class="actionListContainer">
+                <a href="{{pathFor 'bookamenity' amenityId=_id}}">
+                    <span class="">
+                        <!-- <i class="fa fa-stop rsvpBox fa-stack-2x"></i>Inherits design from rsvpBox of newsfeed card -->
+                        <i class="iconaction"><img src="../images/icon_rsvp_blue.png"></i>
+                    </span><br>
+                    <span class="blueText">BOOK</span>
+                </a>
+            </div>
+        </div>
+        {{/each}}
+    {{/Surface}}
+</template>
+
+
+<template name="mosqueCard1">
+    <div class="mosqueCard1"></div>
+</template>

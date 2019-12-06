@@ -1,0 +1,410 @@
+<template name="mosqueamenities">
+
+    {{> amenitieshtml}}
+</template>
+
+<template name="requestModal">
+    {{#with request}}
+    <div class="modal modal_pop mod_feedback fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="border"></div>
+                    <!-- Feedback popup panes -->
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="pop_left">
+                                <label>Request From</label>
+                                <p>{{customer}}</p>
+                                <label class="msg_field"> Amenity</label>
+                                <p>{{amenity_name}}</p>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label class="msg_field"> Date</label>
+                                        <p>{{formatDate date 'dd MMM yyyy'}}</p>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label class="msg_field"> Time</label>
+                                        <p>{{formatDate time 'hh:mm A'}}</p>
+                                    </div>
+                                </div>
+                                <label class="msg_field"> Reason</label>
+                                <p>{{reason}}</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+
+                            <div role="tabpanel">
+                                <!-- Nav tabs -->
+                                <ul role="tablist2" class="nav nav-tabs">
+                                    <li class="{{active 'approved'}}" role="presentation"><a data-toggle="tab" role="tab" aria-controls="home" href="#pop-income">Approve</a></li>
+                                    <li class="{{active 'rejected'}}" role="presentation"><a data-toggle="tab" role="tab" aria-controls="profile" href="#pop-profile">Disapprove</a></li>
+                                </ul>
+
+                                <!-- Tab panes -->
+                                <div class="tab-content tab_app">
+                                    <!-- Popup Income Tab panes -->
+                                    <div id="pop-income" class="tab-pane {{active 'approved'}}" role="tabpanel">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Notes by Mosque</label>
+                                            <textarea name="reply_notes" class="form-control textarea" placeholder="Type your Message here..."></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Further action to be taken by user</label>
+                                            <textarea name="reply_further_action" class="form-control textarea" placeholder="Type your Message here..."></textarea>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-cancel" data-dismiss="modal">Cancel</button>
+                                            <button id="approve_button" type="button" class="btn btn-add" data-dismiss="modal">Approve</button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Popup Profile Tab panes -->
+                                    <div id="pop-profile" class="tab-pane {{active 'rejected'}}" role="tabpanel">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Reason for disapproval</label>
+                                            <textarea name="reply_notes" class="form-control textarea" placeholder="Inclue reason fo disapproval such as missing informatin, unavailablity of amenity, etc. "></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Further action to be taken by user</label>
+                                            <textarea name="reply_further_action" class="form-control textarea" placeholder="Include action the user can take to rectify the issue and get approval such as providing more informatin, choosing another date, etc."></textarea>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-cancel" data-dismiss="modal">Cancel</button>
+                                            <button id="disapprove_button" type="button" class="btn btn-add btn-appr" data-dismiss="modal">Disapprove</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{{/with}}
+</template>
+
+<template name="amenityBookingRow">
+    <tr>
+        <td><div>{{dateformat date}}</div></td>
+        <td><div>{{timeformat time}}</div></td>
+        <td><div>{{customer}}</div></td>
+        <td><div>{{amenity_name}}</div></td>
+        <td><div>{{reason}}</div></td>
+        <td>
+            <div>
+                <a id="rejectBooking" class="edit_btn btn_icon" data-toggle="modal"
+                   data-target="#myModal">
+                    <img src="../img/icon_disapprove.png" alt="Disapprove"/>
+                </a>
+                <a id="approveBooking" class="edit_btn btn_icon btn_success" data-toggle="modal"
+                   data-target="#myModal">
+                    <img src="../img/icon_approve.png" alt="Approve"/>
+                </a>
+            </div>
+        </td>
+    </tr>
+</template>
+
+<template name="bookingTab">
+    <div role="tabpanel" class="tab-pane {{active}}" id="{{id}}">
+
+        
+        {{#if bookings}}
+        <table class="table tab-wrap tab_feed">
+            <tr>
+                <th><div>Date</div></th>
+                <th><div>Time</div></th>
+                <th><div>Name</div></th>
+                <th><div>Amenity</div></th>
+                <th><div>Reason of use</div></th>
+                <th><div></div></th>
+            </tr>
+            {{#each bookings}}
+                {{> amenityBookingRow this}}
+            {{/each}}
+        </table>
+        {{else}}
+         <!-- emptydata -->
+        <div class="emptydata">
+            <img src="../img/icon_amenities_green.png" />
+            <p>You are able to list mosque amenities on your Imarah profile. Users are also able to book these amenities through the app.</p>
+            <a class="btn btn-primary" data-target="#addAmenityModal" data-toggle="modal">Add an amenity</a>
+        </div>
+        {{/if}}
+    </div>
+</template>
+
+
+<template name="bookingInbox">
+    <!-- Inbox Tab Section -->
+    <div role="tabpanel" class="tab-pane active" id="new-request">
+
+        <table class="table tab-wrap tab_feed">
+            <tr>
+                <th><div>Date</div></th>
+                <th><div>Time</div></th>
+                <th><div>Name</div></th>
+                <th><div>Amenity</div></th>
+                <th><div>Reason of use</div></th>
+                <th><div></div></th>
+            </tr>
+            {{>amenityBookingRow date='2014-12-27' time='2013-02-08T11' customer='Hanif Azlan' amenityname='Dewan Serbaguna' requestmessage='I want to book for Wedding'}}
+            {{>amenityBookingRow date='2014-12-31' time='2013-02-08T12' customer='Sammad Abdullah' amenityname='Sewa Dewan' requestmessage='I want to book for Monday'}}
+            {{#each unreadbookings}}
+            {{> amenityBookingRow this}}
+            {{/each}}
+        </table>
+    </div>
+</template>
+
+<template name="bookingApproved">
+    <div role="tabpanel" class="tab-pane" id="approved">
+        <table class="table tab-wrap tab_feed">
+            <tr>
+                <th><div>Date</div></th>
+                <th><div>Time</div></th>
+                <th><div>Name</div></th>
+                <th><div>Amenity</div></th>
+                <th><div>Reason of use</div></th>
+                <th><div></div></th>
+            </tr>
+            {{>amenityBookingRow date='2014-12-27' time='2013-02-08T11' customer='Hanif Azlan' amenityname='Dewan Serbaguna' requestmessage='I want to book for Wedding'}}
+            {{#each approvedbookings}}
+            {{> amenityBookingRow this}}
+            {{/each}}
+        </table>
+    </div>
+</template>
+
+<template name="bookingDisapproved">
+    <div role="tabpanel" class="tab-pane" id="disapproved">
+        <table class="table tab-wrap tab_feed">
+            <tr>
+                <th><div>Date</div></th>
+                <th><div>Time</div></th>
+                <th><div>Name</div></th>
+                <th><div>Amenity</div></th>
+                <th><div>Reason of use</div></th>
+                <th><div></div></th>
+            </tr>
+            {{>amenityBookingRow date='2014-12-24' time='2013-02-08T09' customer='Ahmad Azam' amenityname='Sewa Dewan' requestmessage='I want to book for Wednesday'}}
+            {{#each disapprovedbookings}}
+            {{> amenityBookingRow this}}
+            {{/each}}
+        </table>
+    </div>
+</template>
+
+<template name="manageBookings">
+    <div role="tabpanel" class="tab-pane" id="manage-booking">
+
+
+        <!-- BEGIN MID SECTION-->
+        <div class="row-fluid mid-col">
+            <div class="col-md-2">
+                <div class="col_leftbar">
+                    <input type="search" name="search" class="search">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs left_nav" role="tablist">
+                        <li class="active" role="presentation">
+                            <a href="#new-request" aria-controls="new-request"
+                               role="tab" data-toggle="tab">New Requests</a>
+                        </li>
+                        <li role="presentation"><a href="#approved" aria-controls="approved" role="tab" data-toggle="tab">Approved</a></li>
+                        <li role="presentation"><a href="#disapproved" aria-controls="disapproved" role="tab" data-toggle="tab">Disapproved</a></li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="fil_sel">
+                        Amenities
+                        <select class="select_bx">
+                            <option>Select Amenity</option>
+                            {{#each amenities}}
+                            <option>{{name}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class="fil_sel">
+                        Filter by:
+                        <select class="select_bx">
+                            <option>This week</option>
+                            <option>Next week</option>
+                            <option>This Month</option>
+                            <option>All Time</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-10">
+
+                <div class="tab-content">
+
+                    {{>bookingTab active='active' id='new-request' bookings=new_bookings}}
+                    {{>bookingTab id='approved' bookings=approved_bookings}}
+                    {{>bookingTab id='disapproved' bookings=disapproved_bookings}}
+
+                </div>
+
+            </div>
+        </div>
+        <!-- END MID SECTION-->
+
+    </div>
+
+</template>
+
+<template name="amenityModal">
+    <div class="modal modal_pop mod_feedback fade" id="addAmenityModal" tabindex="-1" role="dialog" aria-labelledby="amenityModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <!-- TODO: Wire up the form -->
+                    <form id="amenity_form" role="form">
+                    <div style="padding: 20px 10px">
+                        <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="form-group">
+                                <label for="name">Amenity / Service Name</label>
+                                <input name="name" id="name" type="text" value="{{am.name}}" placeholder="Amenity / Service Name" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12">
+                            <div class="form-group">
+                                <label class="check" style="width:300px; font-size:11pt"><input {{checked am.bookable}} type="checkbox" name="bookable"/>This Amenity / Service is bookable</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group">
+                                <label for="fee">Booking Fee (RM)</label>
+                                <input name="fee" id="fee" type="text" value="{{am.fee}}" placeholder="Booking Fee" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12">
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea name="description" id="description" value="{{am.description}}" type="text" placeholder="Describe your Amenity / Service . . ." class="form-control" style="min-height:100px"></textarea>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button data-dismiss="modal" class="btn btn-cancel" type="button">Cancel</button>
+                    <button class="btn btn-add" type="button" id="add">{{#if am}}Edit{{else}}Add{{/if}} Amenity</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="autoform_amenity_input">
+    <!-- {{#autoForm collection="ServiceAmenities"
+    id="insertAmenitiesForm" type="insert"}}
+                    <fieldset>
+                        <legend>Add a Booking</legend>
+                        {{> afQuickField name='name'}}
+        {{> afQuickField name='bookable'}}
+        {{> afQuickField name='fee'}}
+        {{> afQuickField name='description' rows="6"}}
+                    </fieldset>
+                    <button type="submit" class="btn btn-primary">Insert</button>
+                    {{/autoForm}} -->
+</template>
+
+<template name="amenitieshtml">
+    <div class="content">
+        <!-- Modal -->
+        {{> requestModal}}
+        {{> amenityModal}}
+
+        <div role="tabpanel">
+
+            <div class="content-top">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs nav-wrap" role="tablist">
+                    <li role="presentation"><a href="#manage-booking" aria-controls="mosque-feedback" role="tab" data-toggle="tab">Manage Bookings</a></li>
+                    <li role="presentation" class="active" ><a href="#manage-amenities" aria-controls="manage-amenities" role="tab" data-toggle="tab">Manage Amenities</a></li>
+                </ul>
+                <a class="add_amenity" data-toggle="modal" onclick="Session.set('editingModal','')" data-target="#addAmenityModal">Add Amenity</a>
+                <div class="clear"></div>
+            </div>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                {{>manageBookings}}
+                {{>manageAmenities}}
+            </div>
+        </div>
+    </div>
+</template>
+
+
+<template name="manageAmenities">
+    <div role="tabpanel" class="tab-pane active" id="manage-amenities">
+        <!-- BEGIN MID SECTION-->
+        <div class="row-fluid mid-col">
+            <div class="col-md-2">
+                <div class="col_leftbar">
+                    <input type="search" name="search" class="search">
+
+                    <div class="fil_sel">
+                        Filter by:
+                        <select class="select_bx">
+                            <option>Bookable Amenities</option>
+                            <option>Bookable Amenities</option>
+                            <option>Bookable Amenities</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-10">
+                <div class="tab-content">
+
+                    <!-- emptydata -->
+                    {{#if amenities}}
+                    <!-- Inbox Tab Section -->
+                    <table class="table tab-wrap tab_feed">
+                        <tr>
+                            <th><div>Amenity Name</div></th>
+                            <th><div>Bookable</div></th>
+                            <th><div>Payment</div></th>
+                            <th><div>Description</div></th>
+                            <th><div></div></th>
+                        </tr>
+                        {{#each amenities}}
+                        {{>amenityRow this}}
+                        {{/each}}
+                    </table>
+                    {{else}}
+                    <div class="emptydata">
+                        <img src="../img/icon_amenities_green.png" />
+                        <p>You are able to list mosque amenities on your Imarah profile. Users are also able to book these amenities through the app.</p>
+                        <a class="btn btn-primary" data-target="#addAmenityModal" data-toggle="modal">Add an amenity</a>
+                    </div>
+                    
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+        <!-- END MID SECTION-->
+    </div>
+</template>
+
+
+<template name="amenityRow">
+    <tr>
+        <td><div>{{name}}</div></td>
+        <td><div>{{bookable}}</div></td>
+        <td><div>RM {{fee}}</div></td>
+        <td><div>{{description}}</div></td>
+        <td><div><a id='deleteAmenityBtn' class="edit_btn" onclick="ServiceAmenities.remove({_id:'{{_id}}'})">Delete</a>
+        <a id='editAmenityBtn' class="edit_btn" data-toggle="modal" data-target="#addAmenityModal" onclick="Session.set('editingModal','{{_id}}')">Edit</a></div></td>
+    </tr>
+</template>

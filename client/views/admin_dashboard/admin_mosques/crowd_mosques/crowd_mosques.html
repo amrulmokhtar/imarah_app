@@ -1,0 +1,197 @@
+<template name="AdminDashboardAdminMosquesCrowdMosques">
+    <div class="container" id="content">
+        <h2 id="page_title">
+            Crowd Sourced Mosque Suggestions
+        </h2>
+        {{> AdminDashboardAdminMosquesCrowdMosquesCrowdMosqueView}}
+    </div>
+</template>
+
+<template name="AdminDashboardAdminMosquesCrowdMosquesCrowdMosqueView">
+    <div id="dataview" class="">
+        <h2 id="component-title">
+            Crowd Mosques
+        </h2>
+        <form id="dataview-controls" class="form-inline">
+            <div id="dataview-controls-search">
+                {{#if isNotEmpty}}
+                <div id="dataview-controls-search-group" class="form-group">
+                    <label class="sr-only" for="search">
+                        Search
+                    </label>
+                    <input type="text" class="form-control" id="dataview-search-input" placeholder="Search" name="search" value="{{searchString}}" autofocus="autofocus">
+                    <button type="button" id="dataview-search-button" class="btn btn-primary">
+                        <span class="fa fa-search">
+                        </span>
+                    </button>
+                </div>
+                {{/if}}
+            </div>
+        </form>
+        {{#if isNotEmpty}}
+        {{#if isNotFound}}
+        <div class="alert alert-warning">
+            "{{searchString}}" not found.
+        </div>
+        {{else}}
+        <div id="dataview-data">
+            {{#if viewAsTable}} {{> AdminDashboardAdminMosquesCrowdMosquesCrowdMosqueViewTable}} {{/if}}
+        </div>
+        {{/if}}
+        {{else}}
+        <div class="alert alert-info">
+            No Mosque Suggestions Yet
+        </div>
+        {{/if}}
+    </div>
+</template>
+
+<template name="AdminDashboardAdminMosquesCrowdMosquesCrowdMosqueViewTable">
+    <table id="dataview-table" class="table table-striped">
+        <thead id="dataview-table-header">
+            <tr id="dataview-table-header-row">
+                <th>
+                    Controls
+                </th>
+                <th class="th-sortable" data-sort="name">
+                    Mosque Name
+                </th>
+                <th class="th-sortable" data-sort="type">
+                    Mosque Type
+                </th>
+                <th class="th-sortable" data-sort="friday_prayers">
+                    Does the Mosque offer Friday Khutbah?
+                </th>
+                <th class="th-sortable" data-sort="description">
+                    Mosque Description
+                </th>
+                <th class="th-sortable" data-sort="amenities">
+                    Services and Amenities
+                </th>
+                <th class="th-sortable" data-sort="longitude">
+                    Longitude
+                </th>
+                <th class="th-sortable" data-sort="latitude">
+                    Latitude
+                </th>
+                <th class="th-sortable" data-sort="phone_number">
+                    Phone Number
+                </th>
+                <th class="th-sortable" data-sort="email">
+                    Email
+                </th>
+                <th class="th-sortable" data-sort="facebook">
+                    Facebook
+                </th>
+                <th class="th-sortable" data-sort="twitter">
+                    Twitter
+                </th>
+                <th class="th-sortable" data-sort="website">
+                    Website
+                </th>
+                <th class="th-sortable" data-sort="address_1">
+                    Address 1
+                </th>
+                <th class="th-sortable" data-sort="city">
+                    City
+                </th>
+                <th class="th-sortable" data-sort="district">
+                    District
+                </th>
+                <th class="th-sortable" data-sort="postcode">
+                    Postcode
+                </th>
+                <th class="th-sortable" data-sort="state">
+                    State
+                </th>
+                <th class="th-sortable" data-sort="country">
+                    Country
+                </th>
+                <th class="th-sortable" data-sort="timezone">
+                    Timezone
+                </th>
+                <th class="th-sortable" data-sort="managers">
+                    User ID
+                </th>
+                <th class="th-sortable" data-sort="picture">
+                    Picture
+                </th>
+            </tr>
+        </thead>
+        <tbody id="dataview-table-items">
+            {{#each tableItems}} {{> AdminDashboardAdminMosquesCrowdMosquesCrowdMosqueViewTableItems}} {{/each}}
+        </tbody>
+    </table>
+</template>
+
+<template name="AdminDashboardAdminMosquesCrowdMosquesCrowdMosqueViewTableItems">
+    <tr id="dataview-table-items-row">
+        <td>
+            <button id="add_event">Confirm</button>
+            <button id="report_event">Report</button>
+        </td>
+        <td>
+            {{name}}
+        </td>
+        <td>
+            {{type}}
+        </td>
+        <td>
+            {{friday_prayers}}
+        </td>
+        <td>
+            {{description}}
+        </td>
+        <td>
+            {{amenities}}
+        </td>
+        <td>
+            {{longitude}}
+        </td>
+        <td>
+            {{latitude}}
+        </td>
+        <td>
+            {{phone_number}}
+        </td>
+        <td>
+            {{email}}
+        </td>
+        <td>
+            {{facebook}}
+        </td>
+        <td>
+            {{twitter}}
+        </td>
+        <td>
+            {{website}}
+        </td>
+        <td>
+            {{address_1}}
+        </td>
+        <td>
+            {{city}}
+        </td>
+        <td>
+            {{district}}
+        </td>
+        <td>
+            {{postcode}}
+        </td>
+        <td>
+            {{state}}
+        </td>
+        <td>
+            {{country}}
+        </td>
+        <td>
+            {{timezone}}
+        </td>
+        <td>
+            {{managers}}
+        </td>
+        <td>
+            {{picture}}
+        </td>
+    </tr>
+</template>

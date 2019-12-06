@@ -1,0 +1,69 @@
+<template name="mosquelocator">
+{{#HeaderFooterLayout headerSize="210" class="main" size=size4 }}
+    {{#SequentialLayout target="header"}}
+        {{>Surface template="mosqueLocatorHeader" modifier="StateModifier" translate="[0,0,100]" size=size1}}
+        {{>Surface template="mosqueLocatorContainer"  modifier="StateModifier" translate="[0,27.5,0]" size=size2}}
+    {{/SequentialLayout}}
+    {{#Modifier target="content" modifier="StateModifier" translate="[0,250,10]"}}
+        {{>mosqueLocatorContained}}
+    {{/Modifier}}
+{{/HeaderFooterLayout}}
+</template>
+
+<template name="mosqueLocatorHeader">
+    <navbar class="navbar-fixed" role="navigation">
+        <div class="container-fluid green-bg">
+            <p class="navbar-text" id="backButton1">
+                <img src="images/icon_menu.png" width="30" height="20" class="" id="barIcon">
+            </p>
+            <p class="navbar-text stayFixed1">
+                MOSQUE LOCATOR
+            </p>
+            <p class="navbar-text moveright">
+                <img height="24" width="30" src="images/icon_settings.png">
+            </p>
+        </div>
+    </navbar>
+</template>
+
+<template name="mosqueLocatorContainer">
+    <div id="mapNearbyMosques" style="height:{{mosqueMapHeight}}"></div>
+</template>
+
+<template name="mosqueLocatorContained">
+
+    {{#Scrollview}}
+       {{#famousEach nearbymosques clientPos}}
+            
+          {{>mosquesCard  header="NEAREST MOSQUE" contentHeader=name content1=address location=location}}
+       {{/famousEach}}
+    {{/Scrollview}}
+</template>
+
+<template name="mosquesCard">
+{{#Surface size="[undefined, true]"}}
+    
+    <div class="cardContainer1">
+        <a href="{{pathFor 'mosque'}}">
+            <div class="listcontainer">
+                <!-- for nearest mosque
+                <header class="cardHeader1 profileText2">
+                    Nearest Mosque
+                </header> -->
+                <span class="searchHead6">{{contentHeader}}</span>
+                <p class="smallerText">
+                    {{content1}}<br>
+                    {{distancefrom location clientPos}}
+                </p> 
+            </div>
+        </a>
+        <div class="actionListContainer">
+            <span class="">
+                <!-- <i class="fa fa-stop rsvpBox fa-stack-2x"></i>Inherits design from rsvpBox of newsfeed card -->
+                <i class="fa iconaction"><img src="../images/icon_navigate_blue.png" style="width:35px"></i>
+            </span><br>
+            <span class="blueText">Navigate</span>
+        </div>
+    </div>
+{{/Surface}}
+</template>

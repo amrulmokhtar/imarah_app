@@ -1,0 +1,140 @@
+<template name="Feedback">
+	{{#HeaderFooterLayout headerSize="110" class="main"}}
+		{{>Surface target="header" modifier="StateModifier" translate="[0,0,10]" template="feedbackHeader" }}
+		{{#Modifier target="content" modifier="StateModifier" translate="[0,0,0]"}}
+			{{>feedbackRenderer}}
+		{{/Modifier}}
+	{{/HeaderFooterLayout}}
+</template>
+
+<template name="feedbackHeader">
+	<navbar class="navbar-fixed" role="navigation">
+		<div class="container-fluid green-bg">
+			<p class="navbar-text" id="backButton1">
+					<span class="fa fa-chevron-left" id="backButton"></span>
+			</p>
+			<ul class="nav nav-justified textNav">
+				<li class="text-white">Feedback</li>
+			</ul>
+			<p class="navbar-text navbar-right moveright text-white" id="nextChooser">{{btnStatus}}</p>
+		</div>  
+	</navbar> 
+</template>
+
+<template name="feedbackRenderer">
+	{{#RenderController transition=feedMenuTrans}}
+		{{>feedMenuTemplate}}
+	{{/RenderController}}
+</template>
+
+<template name="eventSurface">
+{{#Surface}}
+	<div class="container">
+		<p>
+			How would you rate the Event?
+		</p> <br>
+		<div class="row-fluid ">
+			<span class="col-xs-1"></span>
+			{{#each emoticon}}
+				<span class="col-xs-2">
+					{{>emoticonType img=img set=set index=index }}
+				</span>
+			{{/each}}
+			<span class="col-xs-1"></span>
+		</div>		
+	</div>
+	<br>
+	<hr>
+
+	
+	{{>eventSurfaceComment}}
+{{/Surface}}
+</template>
+
+<template name="eventSurfaceComment">
+	<div class="container">
+		<div class="formSurface">
+		<p>Would like to leave any comments on the Event?</p><br>
+		<input type="text" class="commentInput4" id="comment_2" value="{{comments}}" placeholder="Enter your comment (optional)...">
+		</div>
+		<div class="formSurface textCenter">
+			<a id="" class="btn btn-primary">Next</a>
+		</div>
+	</div>
+</template>
+
+<template name="mosqueSurface">
+{{#Surface}}
+	<div class="container">
+		<p>
+			How would you rate the Mosque?
+		</p> <br>
+		<div class="row-fluid ">
+			<span class="col-xs-1"></span>
+			{{#each emoticon}}
+				<span class="col-xs-2">
+					{{>emoticonType img=img set=set index=index }}
+				</span>
+			{{/each}}
+			<span class="col-xs-1"></span>
+		</div>		
+	</div>
+	<br>
+	<hr>
+
+
+	{{>mosqueSurfaceComment}}
+{{/Surface}}
+</template>
+
+<template name="mosqueSurfaceComment">
+	<div class="container">
+		<div class="formSurface">
+			<p>Would like to leave any comments on the Mosque?</p><br />
+			<input type="text" class="commentInput4" id="comment_2" value="{{comments}}" placeholder="Enter your comment (optional)...">
+		</div>
+		<div class="formSurface textCenter">
+			<a id="" class="btn btn-primary">Next</a>
+		</div>
+	</div>
+</template>
+
+<template name="imamSurface">
+{{#Surface}}
+	<div class="container">
+		<p>
+			How would you rate the Imam?
+		</p> <br>
+		<div class="row-fluid ">
+			<span class="col-xs-1"></span>
+			{{#each emoticon}}
+				<span class="col-xs-2">
+					{{>emoticonType img=img set=set index=index }}
+				</span>
+			{{/each}}
+			<span class="col-xs-1"></span>
+		</div>		
+	</div>
+	<br>
+	<hr>
+
+	
+	{{>imamSurfaceComment}}
+{{/Surface}}
+</template>
+
+<template name="imamSurfaceComment">
+	<div class="container">
+		<div class="formSurface">
+			<p>Would like to leave any comments on the Imam?</p><br>
+			<input type="text" class="commentInput4" id="comment_2" value="{{comments}}" placeholder="Enter your comment (optional)...">
+		</div>
+		<div class="formSurface textCenter">
+			<a id="" class="btn btn-primary">Submit Feedback</a>
+		</div>
+	</div>
+</template>
+
+<template name="emoticonType">
+		<img src="images/{{img}}" class="img-responsive  emotiRow">
+</template>

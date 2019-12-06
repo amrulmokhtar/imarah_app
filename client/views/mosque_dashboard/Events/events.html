@@ -1,0 +1,423 @@
+
+<template name="Mosque_events">
+    {{mosqueId}}
+    {{> Mosqu_eventhtml}}
+
+
+    <div aria-hidden="true" aria-labelledby="sendMessageModalLabel" role="dialog" tabindex="-1" id="sendMessageModal" class="modal modal_pop fade">
+        {{> newMessageModal}}
+    </div>
+</template>
+
+<template name='linechart'>
+    <div style="width: 100%" class="graph-right graph_right_trans">
+        <div id="{{id}}" class='chart with-transitions' >
+            <svg>
+
+            </svg>
+        </div>
+    </div>
+</template>
+
+<template name="Mosqu_eventhtml">
+    <div class="content">
+        <style> .fc-day-grid-event .fc-content {
+
+            white-space: normal;
+        }</style>
+
+        <div role="tabpanel">
+
+            <div class="content-top">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs nav-wrap" role="tablist">
+                <li role="presentation" class="active"><a href="#event-schedule" aria-controls="event-schedule" role="tab" data-toggle="tab">Event Schedule</a></li>
+                <li id="eventreport" role="presentation"><a href="#event-report"   aria-controls="event-report" role="tab" data-toggle="tab">Event Reports</a></li>
+            </ul>
+
+            <a class="add_trans" href="{{pathFor 'mosque_dashboard.add_events'}}">Create Event</a>
+            <a class="btn-secondary" id="printbtn"><img src="../img/icon_print.png" /></a>
+            <a class="btn-secondary" id="duplicatebtn" data-target="#duplicateModal" data-toggle="modal"><img src="../img/icon_duplicate.png" /></a>
+
+            <ul class="toggleSwitch" role="tablist">
+                <li role="presentation" class="active"><a href="#event-schedule-calendar" aria-controls="event-schedule-calendar" role="tab" data-toggle="tab"><img src="../img/icon_calendarview.png" /></a></li>
+                <li id="eventreport" role="presentation"><a href="#event-schedule-listview"  aria-controls="event-schedule-listview" role="tab" data-toggle="tab"><img src="../img/icon_listview.png" /></a></li>
+            </ul>
+            <!-- TODO: <a class="btn-secondary" ><img src="../img/icon_share.png" /></a>-->
+
+            <div class="clear"></div>
+            </div>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+
+                <div role="tabpanel" class="tab-pane active" id="event-schedule">
+
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="event-schedule-calendar">
+
+
+                            <!-- BEGIN MID SECTION-->
+                            <div class="row-fluid mid-col">
+                               <!--<div id='calendar'></div> -->
+                                {{> fullcalendar caloptions events}}
+                            </div>
+                            <!-- END MID SECTION-->
+
+                        </div>
+
+                        <div role="tabpanel" class="tab-pane" id="event-schedule-listview">
+
+
+                           <div class="row-fluid mid-col">
+
+                                <h4 class="top-text pull-left">{{t_mosque.name}}</h4>
+                                <h4 class="top-text pull-right">Events</h4>
+                                <div class="clear"></div>
+
+                                <h2 class="month"><span>{{islamicDate today}} /</span> {{formatDate today 'MMMM YYYY'}}</h2>
+
+                                <!-- emptydata -->
+                                <!-- IF: no events -->
+                                {{#if events}}
+                                <table class="eventslist">
+                                    <tr>
+                                        <th colspan="2" style="width:20%">Date</th>
+                                        <th>Day</th>
+                                        <th>Time</th>
+                                        <th style="width:25%">Event</th>
+                                        <th style="width:25%">Imam</th>
+                                    </tr>
+                                    {{#each eventsForMonth}}
+                                    {{> eventlistviewROW this}}
+                                    {{/each}}
+                                </table>
+                                
+                                {{else}}
+                                <div class="emptydata">
+                                    <img src="../img/icon_events_green.png" />
+                                    <p>All your mosque events will be displayed in the Imarah app. Start attracting more visitors by creating an event.</p>
+                                    <a class="btn btn-primary" href="{{pathFor 'mosque_dashboard.add_events'}}">Create an Event</a>
+                                </div>
+                                
+                                {{/if}}
+
+                                <div class="print-footer">
+                                    Download Imarah for iOS and Android at http://imarah.my
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+               
+                </div>
+
+                <div role="tabpanel" class="tab-pane " id="event-report">
+
+
+                    <!-- BEGIN GRAPH SECTION-->
+                    <div class="row-fluid graph-col">
+                        <div class="graph-left event_report">
+                            {{#with stats_for_month}}
+                            <h2>{{roundNumber avg_check_in}}</h2>
+                            <p>Avg. Attendees per Event</p>
+                            <h2>{{total_check_in}}</h2>
+                            {{/with}}
+                            <p>Attendees in {{currentdate}}</p>
+                            <h2 style="font-size: 16pt">{{Popular_Event}}</h2>
+                            <p>Most Popular Event in {{currentdate}}</p>
+
+                        </div>
+                        <div class="graph-right" style="background: #D8D8D8; padding: 10px;">{{>linechart id='eventchart' data_key=chartdata}}<!--<img src="/img/graph_event.png" alt="graph"/>--></div>
+                    </div>
+                    <!-- END GRAPH SECTION-->
+
+                    <div class="clearfix"></div>
+
+                    <!-- BEGIN MID SECTION-->
+                    <div class="row-fluid mid-col">
+                        <div class="col-md-2">
+                            <div class="col_leftbar">
+                                <input type="search" name="search" class="search">
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs left_nav event_nav" id="" role="tablist">
+                                    <li class="active"  role="presentation"><a href="#upcoming-event" aria-controls="home" role="tab" data-toggle="tab">Upcoming Events</a></li>
+                                    <li id="postevent" role="presentation"><a href="#past-event" aria-controls="profile" role="tab" data-toggle="tab">Past Events</a></li>
+                                </ul>
+                                <!-- Tab panes -->
+                                <div class="fil_sel evt_sel">
+                                    Filter
+                                    <select class="select_bx">
+                                        <option>Event Category</option>
+                                        <option>Lecture</option>
+                                        <option>Television</option>
+                                        <option>Forum</option>
+                                    </select>
+                                </div>
+                                <div class="fil_sel evt_sel">
+                                    Sort by
+                                    <select class="select_bx">
+                                        <option>Amount of Attendees</option>
+                                        <option>Amount of RSVP</option>
+                                        <option>Event Rating</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-10">
+
+                            <div class="tab-content">
+
+                                
+
+                                <!-- Upcoming Events Tab Section -->
+                                {{#if events}}
+                                <div role="tabpanel" class="tab-pane" id="past-event">
+
+                                    <table class="table tab-wrap">
+                                        <tr>
+                                            <th><div>Date</div></th>
+                                            <th><div>Time</div></th>
+                                            <th><div>Event Name</div></th>
+                                            <th><div>Imam</div></th>
+                                            <th><div>RSVP</div></th>
+                                            <th><div>Checked-In</div></th>
+                                            <th><div>Rating</div></th>
+                                            <th><div></div></th>
+                                        </tr>
+                                        {{#each postevents }}
+                                        {{>eventlistROW this}}
+                                        {{/each}}
+
+
+                                    </table>
+                                </div>
+                                <div role="tabpanel" class="tab-pane active" id="upcoming-event">
+
+                                    <table class="table tab-wrap">
+                                        <tr>
+                                            <th><div>Date</div></th>
+                                            <th><div>Time</div></th>
+                                            <th><div>Event Name</div></th>
+                                            <th><div>Imam</div></th>
+                                            <th><div>RSVP</div></th>
+                                            <!-- <th><div>Checked-In</div></th> -->
+                                            <!-- <th><div>Rating</div></th> -->
+                                            <th style="width:100px;"><div></div></th>
+                                            <th style="width:80px;"><div></div></th>
+                                        </tr>
+                                        {{#each upcommingevents }}
+                                        {{>upcomingeventlistROW this}}
+                                        {{/each}}
+
+
+                                    </table>
+                                </div>
+                                {{else}}
+                                <!-- emptydata -->
+                                <!-- IF: no events -->
+                                <div class="emptydata">
+                                    <img src="../img/icon_events_green.png" />
+                                    <p>All your mosque events will be displayed in the Imarah app. Start attracting more visitors by creating an event.</p>
+                                    <a class="btn btn-primary" href="{{pathFor 'mosque_dashboard.add_events'}}">Create an Event</a>
+                                </div>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END MID SECTION-->
+
+                </div>
+            </div>
+
+    
+            <!-- Modal for Duplicate -->
+            <div aria-hidden="true" aria-labelledby="duplicateModalLabel" role="dialog" tabindex="-1" id="duplicateModal" class="modal modal_pop fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <h3>Duplicate Events</h3>
+                            <p class="modaltext">Duplicate all events from 
+                                <select id="duplicate_from_month">
+                                    {{#each nearbymonth -3 6 2}}
+                                        <option {{selected}} value="{{date}}">{{name}}</option>
+                                    {{/each}}
+                                </select> 
+                                to 
+                                <select id="duplicate_to_month">
+                                    {{#each nearbymonth 0 3 0}}
+                                        <option {{selected}} value="{{date}}">{{name}}</option>
+                                    {{/each}}
+                                </select> 
+                                .
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-cancel" data-dismiss="modal">Cancel</button>
+                            <button id="confirm_duplicate_btn" type="button" class="btn btn-add">Duplicate Events</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+</template>
+
+<template name="eventlistROW">
+    <tr>
+        <td><div>{{formatDate date 'DD MMM'}}</div></td>
+        <td><div>{{formatDate time 'hh:mm A'}}</div></td>
+        <td><div>{{name}}</div></td>
+        <td><div>{{imam_names.[0]}}</div></td>
+        <td><div>{{totalRSVP}}</div></td>
+        <td><div>{{totalCheckins}}</div></td>
+        <td><div>{{roundNumber rating}}</div></td>
+        <td><div><a class="edit_btn" id="delete">Delete</a></div></td>
+        <!--<td><div><a class="edit_btn" href="javascript:void()" id="edit">Edit</a></div></td> -->
+    </tr>
+</template>
+
+<template name="upcomingeventlistROW">
+    <tr>
+        <td><div>{{formatDate date 'DD MMM'}}</div></td>
+        <td><div>{{formatDate time 'hh:mm A'}}</div></td>
+        <td><div>{{name}}</div></td>
+        <td><div>{{imam_names.[0]}}</div></td>
+        <td><div>{{totalRSVP}}</div></td>
+        <td style="width:100px;"><div><a class="edit_btn" id="notify" data-target="#sendMessageModal" data-toggle="modal">Notify</a></div></td>
+        <td><div><a class="edit_btn" onclick="Events.remove('{{_id}}')" id="delete">Delete</a></div></td>
+        <td style="width:80px;"><div><a class="edit_btn" id="edit">Edit</a></div></td>
+        <!--<td><div><a class="edit_btn" href="javascript:void()" id="edit">Edit</a></div></td> -->
+    </tr>
+</template>
+
+<template name="eventlistviewROW">
+
+    <tr>
+        <td>{{formatDate date 'DD MMM'}}</td>
+        <td>{{islamicDate date}}</td>
+        <td>{{formatDate date 'dddd'}}</td>
+        <td>{{formatDate time 'hh:mm A'}}</td>
+        <td>{{name}}</td>
+        <td>{{imam_names}}</td>
+    </tr>
+
+</template>
+
+
+
+
+<template name="eventpopup">
+
+    <!-- Modal -->
+    <div class="modal modal_pop mod_feedback mod_event_schedule fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <form id="form" role="form">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <!-- Feedback popup panes -->
+                        <div class="row">
+                            <div class="col-lg-4 col-sm-4">
+                                <div class="event_pop_img">
+                                    <span class="btn btn-default btn-upload btn-file">
+                                        Upload Image <input type="file">
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-lg-8 col-sm-8">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <label>Event Name</label>
+                                        <input type="text" name="name" value="" class="form-control" autofocus="autofocus" required="required">
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="row dat_time">
+                                    <div class="col-sm-6 input-group date">
+                                        <label>Date</label>
+                                        <input type="text" id="date" name="date" value="" class="form-control" data-type="date" data-format="YYYY-MM-DD">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Time</label>
+                                        <div class="input-append bootstrap-timepicker">
+                                            <input id="time" type="text" name="time" value="" class="input-small" data-type="time" data-format="hh:mm">
+                                            <span class="add-on"><i class="icon-time"></i></span>
+                                            <span id="help-text" class="help-block">
+                                            </span>
+                                            <span id="error-text" class="help-block">
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label>Event Type</label>
+                                <select class="form-control" name="type">
+                                    <option value="Lecture" selected>
+                                        Lecture
+                                    </option>
+                                    <option value="Panel">
+                                        Panel
+                                    </option>
+                                    <option value="Television">
+                                        Television
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-sm-4">
+                                <label>Event Topic</label>
+                                <select class="form-control" name="topic">
+                                    {{#each event_topics}}
+                                    <option value="{{_id}}">
+                                        {{name}}
+                                    </option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                            <div class="col-sm-4">
+                                <label>Seat Available</label>
+                                <input type="text" name="seats" value="" class="form-control" data-type="number">Unlimited
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="">
+                            <label>Venue/Mosque</label>
+                            <select><option>venue</option><option>venue</option><option>venue</option></select>
+                            <label class="check"><input type="checkbox"  name="checkbox"/> Other venue/Mosque </label>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="">
+                            <label>Imam</label>
+                            <select class="form-control" name="imams">
+                                <option value="None">
+                                    No Imams
+                                </option>
+                                {{#each event_imams}}
+                                <option value="{{_id}}">
+                                    {{first_name}}
+                                </option>
+                                {{/each}}
+                            </select>
+                            <label class="check"><input type="checkbox"  name="checkbox"/> Other  </label>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-cancel" id="cancel_event" data-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-add">Create Event</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</template>

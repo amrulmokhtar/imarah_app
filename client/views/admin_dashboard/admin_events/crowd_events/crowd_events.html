@@ -1,0 +1,183 @@
+<template name="AdminDashboardAdminEventsCrowdEvents">
+    <div class="container" id="content">
+        <h2 id="page_title">
+            Crowd Sourced Event Suggestions
+        </h2>
+        {{> AdminDashboardAdminEventsCrowdEventsImamView}}
+    </div>
+</template>
+
+<template name="AdminDashboardAdminEventsCrowdEventsImamView">
+    <div id="dataview" class="">
+        <h2 id="component-title">
+            Crowd Events
+        </h2>
+        <form id="dataview-controls" class="form-inline">
+            <div id="dataview-controls-search">
+                {{#if isNotEmpty}}
+                <div id="dataview-controls-search-group" class="form-group">
+                    <label class="sr-only" for="search">
+                        Search
+                    </label>
+                    <input type="text" class="form-control" id="dataview-search-input" placeholder="Search" name="search" value="{{searchString}}" autofocus="autofocus">
+                    <button type="button" id="dataview-search-button" class="btn btn-primary">
+                        <span class="fa fa-search">
+                        </span>
+                    </button>
+                </div>
+                {{/if}}
+            </div>
+        </form>
+        {{#if isNotEmpty}}
+        {{#if isNotFound}}
+        <div class="alert alert-warning">
+            "{{searchString}}" not found.
+        </div>
+        {{else}}
+        <div id="dataview-data">
+            {{#if viewAsTable}} {{> AdminDashboardAdminEventsCrowdEventsImamViewTable}} {{/if}}
+        </div>
+        {{/if}}
+        {{else}}
+        <div class="alert alert-info">
+            No Event Suggestions Yet
+        </div>
+        {{/if}}
+    </div>
+</template>
+
+<template name="AdminDashboardAdminEventsCrowdEventsImamViewTable">
+    <table id="dataview-table" class="table table-striped">
+        <thead id="dataview-table-header">
+            <tr id="dataview-table-header-row">
+                <th>Controls</th>
+                <th class="th-sortable" data-sort="name">
+                    Event Name
+                </th>
+                <th class="th-sortable" data-sort="longitude">
+                    Longitude (optional)
+                </th>
+                <th class="th-sortable" data-sort="latitude">
+                    Latitude (optional)
+                </th>
+                <th class="th-sortable" data-sort="seats">
+                    Seats Available
+                </th>
+                <th class="th-sortable" data-sort="type">
+                    Event Type
+                </th>
+                <th class="th-sortable" data-sort="topic">
+                    Event Topic
+                </th>
+                <th class="th-sortable" data-sort="picture">
+                    Event Picture
+                </th>
+                <th class="th-sortable" data-sort="imams">
+                    Imams
+                </th>
+                <th class="th-sortable" data-sort="mosque_id">
+                    Mosque Hosting Event
+                </th>
+                <th class="th-sortable" data-sort="website">
+                    Website
+                </th>
+                <th class="th-sortable" data-sort="address_1">
+                    Address 1
+                </th>
+                <th class="th-sortable" data-sort="city">
+                    City
+                </th>
+                <th class="th-sortable" data-sort="district">
+                    District
+                </th>
+                <th class="th-sortable" data-sort="postcode">
+                    Postcode
+                </th>
+                <th class="th-sortable" data-sort="state">
+                    State
+                </th>
+                <th class="th-sortable" data-sort="country">
+                    Country
+                </th>
+                <th class="th-sortable" data-sort="timezone">
+                    Timezone
+                </th>
+                <th class="th-sortable" data-sort="date">
+                    Date
+                </th>
+                <th class="th-sortable" data-sort="time">
+                    Time
+                </th>
+            </tr>
+        </thead>
+        <tbody id="dataview-table-items">
+            {{#each tableItems}} {{> AdminDashboardAdminEventsCrowdEventsImamViewTableItems}} {{/each}}
+        </tbody>
+    </table>
+</template>
+
+<template name="AdminDashboardAdminEventsCrowdEventsImamViewTableItems">
+    <tr id="dataview-table-items-row">
+        <td>
+            <button id="add_event">Confirm</button>
+            <button id="report_event">Report</button>
+        </td>
+        <td>
+            {{name}}
+        </td>
+        <td>
+            {{longitude}}
+        </td>
+        <td>
+            {{latitude}}
+        </td>
+        <td>
+            {{seats}}
+        </td>
+        <td>
+            {{type}}
+        </td>
+        <td>
+            {{topic}}
+        </td>
+        <td>
+            {{picture}}
+        </td>
+        <td>
+            {{imams}}
+        </td>
+        <td>
+            {{mosque_id}}
+        </td>
+        <td>
+            {{website}}
+        </td>
+        <td>
+            {{address_1}}
+        </td>
+        <td>
+            {{city}}
+        </td>
+        <td>
+            {{district}}
+        </td>
+        <td>
+            {{postcode}}
+        </td>
+        <td>
+            {{state}}
+        </td>
+        <td>
+            {{country}}
+        </td>
+        <td>
+            {{timezone}}
+        </td>
+        <td>
+            {{formatDate date 'DD/MM/YYYY'}}
+        </td>
+        <td>
+            {{secondsToTime time 'hh:mm'}}
+        </td>
+    </tr>
+</template>

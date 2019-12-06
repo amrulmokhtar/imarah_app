@@ -1,0 +1,29 @@
+<template name="Notification">
+ 	{{#Modifier size=size1}}
+ 		{{#Surface size=size1 modifier="StateModifier" translate="[0,0,0]" class="green-bg"}}
+ 			{{>notificationCross}}
+ 		{{/Surface}}
+
+ 		{{#Surface size="[400,400]" origin="[0.5, 0.5]" align="[0.5, 0.5]" translate="[0,0,1]"}}
+ 			{{>notificationText}}
+ 		{{/Surface}}
+ 	{{/Modifier}}
+</template>
+
+<template name="notificationCross">
+	<img src="images/icon_close.png" id="backButton10" class="imgMargin" height="25" width="25"> 
+</template>
+
+<template name="notificationText">
+	<div class="textToCenter1">
+		<p>
+			You attended {{eventName}} at {{eventAt}}  by {{eventBy}}.
+		</p><br>
+		<p>
+			Help the organization improve their event by rating it and giving some feedback.
+		</p><br>
+		<p>
+			<span class="btn rateBtn" id="rateBtn">Rate the Event</span>
+		</p>
+	</div>
+</template>

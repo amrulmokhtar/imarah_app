@@ -1,0 +1,37 @@
+<template name="Eventtopicview">
+	{{#HeaderFooterLayout headerSize="200" class="main" size=size4}}
+		
+		{{>Surface template="eventTopicHeader" target="header" modifier="StateModifier" translate="[0,0,100]" size=size1}}
+
+		{{#Modifier target="content" modifier="StateModifier" translate="[0,0,10]"}}
+			{{>eventsTopicFilter}}
+		{{/Modifier}}
+	{{/HeaderFooterLayout}}
+</template>
+
+<template name="eventTopicHeader">
+	<navbar class="navbar-fixed" role="navigation">
+		<div class="container-fluid green-bg">
+			<a href="{{pathFor 'event'}}">
+				<p class="navbar-text" id="backButton1"><span class="fa fa-chevron-left"></span></p>
+			</a>
+				<p class="navbar-text positionText">Tilawah, Tajwid & Tafsir</p>
+		</div>
+	</navbar>
+	<div class="shiftMiddle">
+		<span class="fa fa-stop tabBtns select">
+			<br><span class="tabtext">Events</span>
+		</span>
+	</div>
+	<div class="eventTopicsFiltersBar">
+		<button class="btn btn-default btn-xs filterBtns">By Category</button>
+		<button class="btn btn-default btn-xs filterBtns">+</button>
+		<span class="shiftToRight"><img src="images/settings1.ico" class="imageSize"></span>
+	</div>
+</template>
+
+<template name="eventsTopicFilter">
+	{{#Scrollview}}
+		{{>eventsCard lessthan="true" header="1KM AWAY" contentHeader="Tilawah, Tajwid & Tafsir" content1="Today @ 7:45PM" content2="Masjid Negeri Shah Alam, Shah Alam" id="mosque"}}
+	{{/Scrollview}}
+</template>

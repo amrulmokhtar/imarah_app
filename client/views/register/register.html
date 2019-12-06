@@ -1,0 +1,46 @@
+<template name="Register">
+
+  {{>RegisterForm}}
+
+</template>
+
+<template name="RegisterForm">
+  <div class="logincontainer">
+
+    <div class="boundingbox-login">
+
+      <img class="logo" src="../img/imarahlogo.png" />
+      
+      <div class="account-form">
+
+        <h2>Register</h2>
+      <div class="helper-text">
+        You are creating an account as <span>Masjid Negeri Shah Alam</span>.
+      </div>
+        {{#if errorMessage}}
+        <div class="alert alert-warning">
+          {{errorMessage}}
+        </div>
+        {{/if}}
+        <form id="register_form" role="form">
+          
+          <input id="login_email" type="text" class="form-control" placeholder="Email address" required autofocus>
+          <input id="login_password" type="password" class="form-control" placeholder="Password" required>
+          <label class="check check_register"><input name="show_password" type="checkbox" />Show Password</label>
+          <button class="btn btn-lg btn-primary btn-block" type="submit" data-loading-text="Please wait...">
+            Create an Account
+          </button>
+          
+          <p class="account-form-text-below" id="login-link">
+            Already have an account?
+            <a href="{{pathFor 'login'}}">
+              Sign in here.
+            </a>
+          </p>
+          
+        </form>
+      </div>
+    </div>
+  </div>
+</template>
+

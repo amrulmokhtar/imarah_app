@@ -1,0 +1,239 @@
+<template name="JaisFeedback">
+
+	<div class="page-container row-fluid">
+        <!-- BEGIN SIDEBAR -->
+        <div class="page-sidebar" id="main-menu">
+
+            <!-- BEGIN SIDEBAR MENU -->
+     	    {{> jais_menu}}
+
+        </div>
+    </div>
+    <div  class="page-content">
+        <div class="" id="content">
+            <h2 id="page_title">
+                Events
+            </h2>
+            <!-- {{> yield region='MosqueDashboardSubcontent'}} -->
+            {{> jais_dashboard_content_feedback}}
+        </div>
+    </div>
+
+    <!-- modal to view feedback (that is too long to be read in table) -->
+    <div aria-hidden="true" aria-labelledby="viewFeedbackModalLabel" role="dialog" tabindex="-1" id="viewFeedbackModal" class="modal modal_pop fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="ratingBox">7.4</div>
+                    <h3>Event Name / Friday Khutbahs</h3>
+                    <p class="feedbackdate">Date</p>
+                    <p class="modaltext modaltext-small">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. At recusandae quidem dignissimos saepe provident repudiandae aliquid dolores praesentium sequi ipsum perspiciatis reiciendis modi, veniam explicabo impedit nesciunt. Ratione, fuga, eos.
+                        
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-cancel" data-dismiss="modal">Close</button>
+                    <!-- <button id="confirm_duplicate_btn" type="button" class="btn btn-add">Duplicate Events</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+</template>
+
+
+<template name="jais_dashboard_content_feedback">
+
+    <div class="content">
+        
+        <div role="tabpanel">
+
+            <div class="content-top">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs nav-wrap" role="tablist">
+                <li role="presentation" class="active"><a href="#fridayprayer-feedback" aria-controls="fridayprayer-feedback" role="tab" data-toggle="tab">Friday Khutbah Feedback</a></li>
+                <li role="presentation"><a href="#event-feedback" aria-controls="event-feedback" role="tab" data-toggle="tab">Event Feedback</a></li>
+            </ul>
+
+            <!-- <a class="add_trans" href="{{pathFor 'mosque_dashboard.add_events'}}">Select</a> -->
+            <select id='mosque_select' class="select-large">
+                <option>Select a Mosque</option>
+                {{#each mosques}}
+                <option value={{_id}}>{{name}}</option>
+                {{/each}}
+            </select>
+
+            <div class="clear"></div>
+            </div>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+
+                <div role="tabpanel" class="tab-pane active" id="fridayprayer-feedback">
+
+                     <!-- BEGIN GRAPH SECTION-->
+                    <div class="row-fluid graph-col">
+                        <div class="graph-left event_report">
+                            {{#with stats_for_month mosque}}
+                            <h2>{{roundNumber avg_friday_rating 3}}/5</h2>
+                            <p>Avg. Rating in {{formatDate today 'MMMM'}}</p>
+                            <h2>{{roundNumber all_time_friday_avg 3}}/5</h2>
+                            <p>Overall avg. rating</p>
+                            <h2>{{roundNumber num_friday_feedback 3}}</h2>
+                            <p>Total feedback in {{formatDate today 'MMMM'}}</p>
+                            {{/with}}
+                        </div>
+                        <div class="graph-right" style="background: #D8D8D8; padding: 10px;">
+                            {{>linechart id='jaisfridayfeedbackchart' data_key=fridaychartdata}}
+                        </div>
+                    </div>
+                    <!-- END GRAPH SECTION-->
+
+                    <div class="clearfix"></div>
+
+                    <!-- BEGIN MID SECTION-->
+                    <div class="row-fluid mid-col">
+                        <div class="col-md-2">
+                            <div class="col_leftbar">
+                                <input type="search" name="search" class="search">
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs left_nav event_nav" id="" role="tablist">
+                                    <li class="active"  role="presentation"><a href="#friday-feedback-list" aria-controls="home" role="tab" data-toggle="tab">Messages</a></li>
+                                </ul>
+                                <!-- Tab panes -->
+                                <div class="fil_sel evt_sel">
+                                    Sort by
+                                    <select class="select_bx">
+                                        <option>Highest Rating</option>
+                                        <option>Lowest Rating</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-10">
+
+                            <div class="tab-content">
+                                
+                                <div role="tabpanel" class="tab-pane active" id="friday-feedback-list">
+
+                                    <table class="table tab-wrap">
+                                        <tr>
+                                            <th><div>Date</div></th>
+                                            <th><div>Name</div></th>
+                                            <th style="width:50%"><div>Message</div></th>
+                                            <th><div>Rating</div></th>
+                                            <th><div></div></th>
+                                        </tr>
+                                        {{#each feedback true}}
+                                            {{>jaisfridayfeedbacklistROW this}}
+                                        {{/each}}
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END MID SECTION-->
+
+                </div>
+
+
+                <div role="tabpanel" class="tab-pane" id="event-feedback">
+
+
+                    <!-- BEGIN GRAPH SECTION-->
+                    <div class="row-fluid graph-col">
+                        <div class="graph-left event_report">
+                            {{#with stats_for_month mosque}}
+                            <h2> {{roundNumber avg_rating 3}}/5 </h2>
+                            <p>Avg. Rating in {{formatDate today 'MMMM'}}</p>
+                            <h2>{{roundNumber all_time_avg 3}}/5 </h2>
+                            <p>Overall avg. rating</p>
+                            <h2>{{roundNumber num_feedback 3}}</h2>
+                            <p>Total feedback in {{formatDate today 'MMMM'}}</p>
+                            {{/with}}
+                        </div>
+                        <div class="graph-right" style="background: #D8D8D8; padding: 10px;">
+                                {{>linechart id='jaisfeedbackchart' data_key=chartdata}}
+                        </div>
+                    </div>
+                    <!-- END GRAPH SECTION-->
+
+                    <div class="clearfix"></div>
+
+                    <!-- BEGIN MID SECTION-->
+                    <div class="row-fluid mid-col">
+                        <div class="col-md-2">
+                            <div class="col_leftbar">
+                                <input type="search" name="search" class="search">
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs left_nav event_nav" id="" role="tablist">
+                                    <li class="active"  role="presentation"><a href="#feedback-list" aria-controls="home" role="tab" data-toggle="tab">Messages</a></li>
+                                </ul>
+                                <!-- Tab panes -->
+                                <div class="fil_sel evt_sel">
+                                    Sort by
+                                    <select class="select_bx">
+                                        <option>Highest Rating</option>
+                                        <option>Lowest Rating</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-10">
+
+                            <div class="tab-content">
+                                
+                                <div role="tabpanel" class="tab-pane active" id="feedback-list">
+
+                                    <table class="table tab-wrap">
+                                        <tr>
+                                            <th><div>Date</div></th>
+                                            <th><div>Name</div></th>
+                                            <th><div>Event Name</div></th>
+                                            <th style="width:40%"><div>Message</div></th>
+                                            <th><div>Rating</div></th>
+                                            <th><div></div></th>
+                                        </tr>
+
+                                        {{#each feedback}}
+                                            {{>jaiseventfeedbacklistROW this}}
+                                        {{/each}}
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="jaiseventfeedbacklistROW">
+    <tr>
+        <td><div>{{formatDate date 'DD MMM'}}</div></td>
+        <td><div>{{user_name}}</div></td>
+        <td><div>{{event_name}}</div></td>
+        <td><div>{{comments}}</div></td>
+        <td><div>{{roundNumber rating}}/5</div></td>
+        <td><div><a class="edit_btn" id="view" data-target="#viewFeedbackModal" data-toggle="modal">View</a></div></td>
+        <!--<td><div><a class="edit_btn" href="javascript:void()" id="edit">Edit</a></div></td> -->
+    </tr>
+</template>
+
+<template name="jaisfridayfeedbacklistROW">
+    <tr>
+        <td><div>{{formatDate date 'DD MMM'}}</div></td>
+        <td><div>{{name}}</div></td>
+        <td><div>{{comments}}</div></td>
+        <td><div>{{roundNumber rating 3}}/5</div></td>
+        <td><div><a class="edit_btn" id="view" data-target="#viewFeedbackModal" data-toggle="modal">View</a></div></td>
+        <!--<td><div><a class="edit_btn" href="javascript:void()" id="edit">Edit</a></div></td> -->
+    </tr>
+</template>
+
+

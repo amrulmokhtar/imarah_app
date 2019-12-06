@@ -1,0 +1,136 @@
+Template.Mosque_events.rendered=function(){
+	var eventdata=Events.find().fetch();
+	var data=eventdata.length;
+	var eventslist=[];
+	for(var i=0;i<data;i++){
+		//console.log(eventdata[i]);
+	var title1=	eventdata[i]['name'];
+	var date=eventdata[i]['date'];
+if((date!=null) && (title1!=null)){
+	var dateaformat=date.getFullYear()+'-'+date.getMonth()+'-'+date.getDate();
+	var edited = {
+		title:title1,
+		start:dateaformat
+	 };
+	 eventslist.push(edited);
+}
+	
+	
+	}
+
+	$('#time').timepicker();
+	 $('.input-group.date').each(function() {
+        var format = $(this).find("input[type='text']").attr('data-format').toLowerCase() || 'mm/dd/yyyy';
+
+        $(this).datepicker({
+            autoclose: true,
+            todayHighlight: true,
+            todayBtn: true,
+            forceParse: false,
+            keyboardNavigation: false,
+            format: format
+        });
+    });
+	$('input[autofocus]').focus();
+    $('.top_title').html('Events');
+    $('#page_title').html('Events');
+
+    setTimeout(function(){ 
+
+
+
+
+
+}, 1000);
+
+    $('#calendar').fullCalendar({
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay'
+			},
+			defaultDate: '2014-11-12',
+			selectable: false,
+			selectHelper: true,
+			select: function(start, end) {
+				var title = prompt('Event Title:');
+				var eventData;
+				if (title) {
+					eventData = {
+						title: title,
+						start: start,
+						end: end
+					};
+					$('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+				}
+				$('#calendar').fullCalendar('unselect');
+			},
+			editable: true,
+			eventLimit: true, // allow "more" link when too many events
+			events:eventslist
+		});
+   
+$(function(){
+    $( "#datepicker" ).datepicker();
+	//Pass the user selected date format 
+    $( "#format" ).change(function() {
+      $( "#datepicker" ).datepicker( "option", "dateFormat", $(this).val() );
+    });
+  });
+
+};
+
+
+Template.Mosque_events.events({
+ 'click #add_picture': function(e, t) {
+        e.preventDefault();
+        var pics = pictures.get('pictures');
+        pics.push({id: pics.length + 1});
+        pictures.set('pictures', pics);
+    },'submit': function(e, t) {
+        e.preventDefault();
+
+        var self = this;
+
+        validateForm(
+            $(e.target),
+            function(fieldName, fieldValue) {
+            },
+            function(msg) {
+            },
+            function(values) {
+                values.picture = [];
+                var files = t.findAll('input[type="file"]');
+                console.log(files);
+                values.location = Location.get('geojson');
+                values.longitude = undefined;
+                values.latitude = undefined;
+                var userrole=Meteor.user().roles ;
+                if(userrole=='admin'){
+                manager=Meteor.userId();
+                }
+                else{
+
+                    manager=Meteor.user().profile.manager;
+                }
+                values['manager']=manager;
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    // Add it to your model
+                    values.picture.push(e.target.result);
+                    if (values.picture.length == files.length) {
+                        newId = Events.insert(values);
+                        $('#cancel_event').click();
+                        Router.go('mosque_dashboard.mosque_event_management', {});
+                    }else {
+                        reader.readAsDataURL(
+                            files[values.picture.length].files[0]);
+                    }
+                };
+                reader.readAsDataURL(files[0].files[0]);
+            }
+        );
+
+        return false;
+    }
+});

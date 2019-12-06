@@ -1,0 +1,71 @@
+/*****************************************************************************/
+/* Imamprofilesearch: Style */
+/*****************************************************************************/
+
+.tabBtns {
+	font-size: 1.8em;
+	color: white;
+	text-align: center;
+	padding: 8px;
+}
+
+.defaultStyle {
+	background-color: grey;
+	color: white;
+	padding: 3px;
+}
+
+.icoColor1{
+	color: white;
+}
+
+.icoColor2{
+	color: lightgrey;
+}
+
+.icoText1 {
+	color: black;
+}
+
+.backgroundWhite {
+	background-color: white;
+}
+
+.setWide3 {
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
+.positionSetting {
+	position: absolute;
+	right: 10px;
+	margin-top: -1px;
+	height: 24px;
+}
+
+.active1 {
+	padding: 8px;
+	background-color: #007C7C;
+}
+
+.tabText {
+	font-size: 0.4em;
+	color: white;
+	text-align: center;
+}
+
+.positionText2 {
+	position: absolute;
+	top: 0;
+	left: 46px;
+}
+
+.shiftMiddle {
+	background-color: #339999;
+	text-align: center;
+}
+
+.imamSearchBar {
+	background-color: whitesmoke;
+	padding: 10px;
+}

@@ -1,0 +1,523 @@
+<template name="Mosquefinance">
+
+    {{> financehtml}}
+
+</template>
+
+<template name="IncomeForm">
+    <div id="pop-income" class="tab-pane active" role="tabpanel">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="form-group">
+                    <label for="amount">Amount</label>
+                    <input id="amount" type="number" placeholder="RM 1,500" class="form-control" required>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Date</label>
+                    <input id="date" type="text" placeholder="date" class="form-control" required>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Description</label>
+            <input id="description"  type="text" placeholder="Donation during special event" class="form-control">
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Category</label>
+                    <select id="category"  class="form-control">
+                        <option value="donation">Donation</option>
+                        <option value="investment">Investment</option>
+                        <option value="service">Service</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+            <!--
+            <div class="col-lg-6 col-md-6">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Account</label>
+                    <input id="account" type="text" placeholder="donation account" class="form-control">
+                </div>
+            </div> -->
+        </div>
+        <div class="modal-footer">
+            <button data-dismiss="modal" class="btn btn-cancel" type="button">Cancel</button>
+            <button class="btn btn-add" type="button" id="add">Add Income</button>
+        </div>
+    </div>
+</template>
+
+<template name="ExpensesForm">
+<div id="pop-profile" class="tab-pane" role="tabpanel">
+
+         <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="form-group">
+                    <label for="amount">Amount</label>
+                    <input id="examount" type="number" placeholder="1,500" class="form-control">
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Date</label>
+                    <input id="exdate" type="text" placeholder="date" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Description</label>
+            <input id="exdescription"  type="text" placeholder="Donation during special event" class="form-control">
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Category</label>
+                    <select id="excategory" class="form-control">
+                        <option value='utilities'>Utilities</option>
+                        <option value='salary'>Salary</option>
+                        <option value='maintainance'>Maintainance</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+            <!--
+            <div class="col-lg-6 col-md-6">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Account</label>
+                    <input id="exaccount" type="text" placeholder="donation account" class="form-control">
+                </div>
+            </div>-->
+        </div>
+        <div class="modal-footer">
+            <button data-dismiss="modal" class="btn btn-cancel" type="button">Cancel</button>
+            <button class="btn btn-add" type="button" id="add">Add Expense</button>
+        </div>
+
+</div>
+</template>
+
+<template name="TransferForm">
+<div id="pop-transfer" class="tab-pane" role="tabpanel">
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Amount</label>
+                 <input id="transamount" type="number" placeholder="1,500" class="form-control">
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Date</label>
+                <input id="transdate" type="text" placeholder="date" class="form-control">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Account From </label>
+                <input id="transfrom" type="text" placeholder="Account From" class="form-control">
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Account To</label>
+                <input id="transto" type="text" placeholder="Account to" class="form-control">
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Description</label>
+        <input id="transdescription" type="text" placeholder="Donation during special event" class="form-control">
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Category</label>
+                <input id="transcategory" type="text" placeholder="donations" class="form-control">
+            </div>
+        </div>
+        <!--
+        <div class="col-lg-6 col-md-6">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Account</label>
+                <input type="text" placeholder="donation account" class="form-control">
+            </div>
+        </div>
+        -->
+    </div>
+    <div class="modal-footer">
+        <button data-dismiss="modal" class="btn btn-cancel" type="button">Cancel</button>
+        <button class="btn btn-add" type="button" id="add">Add Transfer</button>
+    </div>
+</div>
+</template>
+
+<template name="financehtml">
+    <div class="content">
+
+        <div role="tabpanel">
+    
+            <div class="content-top">
+            <!-- Nav tabs -->
+            <ul role="tablist" class="nav nav-tabs nav-wrap">
+                <li class="active" role="presentation"><a data-toggle="tab" role="tab" aria-controls="transcation" href="#transcation">Transaction</a></li>
+                <li role="presentation"><a data-toggle="tab" role="tab" aria-controls="donation" href="#donation">Donations</a></li>
+            </ul>
+
+            <a data-target="#myModal" data-toggle="modal" class="add_trans">Add Transaction</a>
+
+             <div class="clear"></div>
+            </div>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+
+                <div id="transcation" class="tab-pane active" role="tabpanel">
+
+                    
+
+                    <!-- Modal -->
+                    <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal modal_pop fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <div role="tabpanel">
+                                        <!-- Nav tabs -->
+                                        <ul role="tablist" class="nav nav-tabs">
+                                            <li class="active" role="presentation"><a data-toggle="tab" role="tab" aria-controls="home" href="#pop-income">Income</a></li>
+                                            <li role="presentation"><a data-toggle="tab" role="tab" aria-controls="profile" href="#pop-profile">Expense</a></li>
+                                            <!--<li role="presentation"><a data-toggle="tab" role="tab" aria-controls="messages" href="#pop-transfer">Transfer</a></li>-->
+                                        </ul>
+
+                                        <!-- Tab panes -->
+                                        <div class="tab-content">
+                                            <!-- Popup Income Tab pane -->
+                                            {{>IncomeForm}}
+                                            <!-- Popup Expenses Tab pane -->
+                                            {{>ExpensesForm}}
+                                            <!-- Popup Transfer Tab pane
+                                            {{!>TransferForm}} -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- BEGIN GRAPH SECTION-->
+                    <div class="row-fluid graph-col">
+
+                        <div class="graph-left graph_left_trans">
+                            <h2>{{thisMonthFormatted}}</h2>
+                            <div class="row mar-top">
+                                <div class="col-sm-6"><span class="sub-head spc-top">Income</span></div>
+                                <div class="col-sm-6">
+                                    <span class="sub-head spc-top txt-rht">
+                                        RM {{transactionForMonth totalIncome thisMonth thisYear}}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6"><span class="sub-head spc-top">Expenses</span></div>
+                                <div class="col-sm-6"><span class="sub-head spc-top txt-rht">RM {{transactionForMonth totalExpenses thisMonth thisYear}}</span></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6"><span class="sub-head spc-top">Net Income</span></div>
+                                <div class="col-sm-6"><span class="sub-head spc-top txt-rht">RM {{monthlyBalance}}</span></div>
+                            </div>
+                        </div>
+                        <!-- <div class="graph-mid graph_mid_trans">
+                            <h2>Net Worth</h2>
+                            <div class="net_wrth"><h1>RM {{allTimeBalance}}</h1>
+                                <!<h1></span>+ RM 15,000</span></h1>!</div>
+                        </div> -->
+
+                       {{> chart}}
+                    </div>
+                    <!-- END GRAPH SECTION-->
+
+                    <div class="clearfix"></div>
+
+                    <!-- BEGIN MID SECTION-->
+                    <div class="row-fluid mid-col">
+                        <div class="col-md-2">
+                            <div class="col_leftbar">
+                                <input type="search" class="search" name="search">
+                                <!-- Nav tabs -->
+                                <ul role="tablist" class="nav nav-tabs left_nav">
+                                    <li class="active" role="presentation"><a data-toggle="tab" role="tab" aria-controls="home" href="#transcations">All Transactions</a></li>
+                                    <li role="presentation"><a data-toggle="tab" role="tab" aria-controls="profile" href="#income">Income</a></li>
+                                    <li role="presentation"><a data-toggle="tab" role="tab" aria-controls="messages" href="#expenses">Expenses</a></li>
+                                </ul>
+                                <!-- Tab panes -->
+                                <div class="fil_sel">
+                                    Filter
+                                    <select class="select_bx">
+                                        <option>Donation</option>
+                                        <option>Bills</option>
+                                        <option>Maintainance</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="fil_sel">
+                                    Sort by
+                                    <select class="select_bx">
+p                                        <option>Date</option>
+                                        <option>Month</option>
+                                        <option>Year</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-10">
+
+                            <div class="tab-content">
+                                
+                                
+                                {{#if transaction}}
+                                <!-- Transcation Tab Section -->
+                                <div id="transcations" class="tab-pane active" role="tabpanel">
+
+                                    <table class="table tab-wrap">
+                                        <tbody><tr>
+                                            <th><div>Date</div></th>
+                                            <th><div>Description</div></th>
+                                            <th><div>Amount</div></th>
+                                            <th><div>Category</div></th>
+                                            <th><div></div></th>
+                                        </tr>
+
+                                        {{#each transaction 'all'}}
+                                          {{>transactionRow this}}
+                                        {{/each}}
+
+                                        </tbody></table>
+
+                                </div>
+                                <!-- Income Tab Section -->
+                                <div id="income" class="tab-pane" role="tabpanel">
+                                    <table class="table tab-wrap">
+                                        <tbody><tr>
+                                            <th><div>Date</div></th>
+                                            <th><div>Description</div></th>
+                                            <th><div>Amount</div></th>
+                                            <th><div>Category</div></th>
+                                            <th><div></div></th>
+                                        </tr>
+
+                                        {{#each transaction 'income'}}
+                                        {{>transactionRow this}}
+                                        {{/each}}
+                                        </tbody></table>
+                                </div>
+                                <!-- Expenses Tab Section -->
+                                <div id="expenses" class="tab-pane" role="tabpanel">
+                                    <table class="table tab-wrap">
+                                        <tbody><tr>
+                                            <th><div>Date</div></th>
+                                            <th><div>Description</div></th>
+                                            <th><div>Amount</div></th>
+                                            <th><div>Category</div></th>
+                                            <th><div></div></th>
+                                        </tr>
+                                        {{#each transaction 'expense'}}
+                                        {{>transactionRow this}}
+                                        {{/each}}
+
+                                        </tbody></table>
+                                </div>
+                                <!-- emptydata -->
+                                <!-- IF: no transaction -->
+                                {{else}}
+                                <div class="emptydata">
+                                    <img src="../img/icon_finance_green.png" />
+                                    <p>Manage the finances of your mosque through Imarah.<br />Start by adding a transaction.</p>
+                                    <a class="btn btn-primary" data-target="#myModal" data-toggle="modal">Add a Transaction</a>
+                                </div>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END MID SECTION-->
+                </div>
+
+
+                <div id="donation" class="tab-pane" role="tabpanel">
+                    <!-- BEGIN GRAPH SECTION-->
+                    <div class="row-fluid graph-col">
+                        <div class="graph-left">
+                            <h2>RM {{donationsForMonth}}</h2>
+                            <p>{{thisMonthFormatted}}</p>
+                            <h2>RM {{donationsAllTime}}</h2>
+                            <p>Total Collected</p>
+
+                        </div>
+                        <div class="graph-right">{{>linechart id='donationchart' data_key=donationData}}</div>
+                    </div>
+                    <!-- END GRAPH SECTION-->
+
+                    <div class="clearfix"></div>
+
+                    <!-- BEGIN MID SECTION-->
+                    <div class="row-fluid mid-col">
+                        <div class="col-md-2">
+                            <div class="col_leftbar">
+                                <input type="search" class="search" name="search">
+                                Sort by
+                                <select class="select_bx">
+                                    <option>Date</option>
+                                    <option>Month</option>
+                                    <option>Year</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-10">
+
+                            <!-- emptydata -->
+                            <!-- IF: no donation -->
+                            {{#if transaction 'donation'}}
+                            <table class="table tab-wrap">
+                                <tbody><tr>
+                                    <th><div>Date</div></th>
+                                    <th><div>Donation From</div></th>
+                                    <th><div>Amount</div></th>
+                                    <th><div>Status</div></th>
+                                </tr>
+                                {{#each transaction 'donation'}}
+                                    {{>donationRow this}}
+                                {{/each}}
+
+                                </tbody>
+                            </table>
+                            {{else}}
+                            <div class="emptydata">
+                                <img src="../img/icon_finance_green.png" />
+                                <p>Users are able to donate to your Mosque via the Imarah app. You will be able to view donations here.</p>
+                                <!-- <a class="btn btn-primary" data-target="#myModal" data-toggle="modal">Add a Transaction</a> -->
+                            </div>
+
+
+                            {{/if}}
+                        </div>
+                    </div>
+                    <!-- END MID SECTION-->
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="donationRow">
+    <tr>
+        <td><div>{{formatdate date}}</div></td>
+        <td><div>{{name}}</div></td>
+        <td><div>RM {{amount}}</div></td>
+        <td><div>{{status}}</div></td>
+    </tr>
+</template>
+
+<template name="donationplaceholder">
+
+    <tr>
+        <td><div>1 Jan</div></td>
+        <td><div>Amrul Mokhtar</div></td>
+        <td><div>RM 100</div></td>
+        <td><div>Completed</div></td>
+
+    </tr>
+
+    <tr>
+        <td><div>1 Jan</div></td>
+        <td><div>Amrul Mokhtar</div></td>
+        <td><div>RM 100</div></td>
+        <td><div>Completed</div></td>
+
+    </tr>
+
+    <tr>
+        <td><div>1 Jan</div></td>
+        <td><div>Amrul Mokhtar</div></td>
+        <td><div>RM 100</div></td>
+        <td><div>Completed</div></td>
+
+    </tr>
+
+    <tr>
+        <td><div>1 Jan</div></td>
+        <td><div>Amrul Mokhtar</div></td>
+        <td><div>RM 100</div></td>
+        <td><div>Completed</div></td>
+
+    </tr>
+
+    <tr>
+        <td><div>1 Jan</div></td>
+        <td><div>Amrul Mokhtar</div></td>
+        <td><div>RM 100</div></td>
+        <td><div>Completed</div></td>
+
+    </tr>
+
+</template>
+
+<template name="transactionRow">
+    <tr>
+        <td><div>{{formatdate date}}</div></td>
+        <td><div>{{description}}</div></td>
+        <td><div>RM {{typecast this}}{{amount}}</div></td>
+        <td><div>{{category}}</div></td>
+        <td><div><a class="edit_btn" id="delete">Delete</a></div></td>
+        <!--<td><div><a class="edit_btn">Edit</a></div></td>-->
+    </tr>
+</template>
+
+<template name="dummytrans">
+    <tr>
+        <td><div>1 Jan</div></td>
+        <td><div>Electricity</div></td>
+        <td><div>RM 1,800</div></td>
+        <td><div>Utilities</div></td>
+        <td><div><a class="edit_btn">Edit</a></div></td>
+    </tr>
+
+    <tr>
+        <td><div>1 Jan</div></td>
+        <td><div>Water Bill</div></td>
+        <td><div>RM 400</div></td>
+        <td><div>Utilities</div></td>
+        <td><div><a class="edit_btn">Edit</a></div></td>
+    </tr>
+
+    <tr>
+        <td><div>1 Jan</div></td>
+        <td><div>Bills</div></td>
+        <td><div>RM 100</div></td>
+        <td><div>Utilities</div></td>
+        <td><div><a class="edit_btn">Edit</a></div></td>
+    </tr>
+
+    <tr>
+        <td><div>1 Jan</div></td>
+        <td><div>Pay Electrician</div></td>
+        <td><div>RM 500</div></td>
+        <td><div>Renovation/Repairs</div></td>
+        <td><div><a class="edit_btn">Edit</a></div></td>
+    </tr>
+</template>
+
+<template name="chart">
+    <div class="graph-right graph_right_trans">
+        <div id="chart1" class='chart with-transitions' >
+            <svg></svg>
+        </div>
+     </div>
+</template>

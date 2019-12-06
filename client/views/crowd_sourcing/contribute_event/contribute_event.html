@@ -1,0 +1,314 @@
+<template name="CrowdSourcingContributeEvent">
+    {{#Scrollview}}
+    {{#Surface}}
+    <div class="container" id="content">
+        <h2 id="page_title">
+            Suggest Event
+        </h2>
+        {{> CrowdSourcingContributeEventCrowdEventAddForm}}
+    </div>
+    {{/Surface}}
+    {{/Scrollview}}
+</template>
+
+<template name="CrowdSourcingContributeEventCrowdEventAddForm">
+    <div class="">
+        <h2 id="component-title">
+            Suggest an Event to be added to our Database
+        </h2>
+        <form id="form" role="form">
+            <div class="form-group">
+                <label for="name">
+                    Event Name
+                </label>
+                <div class="input-div">
+                    <input type="text" name="name" value="" class="form-control" autofocus="autofocus" required="required">
+                    <span id="help-text" class="help-block">
+                    </span>
+                    <span id="error-text" class="help-block">
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="longitude">
+                    Longitude (optional)
+                </label>
+                <div class="input-div">
+                    <input type="text" name="longitude" value="" class="form-control" data-type="number">
+                    <span id="help-text" class="help-block">
+                    </span>
+                    <span id="error-text" class="help-block">
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="latitude">
+                    Latitude (optional)
+                </label>
+                <div class="input-div">
+                    <input type="text" name="latitude" value="" class="form-control" data-type="number">
+                    <span id="help-text" class="help-block">
+                    </span>
+                    <span id="error-text" class="help-block">
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="seats">
+                    Seats Available
+                </label>
+                <div class="input-div">
+                    <input type="text" name="seats" value="" class="form-control" data-type="number">
+                    <span id="help-text" class="help-block">
+                    </span>
+                    <span id="error-text" class="help-block">
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="type">
+                    Event Type
+                </label>
+                <div class="input-div">
+                    <select class="form-control" name="type">
+                        <option value="Lecture" selected>
+                            Lecture
+                        </option>
+                        <option value="Panel">
+                            Panel
+                        </option>
+                        <option value="Television">
+                            Television
+                        </option>
+                    </select>
+                    <span id="help-text" class="help-block">
+                    </span>
+                    <span id="error-text" class="help-block">
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="topic">
+                    Event Topic
+                </label>
+                <div class="input-div">
+                    <select class="form-control" name="topic">
+                        {{#each event_topics}}
+                        <option value="{{_id}}">
+                            {{name}}
+                        </option>
+                        {{/each}}
+                    </select>
+                    <span id="help-text" class="help-block">
+                    </span>
+                    <span id="error-text" class="help-block">
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="picture">
+                    Event Picture
+                </label>
+                <div class="input-div">
+                    <input type="text" name="picture" value="" class="form-control">
+                    <span id="help-text" class="help-block">
+                    </span>
+                    <span id="error-text" class="help-block">
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="imams">
+                    Imams
+                </label>
+                <div class="input-div">
+                    <select class="form-control" name="imams">
+                        {{#each event_imams}}
+                        <option value="{{_id}}">
+                            {{first_name}}
+                        </option>
+                        {{/each}}
+                    </select>
+                    <span id="help-text" class="help-block">
+                    </span>
+                    <span id="error-text" class="help-block">
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="mosque_id">
+                    Mosque Hosting Event
+                </label>
+                <div class="input-div">
+                    <select class="form-control" name="mosque_id">
+                        {{#each event_mosques}}
+                        <option value="{{_id}}">
+                            {{name}}
+                        </option>
+                        {{/each}}
+                    </select>
+                    <span id="help-text" class="help-block">
+                    </span>
+                    <span id="error-text" class="help-block">
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="website">
+                    Website
+                </label>
+                <div class="input-div">
+                    <input type="text" name="website" value="" class="form-control">
+                    <span id="help-text" class="help-block">
+                    </span>
+                    <span id="error-text" class="help-block">
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="address_1">
+                    Address 1
+                </label>
+                <div class="input-div">
+                    <input type="text" name="address_1" value="" class="form-control">
+                    <span id="help-text" class="help-block">
+                    </span>
+                    <span id="error-text" class="help-block">
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="city">
+                    City
+                </label>
+                <div class="input-div">
+                    <select class="form-control" name="city">
+                        {{#each mosque_city}}
+                        <option value="{{_id}}">
+                            {{name}}
+                        </option>
+                        {{/each}}
+                    </select>
+                    <span id="help-text" class="help-block">
+                    </span>
+                    <span id="error-text" class="help-block">
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="district">
+                    District
+                </label>
+                <div class="input-div">
+                    <input type="text" name="district" value="" class="form-control">
+                    <span id="help-text" class="help-block">
+                    </span>
+                    <span id="error-text" class="help-block">
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="postcode">
+                    Postcode
+                </label>
+                <div class="input-div">
+                    <input type="text" name="postcode" value="" class="form-control">
+                    <span id="help-text" class="help-block">
+                    </span>
+                    <span id="error-text" class="help-block">
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="state">
+                    State
+                </label>
+                <div class="input-div">
+                    <input type="text" name="state" value="" class="form-control" required="required">
+                    <span id="help-text" class="help-block">
+                    </span>
+                    <span id="error-text" class="help-block">
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="country">
+                    Country
+                </label>
+                <div class="input-div">
+                    <select class="form-control" name="country">
+                        {{#each mosque_countries}}
+                        <option value="{{name}}">
+                            {{name}}
+                        </option>
+                        {{/each}}
+                    </select>
+                    <span id="help-text" class="help-block">
+                    </span>
+                    <span id="error-text" class="help-block">
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="timezone">
+                    Timezone
+                </label>
+                <div class="input-div">
+                    <select class="form-control" name="timezone">
+                        {{#each mosque_timezones}}
+                        <option value="{{_id}}">
+                            {{name}}
+                        </option>
+                        {{/each}}
+                    </select>
+                    <span id="help-text" class="help-block">
+                    </span>
+                    <span id="error-text" class="help-block">
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="date">
+                    Date
+                </label>
+                <div class="input-div">
+                    <div class="input-group date">
+                        <input type="text" name="date" value="" class="form-control" data-type="date" data-format="DD/MM/YYYY">
+                        <span class="input-group-addon">
+                            <i class="fa fa-calendar">
+                            </i>
+                        </span>
+                    </div>
+                    <span id="help-text" class="help-block">
+                    </span>
+                    <span id="error-text" class="help-block">
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="time">
+                    Time
+                </label>
+                <div class="input-div">
+                    <input type="text" name="time" value="" class="form-control" data-type="time" data-format="hh:mm">
+                    <span id="help-text" class="help-block">
+                    </span>
+                    <span id="error-text" class="help-block">
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="submit-div">
+                    <button id="form-submit-button" class="btn btn-success" type="submit">
+                        <span class="fa fa-check">
+                        </span>
+                        Save
+                    </button>
+                    <a href="#" id="form-cancel-button" class="btn btn-default">
+                        Cancel
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</template>

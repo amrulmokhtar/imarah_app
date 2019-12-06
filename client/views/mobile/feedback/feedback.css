@@ -1,0 +1,75 @@
+/*****************************************************************************/
+/* Feedback: Style */
+/*****************************************************************************/
+
+#comment_2::-webkit-input-placeholder,
+#textarea_2::-webkit-input-placeholder
+{
+  color:    #999999;
+  font-family:  'Open Sans';
+  font-weight: lighter;
+  font-size: 0.9em;
+  padding-left: 6px;
+  font-style: italic;
+}
+
+#comment_2:-moz-placeholder,
+#textarea_2:-moz-placeholder 
+{
+  color:    #999999;
+  font-family:  'Open Sans';
+  font-size: 0.9em;
+  font-style: italic;
+  font-weight: lighter;
+  padding-left: 6px;
+}
+
+#comment_2::-moz-placeholder,
+#textarea_2::-moz-placeholder 
+{
+  color:  #999999;
+  font-family:  'Open Sans';
+  font-style: italic;
+  font-size: 0.9em;
+  padding-left: 6px;
+  font-weight: lighter;
+}
+
+#comment_2:-ms-input-placeholder,
+#textarea_2:-ms-input-placeholder 
+{
+  color:    #999999;
+  font-family:  'Open Sans';
+  font-size: 0.9em;
+  font-style: italic;
+  padding-left: 6px;
+  font-weight: lighter;
+}
+
+
+.text-white {
+	color: white;
+}
+
+.textNav {
+	color: white;
+	position: absolute;
+	top: 14px;
+	left: 50%;
+	margin-left: -40px;
+}
+
+.commentInput4 {
+	padding: 6px; 
+	width: 100%;
+  font-size: 1.6em;
+	border-top: 0px;
+	border-right: 0px;
+	border-left: 0px;
+	border-bottom:1px solid #999999; 
+}
+
+.emotiRow {
+	min-height: 10.8vmin;
+	min-width: 10.8vmin;
+}

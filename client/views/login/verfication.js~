@@ -1,0 +1,4 @@
+Template.verified.rendered = function() {
+
+	$("input[autofocus]").focus();
+};

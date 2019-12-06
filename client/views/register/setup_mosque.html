@@ -1,0 +1,38 @@
+<template name="setupMosque">
+
+	<div class="logincontainer">
+
+		<div class="boundingbox-login boundingbox-login-large">
+
+	
+			<div class="account-form account-form-large">
+
+			    <h2>Complete your profile</h2>
+			    <div class="helper-text">
+					Complete your profile by entering more details about your Mosque such as address and contact information. 
+				</div>
+
+			    <form id="setup_form" role="form">
+			      
+			      <input id="mosque_address" type="text" class="form-control" placeholder="Mosque Address" required autofocus>
+			      <select id="mosque_city" class="form-control" required>
+			      	<option>Select City</option>
+			      </select>
+			      <select id="mosque_state" class="form-control" required>
+			      	<option>Select State</option>
+			      </select>
+			      <input id="mosque_postcode" type="text" class="form-control" placeholder="Postcode" required>
+			      <input id="mosque_phone" type="text" class="form-control" placeholder="Phone Number" required>
+
+			      <button class="btn btn-primary btn-block" type="submit" data-loading-text="Please wait...">
+			        Create Profile
+			      </button>
+			      
+			    </form>
+			</div>
+
+		</div>
+
+	</div>
+
+</template>

@@ -1,0 +1,38 @@
+/*****************************************************************************/
+/* Profilesearch: Style */
+/*****************************************************************************/
+
+.optionButtons {
+	font-size: 1em;
+	color: #339999;
+	text-align: center;
+	padding: 3px;
+}
+
+.searchContainer2 {
+	background-color: #339999;
+
+}
+
+.select3 {
+	padding: 3px;
+	background-color: #007C7C;
+}
+
+.shiftMiddle {
+	text-align: center;
+}
+
+.intheMiddle1 {
+}
+
+.buttonText {
+	text-align: center;
+	font-size: 0.6em;
+}
+
+.stayup1 {
+	position: absolute;
+	top: 0px;
+	left: 50px;
+}

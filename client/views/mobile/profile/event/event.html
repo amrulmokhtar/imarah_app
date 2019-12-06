@@ -1,0 +1,163 @@
+<template name="Event">
+    {{#HeaderFooterLayout headerSize="370" class="main" size=size4}}
+        {{#SequentialLayout target="header"}}
+            {{>Surface template="eventViewHeader" modifier="StateModifier" translate="[0,0,100]" size=size1}}
+            {{>Surface template="eventViewContains" modifier="StateModifier" translate="[0,-40,0]" size=size2}}
+            {{#Modifier target="content" modifier="StateModifier" translate="[0,-120,10]"}}
+                {{>eventProfileContainer}}
+
+            {{/Modifier}}
+        {{/SequentialLayout}}
+        
+    {{/HeaderFooterLayout}}
+</template>
+
+<template name="eventViewHeader">
+    <navbar class="navbar-fixed" role="navigation">
+        <div class="container-fluid transparent-bg">
+            <p class="navbar-text"  id="backButton1">
+                <span class="fa fa-chevron-left"></span>
+            </p>
+        </div>
+        <!-- Action Buttons -->
+        <ul class="actionbtns">
+            <li><a href="#"><img src="../images/icon_map.png" /></a></li>
+        </ul>
+    </navbar>
+</template>
+
+
+
+<template name="eventViewContains">
+    <div class="viewsTop1" style="background-image: url('../images/dummymosqueimage.jpg');">
+        <div class="overlaygradient"></div>
+        <div class="profileName">
+            <h3>{{event.name}}</h3>
+            <p>{{dateFormat event.date event.time}}</p>
+        </div>
+        <a class="profileActionBtn" id="rsvpClick">
+            <img src="../images/icon_rsvp_profile.png" alt="RSVP" style="margin-bottom: -10px"/>
+            <span>RSVP</span>
+        </a>
+            <!-- {{#each btns}}
+                <button class="btn btn-default rsvpBtn1" id="rsvpClick"><b>{{btnName}}</b></button>
+            {{/each}} -->
+        
+    </div>
+
+    
+    <!-- <div class="profileDownBar1">
+        <a href="{{pathFor 'eventtopicview'}}">
+            <span class="profileTab4"><img src="../images/icon_category_gray.png" width="32" height="32">
+                    <span class="profileText2 text2">CATEGORY</span></span>
+        </a>
+                <span class="profileTab4"><img src="../images/icon_going_gray.png" width="32" height="32">
+                    <span class="profileText2 text2">{{totalRSVP}} GOING</span></span>
+        <a href="{{pathFor 'eventmap'}}">
+            <span class="profileTab4"><img src="../images/icon_map_gray.png" width="32" height="32">
+                    <span class="profileText2 text3">MAP</span></span>
+        </a>
+
+    </div> -->
+</template>
+
+<template name="eventProfileContainer">
+  {{#Scrollview}}
+    {{>eventProfileHeader data=event contentTemplate="goingTemplate"}}
+    {{>eventProfileHeader header="ABOUT" data=event contentTemplate="aboutTemplate"}}
+    {{>eventProfileHeader header="VENUE" data=mosque contentTemplate="venueTemplate"}}
+    {{>eventProfileHeader header="CONTACT" data=mosque contentTemplate="contactTemplate"}}
+    {{#if imam}}
+    {{>eventProfileHeader fheader="IMAM" data=imam contentTemplate="imamTemplate"}}
+    {{/if}}
+
+    {{>eventProfileHeader  imgId="../images/icon_events.png" header="" data=event contentTemplate="reportTemplate"}}
+  {{/Scrollview}}
+</template>
+
+<template name="eventProfileHeader">
+{{#Surface size="[undefined, true]" class="backgroundWhite"}}
+<div class="container listcontainer">
+    <span>
+        {{#if header}}
+           <header class="fa-lg fa-stack">
+                <span class="profileText2">{{header}}</span>
+            </header>
+        {{/if}}
+    </span>
+    <div>
+        {{> Template.dynamic template=contentTemplate data=data}}
+
+    </div>
+</div>
+{{/Surface}}
+</template>
+
+<template name="goingTemplate">
+    <img class="goingPeople" src="../images/icon_imam.png" />
+    <img class="goingPeople" src="../images/icon_imam.png" />
+    <img class="goingPeople" src="../images/icon_imam.png" />
+    <img class="goingPeople" src="../images/icon_imam.png" />
+    <img class="goingPeople" src="../images/icon_imam.png" />
+    {{#if totalRSVP}}
+    <h4 class="goingCount">{{totalRSVP}} Going</h4>
+    {{/if}}
+    <div class="clear"></div>
+</template>
+
+<template name="aboutTemplate">
+    <span class="label">{{type}}</span>
+    <span class="label">{{topics}}</span>
+    {{#if description}}
+    <p style="margin-top: 10px;">{{description}}</p>
+    {{/if}}
+</template>
+
+<template name="venueTemplate">
+    <a href="{{pathFor 'mosque' id=_id}}">
+        <p>
+            <b>{{name}}</b><br>
+            <span>{{address}}</span><br>
+            <span>{{city_name}}, {{state}}</span>
+        <div class="actionListContainer">
+            <span class="">
+                <i class="fa iconaction"><img src="../images/icon_map_blue.png"></i>
+            </span><br>
+            <span class="blueText">Map</span>
+        </div>
+        </p>
+    </a>
+</template>
+
+<template name="contactTemplate">
+    <p>
+        <b>{{name}}</b><br>
+        <span>{{phone_number}}</span>
+    </p>
+
+</template>
+
+<template name="imamTemplate">
+<a href="{{pathFor 'imam' imamId=_id}}"><p>
+    <!-- <span class="fa fa-circle resizeCircle"></span>
+    <span class="shiftRight3">Ustaz Syed Norhisyam{{title}} {{first_name}}</span> -->
+    <span class="imamCircle" style="background-image: url('{{picture}}');"></span>
+    <span class="imamText">{{title}} {{first_name}} {{last_name}}</span>
+    <div class="clear"></div>
+    <!-- <div class="actionListContainer">
+        <span class="fa-stack fa-lg">
+            <i class="fa fa-stack-1x iconaction"><img src="../images/icon_follow_blue.png"></i>
+        </span><br>
+        <span class="blueText">Follow</span>
+    </div> -->
+</p>
+</a>
+</template>
+
+<template name="reportTemplate">
+    <button onclick="Check_In.insert({event_id:'{{_id}}',mosque_id:'{{mosque_id}}'})" class="JoinStyle1 btn btn-default">Check In</button>
+    <!--<button class="btn btn-default"></button>-->
+    <button id="rate_event" class="JoinStyle1 btn btn-default">Rate Event</button>
+    <!--<button class="JoinStyle1 btn btn-default fixState">Suggest an Edit</button>-->
+    <div class="clear"></div>
+</template>

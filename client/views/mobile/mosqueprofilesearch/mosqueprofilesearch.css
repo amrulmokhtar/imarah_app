@@ -1,0 +1,45 @@
+/*****************************************************************************/
+/* Mosqueprofilesearch: Style */
+/*****************************************************************************/
+
+.tabBtns {
+	font-size: 1.6em;
+	color: #339999;
+	text-align: center;
+	margin-top: -5px;
+	padding: 1px;
+}
+
+.active1 {
+	padding: 1px;
+	background-color: #007C7C;
+}
+
+.tabtext {
+	font-size: 0.4em;
+	color: white;
+	text-align: center;
+}
+
+.positionText2 {
+	position: absolute;
+	top: 0;
+	left: 46px;
+}
+
+.amenBtns {
+	background-color: grey;
+	color:white;
+	width: 120px;
+}
+
+.donateBtn1 {
+	background-color: grey;
+	color: white;
+	width: 160px;
+}
+
+.shiftMiddle {
+	background-color: #339999;
+	text-align: center;
+}

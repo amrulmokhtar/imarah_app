@@ -1,0 +1,28 @@
+<template name="Thankyou">
+	{{#Modifier size=size1}}
+		{{#Surface size=size1 modifier="StateModifier" translate="[0,0,0]" class="green-bg"}}
+			{{>thankYouCross}}
+		{{/Surface}}
+
+		{{#Surface size="[400, 400]" origin="[0.5, 0.5]" align="[0.5, 0.5]" translate='[0, 0, 1]'}}
+		    {{>thankYouText}}
+		{{/Surface}}
+	{{/Modifier}}
+</template>
+
+<template name="thankYouCross">
+	<img src="images/icon_close.png" id="backButton10" class="imgMargin" height="25" width="25">
+</template>
+
+<template name="thankYouText">
+	<div class="textToCenter1">
+		<h2>Thank You!</h2><br>
+		<p>
+			<span>Your feedback has been received.</span><br><br>
+			<span>Have a nice day!</span>
+		</p><br>
+		<span class="">
+			<button class="btn appBtn" id="backButton10">Back to app</button>
+		</span>
+	</div>
+</template>

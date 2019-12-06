@@ -1,0 +1,56 @@
+<template name="prayertimes">
+     {{#HeaderFooterLayout headerSize="228" class="main" size=size4}}
+        {{#SequentialLayout target="header"}}
+            {{>Surface template="prayerTimesContainerHeader" modifier="StateModifier" translate="[0,0,100]" size=size1}}
+            {{>Surface template="prayerTimesLatestHeader" modifier="StateModifier" translate="[0,27.5,0]" size=size2}}
+        {{/SequentialLayout}}
+        {{#Modifier target="content" modifier="StateModifier" translate="[0,0,50]"}}
+            {{>prayerTimesList}}
+        {{/Modifier}}
+    {{/HeaderFooterLayout}}
+</template>
+
+<template name="prayerTimesContainerHeader">
+    <div>
+    <navbar class="navbar-fixed" role="navgation">
+        <div class="container-fluid green-bg ">
+            <p class="navbar-text" id="backButton1">
+                <img src="images/icon_menu.png" height="20" width="30" class="">
+            </p>
+            <p class="navbar-text positionHeaderText">
+                Prayer Times
+            </p>
+        </div>
+    </navbar>
+    </div>
+</template>
+
+<template name="prayerTimesLatestHeader">
+    <div class="latestHeader">
+
+        <div class="positionLatest">
+            {{#with nextTime clientPos}}
+                <span class="cardHeader"><b>NEXT PRAYER TIME</b></span><br>
+                <span class="cardcontentHeader">{{name}}
+                    <span class="cardContent"><i>{{time}}</i></span>
+                </span>
+            {{/with}}
+        </div>
+    </div>
+</template>
+
+<template name="prayerTimesList">
+    {{#Scrollview}}
+        {{#each prayerTimes clientPos}}
+            {{#Surface size="[undefined,true]"}} 
+                <div class="timesContainer">
+                    <span class="nameStyle">{{name}}</span>
+                    <span class="timeStyle">{{time}}</span><br>
+                    <hr>
+                </div>
+            {{/Surface}}
+        {{/each}}
+    {{/Scrollview}}
+</template>
+
+

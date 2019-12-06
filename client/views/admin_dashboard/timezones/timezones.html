@@ -1,0 +1,104 @@
+<template name="AdminDashboardTimezones">
+	<div class="container" id="content">
+		<h2 id="page_title">
+			Administrate Timezones
+		</h2>
+		{{> AdminDashboardTimezonesTimezoneView}}
+	</div>
+</template>
+
+<template name="AdminDashboardTimezonesTimezoneView">
+	<div id="dataview" class="">
+		<h2 id="component-title">
+			Timezones
+		</h2>
+		<form id="dataview-controls" class="form-inline">
+			<div id="dataview-controls-insert" class="form-group">
+				<button type="submit" id="dataview-insert-button" class="btn btn-success">
+					<span class="fa fa-plus">
+					</span>
+					Add new
+				</button>
+			</div>
+			<div id="dataview-controls-search">
+				{{#if isNotEmpty}}
+				<div id="dataview-controls-search-group" class="form-group">
+					<label class="sr-only" for="search">
+						Search
+					</label>
+					<input type="text" class="form-control" id="dataview-search-input" placeholder="Search" name="search" value="{{searchString}}" autofocus="autofocus">
+					<button type="button" id="dataview-search-button" class="btn btn-primary">
+						<span class="fa fa-search">
+						</span>
+					</button>
+				</div>
+				{{/if}}
+			</div>
+		</form>
+		{{#if isNotEmpty}}	
+			{{#if isNotFound}}
+		<div class="alert alert-warning">
+			"{{searchString}}" not found.
+		</div>
+		{{else}}
+		<div id="dataview-data">
+			{{#if viewAsTable}} {{> AdminDashboardTimezonesTimezoneViewTable}} {{/if}}
+		</div>
+		{{/if}}	
+		{{else}}
+		<div class="alert alert-info">
+			No Timezones Yet
+		</div>
+		{{/if}}
+	</div>
+</template>
+
+<template name="AdminDashboardTimezonesTimezoneViewTable">
+	<table id="dataview-table" class="table table-striped">
+		<thead id="dataview-table-header">
+			<tr id="dataview-table-header-row">
+				<th class="th-sortable" data-sort="name">
+					Timezone Name
+				</th>
+				<th class="th-sortable" data-sort="offset">
+					Timezone Offset
+				</th>
+				<th class="th-sortable" data-sort="daylightsaving">
+					Daylight Savings
+				</th>
+				<th>
+					&nbsp;
+				</th>
+				<th>
+					&nbsp;
+				</th>
+			</tr>
+		</thead>
+		<tbody id="dataview-table-items">
+			{{#each tableItems}} {{> AdminDashboardTimezonesTimezoneViewTableItems}} {{/each}}
+		</tbody>
+	</table>
+</template>
+
+<template name="AdminDashboardTimezonesTimezoneViewTableItems">
+	<tr id="dataview-table-items-row">
+		<td>
+			{{name}}
+		</td>
+		<td>
+			{{offset}}
+		</td>
+		<td>
+			{{daylightsaving}}
+		</td>
+		<td class="td-icon">
+			<span id="edit-button" class="fa fa-pencil" title="Edit">
+			</span>
+		</td>
+		<td class="td-icon">
+			<span id="delete-button" class="fa fa-trash-o" title="Delete">
+			</span>
+		</td>
+	</tr>
+</template>
+

@@ -1,0 +1,46 @@
+<template name="Zakat">
+ 	{{#HeaderFooterLayout headerSize="110" class="main"}}
+ 		{{>Surface target="header" modifier="StateModifier" translate="[0,0,1]" template="zakatHeader"}}
+ 		{{>Surface target="content" modifier="StateModifier" translate="[0,0,0]" template="zakatSurface"}}
+ 	{{/HeaderFooterLayout}}
+</template>
+
+<template name="zakatHeader">
+	<navbar class="navbar-fixed" role="navigation">
+		<div class="container-fluid green-bg">
+			<p class="navbar-text" id="backButton1">
+				<span class="fa fa-chevron-left" id="backButton"></span>
+			</p>
+			<p class="navbar-text navbar-right moveright text-white" id="zakatButton">
+				<span class="zakatA" id="payZak">Pay Zakat</span>
+			</p>
+		</div>
+	</navbar>
+</template>
+
+<template name="zakatSurface">
+	<div class="container">
+		<p>How much would you like to contribute?</p>
+		<span class="input-addon">RM</span>
+		<input type="number" step="0.01" class="numberInput inp1" id="zakatAmount">
+		<div class="formSurface">
+			<p>Please enter your credit/debit card details</p>
+			<h4 class="formInputLabel">Card Number</h4>
+			<input type="text" class="numberInput inp2"  id="cardInput" >
+
+			<div class="pull-left upperMargin">
+				<h4 class="formInputLabel">Expiry Date</h4>
+				<input type="text" id="expiryInputDate" class="expInput" maxlength="2">
+				<input type="text" id="expiryInputYear" class="expInput" maxlength="2">
+			</div>
+			<div class="pull-right upperMargin">
+				<h4 class="formInputLabel">CVV/CVC</h4>
+				<input type="text" class="cvvInp" id="cvcInput">
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="formSurface textCenter">
+			<a id="" class="btn btn-primary">Pay Zakat</a>
+		</div>
+	</div>
+</template>

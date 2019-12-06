@@ -1,0 +1,229 @@
+<template name="MobileLayout" xmlns="http://www.w3.org/1999/html">
+
+  {{#famousContext class="withfamous" id="mainCtx"}}
+      {{#Modifier size="[undefined, undefined]"}}
+        {{#Surface}}{{/Surface}}
+        {{> menu}}
+        
+        {{>Modifier template="yieldContainer" size="[undefined, undefined]" overflow="hidden" transition="opacity" class="timbre-cs special" translate="[0, 0]"}}
+
+      {{/Modifier}}
+  {{/famousContext}}
+</template>
+
+<template name="yieldContainer">
+    {{#RenderController}}
+
+          {{> yield}}
+    
+    {{/RenderController}}
+
+</template>
+
+<template name="menu">
+    {{#SequentialLayout id="menu" size=size4 translate="[-250,0]"}}
+      {{>menuItems}}
+    {{/SequentialLayout}}
+</template>
+
+<template name="menuItems">
+<div id="mitems">
+    {{>profileHeader}}
+    {{>newsFeed}}
+    {{>myEvents}}
+    {{>mosqueLocatorLink}}
+    {{>qiblatDirection}}
+    {{>prayerTimes}}
+    {{>alQuran}}
+    {{>profileBottom}}
+</div>
+</template>
+
+<template name="profileHeader">
+    {{#Surface size=cardSize }}
+    {{>profileHeaderView}}
+    {{/Surface}}
+</template>
+
+<template name="profileHeaderView">
+
+    <div class="well welHeight profileBg">
+        <a href="{{pathFor 'userprofile'}}" class="needsclick">
+            <img src="http://lorempixel.com/40/40" height="40" width="40" class="img-circle">
+            <span class="">User Placeholder</span>
+        </a>
+    </div>
+
+</template>
+
+<template name="profileSpace">
+    {{#Surface size=cardSize class="paintgray"}}
+    {{/Surface}}
+</template>
+
+<template name="profileBottom">
+    {{#Surface size="[250,undefined]" class="profileBottom"}}
+        <!-- {{>profileBottomContents}} -->
+    {{/Surface}}
+</template>
+
+<template name="profileBottomContents">
+    <div>
+        <span class="bottomLinks">Settings</span>
+        <a href="{{pathFor 'feedback'}}" class="bottomLinks">
+            <span >Feedback</span>
+        </a>
+        <span class="bottomLinks">Invite</span>
+    </div>
+</template>
+
+<template name="prayerTimes">
+        {{#Surface class=activity size="[250,70]" modifier="StateModifier"}}
+                {{>prayerContained}}
+        {{/Surface}}
+</template>
+
+<template name="prayerContained">
+    <a href="{{pathFor 'prayertimes'}}">
+    <div id="prayer">
+            <img src="images/icon_prayer.png" height="28" width="28">
+        <span style="margin-left: 10px">Prayer Times</span>
+    </div>
+    </a>
+</template>
+
+<template name="alQuran">
+        {{#Surface class=activity size="[250,70]" modifier="StateModifier"}}
+                {{>alQuranContained}}
+        {{/Surface}}
+</template>
+
+<template name="alQuranContained">
+    <a href="{{pathFor 'alquran'}}">
+    <div id="alQuran">
+            <img src="images/icon_alquran.png" height="28" width="28">
+        <span style="margin-left: 10px">Al Quran</span>
+    </div>
+    </a>
+</template>
+
+<template name="newsFeed">
+    {{#Surface class=activity size=menuSize modifier="StateModifier"}}
+      {{>newsContained}}
+    {{/Surface}}
+</template>
+
+<template name="newsContained">
+    <a href="{{pathFor 'newsfeed'}}">
+    <div id="news" >
+            <img src="images/icon_newsfeed.png" height="28" width="28">
+        <span style="margin-left: 10px">News Feed</span>
+    </div>
+    </a>
+</template>
+
+<template name="myEvents">
+    {{#Surface class=activity size="[250,70]" modifier="StateModifier"}}
+      {{>eventsContained}}
+    {{/Surface}}
+</template>
+
+<template name="eventsContained">
+    <a href="{{pathFor 'myevents'}}">
+        <div id="events">
+                <img src="images/icon_myevents.png" height="28" width="28">
+            <span style="margin-left: 10px">My Events</span>
+        </div>
+    </a>
+</template>
+
+<template name="mosqueLocatorLink">
+    {{#Surface class=activity size="[250,70]" modifier="StateModifier"}}
+      {{>mosqueContained}}
+    {{/Surface}}
+</template>
+
+<template name="mosqueContained">
+    <a href="{{pathFor 'mosquelocator'}}">
+    <div id="mosqueId">
+            <img src="images/icon_mosquelocator.png" height="28" width="28">
+        <span style="margin-left: 10px">Mosque Locator</span>
+    </div>
+    </a>
+</template>
+
+<template name="qiblatDirection">
+    {{#Surface class=activity size="[250,70]" modifier="StateModifier"}}
+      {{>qiblatContained}}
+    {{/Surface}}
+</template>
+
+<template name="qiblatContained">
+    <a href="{{pathFor 'qiblat'}}">
+    <div id="qiblat">
+           <img src="images/icon_qiblat.png" height="28" width="28">
+        <span style="margin-left: 10px">Qiblat Direction</span>
+    </div>
+    </a>
+</template>
+
+<!-- Event card boilerplate-->
+<template name="eventsCard">
+{{#Surface size="[undefined, true]"}}
+    <div class="listcontainer">
+        <a href="'{{pathFor 'event' _id=_id}}">
+            <div class="" id="center2">
+                    {{#if header}}
+                    <h3 class="cardHeader1 profileText2">
+                        {{#if lessthan}}
+                            &lt;
+                        {{/if}}
+                        {{header}}
+                    </h3>
+                    {{/if}}            
+                    <p>
+                    <a href="{{pathFor 'event' _id=_id}}" class="needsclick">
+                        <h4 class="cardTextHead">{{contentHeader}}</h4>
+                        <span class="smallerText4r">
+                            {{content1}}
+                                <br>
+                            {{content2}}
+                        </span>
+                    </a>
+                </p>
+            </div>
+        </a>
+        <div class="actionListContainer">
+            <span class="">
+                <!-- <i class="fa fa-stop rsvpBox fa-stack-2x"></i>Inherits design from rsvpBox of newsfeed card -->
+                <i class="fa iconaction"><img src="../images/icon_rsvp_blue.png"></i>
+            </span><br>
+            <span class="blueText" style="margin-top: 5px">RSVP</span>
+        </div>
+    </div>
+{{/Surface}}
+</template>
+
+<!--Global profile cards Used in //User's profile //mosque's profile //Imam's profile-->
+<template name="profileCards">
+{{#Surface size="[undefined, true]"}}
+    <div class="cardContainer1" >
+            <span class="fa-stack fa-lg timelineCircle">
+                <span class="fa fa-circle fa-stack-2x {{id}}"></span>
+                <span class="fa-stack-1x"><img src="{{imgId}}" class="timelineImg" width="17" height="17"></span>
+            </span>    
+            <div class="center1"  id="cardContainer">
+                <a href="{{id}}" class="needsclick">
+                    <header class="cardHeader1" id="{{id}}">{{header}}</header>
+                </a>
+                <br>
+                <p>
+                    <span class="cardContent">
+                        {{> Template.dynamic template=contentTemplate }}
+                    </span>
+                </p>
+                <br>
+            </div>
+    </div>
+{{/Surface}}
+</template>

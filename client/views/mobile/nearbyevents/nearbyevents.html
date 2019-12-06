@@ -1,0 +1,42 @@
+<template name="Nearbyevents">
+    {{#HeaderFooterLayout headerSize="210" class="main" size=size4}}
+        {{#SequentialLayout target="header"}}
+            {{>Surface template="nearByAreaHeader" modifier="StateModifier" translate="[0,0,100]" size=size1}}
+            {{>Surface template="nearbyEventsContainer" modifier="StateModifier" translate="[0,27.5,0]" size=size2}}
+        {{/SequentialLayout}}
+        {{#Modifier target="content" modifier="StateModifier" translate="[0,0,10]"}}
+            {{>eventCards data=data}}
+        {{/Modifier}}
+    {{/HeaderFooterLayout}}
+</template>
+
+<template name="nearByAreaHeader">
+    <navbar class="navbar-fixed" role="navigation">
+        <div class="container-fluid green-bg">
+
+            <p class="navbar-text" id="backButton1">
+                <span class="fa fa-chevron-left" id="barIcon"></span>
+            </p>
+
+            <p class="navbar-text stayFixed">
+                NEARBY EVENTS
+            </p>
+            <p class="navbar-text moveright">
+                <span><img   height="24" width="30" src="images/icon_settings.png"></span>
+            </p>
+        </div>
+    </navbar>
+</template>
+
+<template name="nearbyEventsContainer">
+    <div id="mapNearby" style="height:{{mapHeight}}"></div>
+</template>
+
+<template name="eventCards">
+{{#Scrollview}}
+    {{#each data.events}}
+        {{>myeventsCard lessthan="true" header="1KM AWAY" contentHeader=name content1=time content2=mosque_name id="mosque" _id=_id}}
+    {{/each}}
+{{/Scrollview}}
+</template>
+

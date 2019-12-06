@@ -1,0 +1,68 @@
+<template name="Donate">
+	{{#HeaderFooterLayout headerSize="56" class="main"}}
+		{{>Surface target="header" modifier="StateModifier" translate="[0,0,10]" template="donateHeader"}}
+		
+		{{#Scrollview target="content"  modifier="StateModifier" translate="[0,0,0]"}}
+			{{#Surface size="[undefined,50]" class="grayColor"}} 
+				{{>donateToSurface data=mosque}}
+			{{/Surface}}
+			{{>Surface size="[undefined,500]" template="donateSurface" data=mosque}}
+		{{/Scrollview}}
+	{{/HeaderFooterLayout}}
+</template>
+
+<template name="donateToSurface">
+	<div class="container margtop">
+					You are donating to {{data.name}}.
+	</div>
+</template>
+
+<template name="donateHeader">
+	<navbar class="navbar-fixed" role="navigation">
+		<div class="container-fluid green-bg">
+			<p class="navbar-text" id="backButton1">
+				<span class="fa fa-chevron-left" id="backButton"></span>
+			</p>
+			<p class="navbar-text navbar-right moveright text-white" id="donateButton">
+				<span id="godonate" class="donateA">Donate</span>
+			</p>
+		</div>
+	</navbar>
+</template>
+
+<template name="donateSurface">
+
+	<div id="donateform" class="container">
+		<div class="formSurface">
+
+			<p>How much would you like to donate?</p>
+			<span class="input-addon">RM</span>
+			<input name="donationamount" type="number" step="0.01" class="numberInput inp1" id="donationAmount">
+		</div>
+		<div class="formSurface">
+			<p>Do you want to leave a message?</p>
+			<textarea name="reason" class="formInput formInputTextarea" placeholder="Leave a message (optional) . . ."></textarea>
+		</div>
+		<div class="formSurface">
+			<p>Please enter your credit/debit card details</p>
+			<h4 class="formInputLabel">Card Number</h4>
+			<input name="cardinput" type="text" class="numberInput inp2"  id="cardInput" >
+
+			<div class="pull-left upperMargin">
+				<h4 class="formInputLabel">Expiry Date</h4>
+				<input name="expirymonth" type="text" id="expiryInputDate" class="expInput" maxlength="2">
+				<input name="expiryyear" type="text" id="expiryInputYear" class="expInput" maxlength="2">
+			</div>
+			<div class="pull-right upperMargin">
+				<h4 class="formInputLabel">CVV/CVC</h4>
+				<input name="ccv" type="text" class="cvvInp" id="cvcInput">
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+		<div class="formSurface textCenter">
+			<a id="" class="btn btn-primary">Donate to Mosque</a>
+
+		</div>
+	</div>
+</template>

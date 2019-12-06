@@ -1,0 +1,36 @@
+<!-- Checkin page-->
+<template name="Checkin">
+    {{#Surface size="[undefined, undefined]"}}
+    {{>checkinHeader}}
+    {{/Surface}}
+</template>
+
+<template name="checkinHeader">
+    <navbar class="navbar-fixed" role="navigation">
+        <div class="container-fluid green-bg">
+            <a href="javascript:void(0)">
+                <p class="navbar-text" id="backButton1">
+                    <span class="fa fa-chevron-left"></span>
+                </p>
+            </a>
+            <a id="checkinconf"><p class="navbar-text moveright">CHECK IN</p></a>
+        </div>
+    </navbar>
+    {{>checkinContent}}
+</template>
+
+<template name="checkinContent">
+    <div class="checkinContentHeader">
+        {{#if mosque}}<span>{{mosque.name}}</span><br>{{/if}}
+        {{#if event}}<span>{{event.name}}</span><br>{{/if}}
+        <button class="btn btn-default btn-xs">Change Location</button>
+    </div>
+    <textarea id="checkinmessage" class="checkinText">
+{{#if mosque}}I'm checking in at {{mosque.name}}{{/if}}
+{{#if event}}I'm attending {{event.name}} at {{mosquename event.mosque_id}}{{/if}}
+    </textarea>
+    <span class="positionButtons">
+        <span class="fa fa-circle facebookButton sharedButton"></span>
+        <span class="fa fa-circle twitterButton sharedButton"></span>
+    </span>
+</template>

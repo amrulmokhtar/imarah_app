@@ -1,0 +1,19 @@
+<template name="Cardview">
+    {{#Surface size="[undefined, undefined]"}}
+    {{>cardViewHeader}}
+    {{/Surface}}
+</template>
+
+<template name="cardViewHeader">
+    <navbar class="navbar-fixed" role="navigation">
+        <div class="container-fluid green-bg">
+            <a href="javascript:void(0)">
+                <p class="navbar-text" id="backButton1">
+                    <span class="fa fa-chevron-left"></span>
+                </p>
+            </a>
+        </div>
+    </navbar>
+    {{>latestPrayerCard content1="Nearby Mosques" content2="Qibla Direction"}}
+</template>
+

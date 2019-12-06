@@ -1,0 +1,34 @@
+<template name="AdminDashboardAdminForum">
+	<div class="container" id="content">
+		<h2 id="page_title">
+			Administrate Forum
+		</h2>
+		{{> AdminDashboardAdminForumAdminForumMenu}}
+	</div>
+</template>
+
+<template name="AdminDashboardAdminForumAdminForumMenu">
+	<ul id="menu-items" class="">
+		<li id="menu-item-simple" class="{{menuItemClass 'admin_forum.topics'}}">
+			<a href="{{pathFor 'admin_forum.topics'}}">
+				Administrate Topics
+			</a>
+		</li>
+		<li id="menu-item-simple" class="{{menuItemClass 'admin_forum.categories'}}">
+			<a href="{{pathFor 'admin_forum.categories'}}">
+				Administrate Categories
+			</a>
+		</li>
+		<li id="menu-item-simple" class="{{menuItemClass 'admin_forum.posts'}}">
+			<a href="{{pathFor 'admin_forum.posts'}}">
+				Administrate Posts
+			</a>
+		</li>
+		<li id="menu-item-simple" class="{{menuItemClass 'admin_forum.answers'}}">
+			<a href="{{pathFor 'admin_forum.answers'}}">
+				Administrate Answers
+			</a>
+		</li>
+	</ul>
+</template>
+

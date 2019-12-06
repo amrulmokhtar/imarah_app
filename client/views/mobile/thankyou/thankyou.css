@@ -1,0 +1,22 @@
+/*****************************************************************************/
+/* Thankyou: Style */
+/*****************************************************************************/
+
+
+.imgMargin {
+	margin: 10px;
+}
+
+.textToCenter1 {
+	text-align: center;
+	color: white;
+	font-family: 'Open Sans';
+	font-size: 1.4em;
+}
+
+.appBtn {
+	background-color: #C2E0E0;
+	color: black;
+	text-align: center;
+	width: 170px;
+}

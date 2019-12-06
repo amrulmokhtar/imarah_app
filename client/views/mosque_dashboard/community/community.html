@@ -1,0 +1,295 @@
+<template name="MosqueDashboardCommunity">
+
+    <div class="page-container row-fluid">
+        <!-- BEGIN SIDEBAR -->
+        <div class="page-sidebar" id="main-menu">
+
+            <!-- BEGIN SIDEBAR MENU -->
+     	    {{> mosque_menu}}
+
+        </div>
+    </div>
+    <div  class="page-content">
+        <div class="" id="content">
+            {{> community_dashboard_content}}
+
+        </div>
+    </div>
+
+
+    <!-- Modals -->
+    <div aria-hidden="true" aria-labelledby="newMemberModalLabel" role="dialog" tabindex="-1" id="newMemberModal" class="modal modal_pop fade">
+    	{{> newMemberModal}}
+    </div>
+
+    <div aria-hidden="true" aria-labelledby="newMessageModalLabel" role="dialog" tabindex="-1" id="newMessageModal" class="modal modal_pop fade">
+    	{{> newMessageModal}}
+    </div>
+
+</template>
+
+
+<template name="community_dashboard_content">
+
+	<div class="content">
+
+		<div class="content-top">
+	        <!-- Nav tabs -->
+	        <ul class="nav nav-tabs nav-wrap" role="tablist">
+	            <li role="presentation" class="active"><a href="#community-members" aria-controls="community-members" role="tab" data-toggle="tab">Members</a></li>
+	            <li role="presentation"><a href="#community-messages" aria-controls="community-messages" role="tab" data-toggle="tab">Messages</a></li>
+	        </ul>
+
+	        <a class="add_trans add_trans_green" data-target="#newMessageModal" data-toggle="modal">New Message</a>
+	        <a class="add_trans" data-target="#newMemberModal" data-toggle="modal">Add Member</a>
+
+	        <div class="clear"></div>
+	    </div>
+
+		<div class="tab-content">
+
+	    <div role="tabpanel" class="tab-pane active" id="community-members">
+
+			<!-- BEGIN MID SECTION-->
+            <div class="row-fluid mid-col">
+                <div class="col-md-2">
+                    <div class="col_leftbar">
+
+						<div class="smsCounter">
+							<h4>SMS Credits</h4>
+							<h1>{{managed_mosque.sms_credits}} / 200</h1>
+							<p>Your credits will reset on {{formatDate nextMonth 'DD/MM/YYYY'}}</p>
+						</div>
+
+                        <!-- <input type="search" name="search" class="search"> -->
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs left_nav event_nav" id="" role="tablist">
+                            <li class="active"  role="presentation"><a href="#members-list" aria-controls="home" role="tab" data-toggle="tab">Members</a></li>
+
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="fil_sel evt_sel">
+                            Sort by
+                            <select class="select_bx">
+                                <option>Alphabetical</option>
+                                <option>Date Added</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-10">
+
+                    <div class="tab-content">
+                        
+                        <div role="tabpanel" class="tab-pane active" id="members-list">
+
+
+
+                            {{#if community_members.count}}
+                            <table class="table tab-wrap">
+                                <tr>
+                                    <th><div>Name</div></th>
+                                    <th><div>Phone Number</div></th>
+                                    <th><div>Gender</div></th>
+                                    <th><div>Occupation</div></th>
+                                    <th><div></div></th>
+                                </tr>
+
+                                {{#each community_members }}
+                                {{>jaiscommunitymemberslistROW this}}
+                                {{/each}}
+
+                            </table>
+                            {{else}}
+                                <!-- emptydata -->
+                                <!-- IF: no members -->
+                                <div class="emptydata">
+                                    <img src="../img/icon_community_green.png" />
+                                    <p>You can send updates on Mosque events via SMS.<br />Add members to your community to start sending updates.</p>
+                                    <a class="btn btn-primary" data-target="#newMemberModal" data-toggle="modal">Add a member</a>
+                                </div>
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END MID SECTION-->
+
+	    </div>
+
+	    <div role="tabpanel" class="tab-pane" id="community-messages">
+
+			<!-- BEGIN MID SECTION-->
+            <div class="row-fluid mid-col">
+                <div class="col-md-2">
+                    <div class="col_leftbar">
+                    	<div class="smsCounter">
+							<h4>SMS Credits</h4>
+							<h1>{{managed_mosque.sms_credits}} / 200</h1>
+							<p>Your credits will reset on {{formatDate nextMonth 'DD/MM/YYYY'}}</p>
+						</div>
+                        <!-- <input type="search" name="search" class="search"> -->
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs left_nav event_nav" id="" role="tablist">
+                            <li class="active"  role="presentation"><a href="#messages-list" aria-controls="home" role="tab" data-toggle="tab">Sent</a></li>
+                            <!-- <li id="postevent" role="presentation"><a href="#past-event" aria-controls="profile" role="tab" data-toggle="tab">Past Events</a></li> -->
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="fil_sel evt_sel">
+                            Sort by
+                            <select class="select_bx">
+                                <option>Recent to Oldest</option>
+                                <option>Oldest to Recent</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-10">
+
+                    <div class="tab-content">
+                        
+                        <div role="tabpanel" class="tab-pane active" id="messages-list">
+
+
+                            <!-- emptydata -->
+                            <!-- IF: no members -->
+                            {{#if community_members.count}}
+                            {{else}}
+                            <div class="emptydata">
+                                <img src="../img/icon_community_green.png" />
+                                <p>You can send updates on Mosque events via SMS.<br />Add members to your community to start sending updates.</p>
+                                <a class="btn btn-primary" data-target="#newMemberModal" data-toggle="modal">Add a member</a>
+                            </div>
+                            {{/if}}
+                            <!-- ELSEIF: no messages -->
+                            {{#if community_sms.count}}
+                                <table class="table tab-wrap">
+                                    <tr>
+                                        <th><div>Date</div></th>
+                                        <th><div>Time</div></th>
+                                        <th style="width:50%"><div>Message</div></th>
+                                        <th><div></div></th>
+                                    </tr>
+                                    {{#each community_sms }}
+                                        {{>jaiscommunitymessageslistROW this}}
+                                    {{/each}}
+
+                                </table>
+                            {{else}}
+                                <div class="emptydata">
+                                    <img src="../img/icon_community_green.png" />
+                                    <p>You can send updates on Mosque events via SMS.<br />Start by writing a new message.</p>
+                                    <a class="btn btn-primary" data-target="#newMessageModal" data-toggle="modal">New Message</a>
+                                </div>
+                            {{/if}}
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END MID SECTION-->
+
+	    </div>
+
+		</div>
+
+	</div>
+
+</template>
+
+<template name="newMemberModal">
+
+	<div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+            	<h3>Add a new Member</h3>
+                <div class="form-group">
+		            <label for="name">Name</label>
+		            <input id="name"  type="text" name="name" placeholder="Name" class="form-control">
+		        </div>
+		        <div class="form-group">
+		            <label for="phonenumber">Phone Number</label>
+		            <input id="phonenumber" name="phone_number" type="text" placeholder="Phone Number" class="form-control">
+		        </div>
+                <div class="form-group" style="float: left; width: 48%; margin-right: 2%">
+                    <label for="gender">Gender</label>
+                    <select id="gender" name="gender" class="form-control">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+                <div class="form-group" style="float: left; width: 48%; margin-left: 2%">
+                    <label for="occupation">Occupation</label>
+                    <input id="occupation" name="occupation" type="text" placeholder="Occupation" class="form-control">
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-cancel" data-dismiss="modal">Cancel</button>
+                <button id="add_member" type="button" data-dismiss="modal" class="btn btn-add">Add Member</button>
+            </div>
+        </div>
+    </div>
+
+</template>
+
+
+<template name="newMessageModal">
+
+	<div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+            	<h3>Send a new Message</h3>
+                <div class="form-group">
+		            <!-- <label for="message">Message</label> -->
+		            <textarea id="message" name="message"  type="text" placeholder="Type your message" class="form-control newmessage" maxlength="100">{{managed_mosque.name}}</textarea>
+		            <p class="characterCount">100</p>
+		            <div class="clear"></div>
+		        </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-cancel" data-dismiss="modal">Cancel</button>
+                <button id="send_message" type="button" data-dismiss="modal" class="btn btn-add">Send Message</button>
+            </div>
+        </div>
+    </div>
+
+</template>
+
+
+
+
+
+<template name="jaiscommunitymemberslistROW">
+    <tr>
+        <td><div>{{name}}</div></td>
+        <td><div>{{phone_number}}</div></td>
+        <td><div>{{gender}}</div></td>
+        <td><div>{{occupation}}</div></td>
+        <td><div><a class="edit_btn" onclick="CommunityMembers.remove({_id:'{{_id}}'})">Delete</a></div></td>
+        <!--<td><div><a class="edit_btn" href="javascript:void()" id="edit">Edit</a></div></td> -->
+    </tr>
+</template>
+
+<template name="jaiscommunitymessageslistROW">
+	<tr>
+		<td><div>{{formatDate date 'DD MMM'}}</div></td>
+		<td><div>{{time}}</div></td>
+		<td><div>{{message}}</div></td>
+		<td><div><a class="edit_btn" id="view" data-target="#" data-toggle="modal">Resend</a></div></td>
+	</tr>
+</template>
+
+
+
+
+
+
+
+
+
+
+
+

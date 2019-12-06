@@ -1,0 +1,189 @@
+<template name="AdminDashboardAdminImams">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12" id="content">
+	<h2 id="page_title">
+	  Administrate Imams
+	</h2>
+	{{> AdminDashboardAdminImamsImamView}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12" id="menu">
+	{{> AdminDashboardAdminImamsAdminImamMenu}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12" id="subcontent">
+	{{> yield region='AdminDashboardAdminImamsSubcontent'}}
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="AdminDashboardAdminImamsImamView">
+  <div id="dataview" class="">
+    <h2 id="component-title">
+      Imams
+    </h2>
+    <form id="dataview-controls" class="form-inline">
+      <div id="dataview-controls-insert" class="form-group">
+	<button type="submit" id="dataview-insert-button" class="btn btn-success">
+	  <span class="fa fa-plus">
+	  </span>
+	  Add new
+	</button>
+      </div>
+      <div id="dataview-controls-search">
+	{{#if isNotEmpty}}
+	<div id="dataview-controls-search-group" class="form-group">
+	  <label class="sr-only" for="search">
+	    Search
+	  </label>
+	  <input type="text" class="form-control" id="dataview-search-input" placeholder="Search" name="search" value="{{searchString}}" autofocus="autofocus">
+	  <button type="button" id="dataview-search-button" class="btn btn-primary">
+	    <span class="fa fa-search">
+	    </span>
+	  </button>
+	</div>
+	{{/if}}
+      </div>
+    </form>
+    {{#if isNotEmpty}}
+    {{#if isNotFound}}
+    <div class="alert alert-warning">
+      "{{searchString}}" not found.
+    </div>
+    {{else}}
+    <div id="dataview-data">
+      {{#if viewAsTable}} {{> AdminDashboardAdminImamsImamViewTable}} {{/if}}
+    </div>
+    {{/if}}
+    {{else}}
+    <div class="alert alert-info">
+      No Imams Yet
+    </div>
+    {{/if}}
+  </div>
+</template>
+
+<template name="AdminDashboardAdminImamsImamViewTable">
+  <table id="dataview-table" class="table table-striped">
+    <thead id="dataview-table-header">
+      <tr id="dataview-table-header-row">
+	<th class="th-sortable" data-sort="title">
+	  Imam Title
+	</th>
+	<th class="th-sortable" data-sort="first_name">
+	  First Name
+	</th>
+	<th class="th-sortable" data-sort="last_name">
+	  Last Name
+	</th>
+	<th class="th-sortable" data-sort="specialities">
+	  Imam Specialities
+	</th>
+	<th class="th-sortable" data-sort="user_id">
+	  User ID
+	</th>
+	<th class="th-sortable" data-sort="description">
+	  About Imam
+	</th>
+	<th class="th-sortable" data-sort="phone_number">
+	  Phone Number
+	</th>
+	<th class="th-sortable" data-sort="country">
+	  Country
+	</th>
+	<th class="th-sortable" data-sort="email">
+	  Email
+	</th>
+	<th class="th-sortable" data-sort="facebook">
+	  Facebook
+	</th>
+	<th class="th-sortable" data-sort="twitter">
+	  Twitter
+	</th>
+	<th class="th-sortable" data-sort="website">
+	  Website
+	</th>
+	<th class="th-sortable" data-sort="picture">
+	  Picture
+	</th>
+	<th>
+	  &nbsp;
+	</th>
+	<th>
+	  &nbsp;
+	</th>
+      </tr>
+    </thead>
+    <tbody id="dataview-table-items">
+      {{#each tableItems}} {{> AdminDashboardAdminImamsImamViewTableItems}} {{/each}}
+    </tbody>
+  </table>
+</template>
+
+<template name="AdminDashboardAdminImamsImamViewTableItems">
+  <tr id="dataview-table-items-row">
+    <td>
+      {{title}}
+    </td>
+    <td>
+      {{first_name}}
+    </td>
+    <td>
+      {{last_name}}
+    </td>
+    <td>
+      {{specialities}}
+    </td>
+    <td>
+      {{user_id}}
+    </td>
+    <td>
+      {{description}}
+    </td>
+    <td>
+      {{phone_number}}
+    </td>
+    <td>
+      {{country}}
+    </td>
+    <td>
+      {{email}}
+    </td>
+    <td>
+      {{facebook}}
+    </td>
+    <td>
+      {{twitter}}
+    </td>
+    <td>
+      {{website}}
+    </td>
+    <td>
+      {{#each picture}}
+        <img width="150" src="{{this}}">
+      {{/each}}
+    </td>
+    <td class="td-icon">
+      <span id="edit-button" class="fa fa-pencil" title="Edit">
+      </span>
+    </td>
+    <td class="td-icon">
+      <span id="delete-button" class="fa fa-trash-o" title="Delete">
+      </span>
+    </td>
+  </tr>
+</template>
+
+<template name="AdminDashboardAdminImamsAdminImamMenu">
+  <ul id="menu-items" class="">
+    <li id="menu-item-simple" class="{{menuItemClass 'admin_dashboard.admin_imams.crowd_imams'}}">
+      <a href="{{pathFor 'admin_dashboard.admin_imams.crowd_imams'}}">
+	Crowd-Source Suggestions
+      </a>
+    </li>
+  </ul>
+</template>

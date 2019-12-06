@@ -1,0 +1,263 @@
+<template name="layout" class="nonfamous">
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    {{#if currentUser}}
+    {{#famousContext class="nonfamous"}}
+    {{> PrivateLayout}}
+    {{/famousContext}}
+    {{else}}
+    {{#famousContext class="nonfamous"}}
+    {{> PublicLayout class="nonfamous"}}
+    {{/famousContext}}
+    {{/if}}
+
+</template>
+
+<template name="PublicLayout">
+    <!--<div id="wrap">-->
+    <!-- BEGIN HEADER -->
+    <div class="header navbar navbar-inverse navbar-fixed-top">
+        <!-- BEGIN TOP NAVIGATION BAR -->
+        <div class="navbar-inner">
+            <div class="header-seperation">
+                <a id="main-menu-toggle" href="javascript:void()"  class="" >
+                    <span class="iconset top-menu-toggle"></span>
+                </a>
+                <!-- BEGIN heading -->
+                <h2>Home Page</h2>
+                <!-- END heading -->
+            </div>
+            <!-- END RESPONSIVE MENU TOGGLER -->
+
+        </div>
+    </div>
+    <!-- END HEADER -->
+    {{> PublicLayoutHomeMenu}}
+
+    {{#Modifier}}
+    {{#StateModifier translate=contentPush}}
+    {{#HeaderFooterLayout  headerSize="50" footerSize="0"}}
+
+    {{#RenderController size="[undefined,undefined]" target="content" transition="slideWindow"}}
+    {{> yield}}
+    {{/RenderController}}
+
+    {{#Surface target="footer" class="blue-bg"}}
+    <div id="footer">
+        <div class="container">
+            <p class="text-muted">
+            </p>
+        </div>
+
+    </div>
+    {{/Surface}}
+    {{/HeaderFooterLayout}}
+    {{/StateModifier}}
+    {{>StateModifier template="PublicLayoutHomeMenu" proportions="[.66,1]" translate=menuTranslate}}
+    {{/Modifier}}
+</template>
+
+<template name="headerIcon">
+
+    <button>Open Menu</button>
+
+</template>
+
+<template name="PrivateLayout">
+    <div id="wrap">
+        <!-- BEGIN HEADER -->
+        <div class="header navbar navbar-inverse navbar-fixed-top">
+            <!-- BEGIN TOP NAVIGATION BAR -->
+            <div class="navbar-inner">
+                <div class="header-seperation">
+                    <a id="main-menu-toggle" href="javascript:void()"  class="" >
+                        <span class="iconset top-menu-toggle"></span>
+                    </a>
+                    <!-- BEGIN heading -->
+                    <h2 class="top_title">Finances</h2>
+                    <!-- END heading -->
+                </div>
+                <!-- END RESPONSIVE MENU TOGGLER -->
+
+                <div class="header-quick-nav" >
+                    <!-- BEGIN ACCOUNT DROPDOWN -->
+                    <div class="pull-right">
+                        <div class="dropdown">
+                            <a class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                                {{currentUser.profile.name}}
+                                <span class="caret"></span>
+                            </a>
+                            <ul id="manualdropdown" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                <li role="presentation"><a role="menuitem" tabindex="-1">Edit Profile</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1">Settings</a></li>
+                                {{> PrivateLayoutRightMenu}}
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- END DROPDOWN ACCOUNT -->
+                </div>
+            </div>
+        </div>
+        <!-- END HEADER -->
+
+        <!-- BEGIN PAGE CONTAINER-->
+        <!--<div class="navbar  navbar-default" style="margin-top:75px" role="navigation">
+        <div class="container">
+        <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">
+        Toggle navigation
+        </span>
+        <span class="icon-bar">
+        </span>
+        <span class="icon-bar">
+        </span>
+        <span class="icon-bar">
+        </span>
+        </button>
+        <a class="navbar-brand" href="#">
+        Imarah
+        </a>
+        </div>
+        <div id="menu" class="collapse navbar-collapse">
+        {{> PrivateLayoutLoggedInMenu}}
+        </div>
+        </div>
+        </div>
+
+        <div class="navbar-spacer">
+        </div>!-->
+
+        {{> yield}}
+    </div>
+    <div id="footer">
+        <div class="container">
+            <p class="text-muted">
+            </p>
+        </div>
+    </div>
+</template>
+
+<template name="PublicLayoutHomeMenu">
+    <div class="page-container row-fluid">
+        <!-- BEGIN SIDEBAR -->
+        <script type="text/javascript">
+         jQuery(function(){
+             jQuery('a').tooltip({placement: 'right'});
+         });
+        </script>
+
+        <div class="page-sidebar" id="main-menu">
+            <ul id="menu-items">
+                <li id="menu-item-simple" class="{{menuItemClass 'home_public'}}">
+                    <a href="{{pathFor 'home_public'}}" title="Newsfeed" data-toggle="tooltip" data-original-title="Tooltip on right" data-placement="left" >
+
+                        <i class="fa fa-newspaper-o"></i> <span class="title">Newsfeed</span>
+
+                    </a>
+                </li>
+
+                <li id="menu-item-simple" class="{{menuItemClass 'search'}}">
+                    <a href="{{pathFor 'search'}}" title="Search">
+                        <i class="fa fa-search"></i> <span class="title">Search</span>
+
+                    </a>
+                </li>
+                <li id="menu-item-simple" class="{{menuItemClass 'reminders'}}">
+                    <a href="{{pathFor 'reminders'}}" title="Reminders">
+                        <i class="fa fa-bell-o"></i> <span class="title">Reminders</span>
+
+                    </a>
+                </li>
+                <li id="menu-item-simple" class="{{menuItemClass 'qiblat'}}">
+                    <a href="{{pathFor 'qiblat'}}" title="Qiblat">
+                        <i class="fa fa-star-o"></i> <span class="title">Qiblat</span>
+
+                    </a>
+                </li>
+                <li id="menu-item-simple" class="{{menuItemClass 'quran'}}">
+                    <a href="{{pathFor 'quran'}}" title="Al Quran">
+                        <i class="fa fa-book"></i> <span class="title">Al Quran</span>
+
+                    </a>
+                </li>
+                <li id="menu-item-simple" class="{{menuItemClass 'prayer_times'}}">
+                    <a href="{{pathFor 'prayer_times'}}" title="Prayer Times">
+                        <i class="fa fa-calendar-o"></i> <span class="title">Prayer Times</span>
+
+                    </a>
+                </li>
+                <li id="menu-item-simple" class="{{menuItemClass 'forum'}}">
+                    <a href="{{pathFor 'forum'}}" title="Forum">
+                        <i class="fa fa-th"></i> <span class="title">Forum</span>
+
+                    </a>
+                </li>
+                <li id="menu-item-simple" class="{{menuItemClass 'crowd_sourcing'}}">
+                    <a href="{{pathFor 'crowd_sourcing'}}" title="Contribute">
+                        <i class="fa fa-recycle"></i> <span class="title">Contribute</span>
+
+                    </a>
+                </li>
+                <li id="menu-item-simple" class="{{menuItemClass 'register'}}">
+                    <a href="{{pathFor 'register'}}" title="Create a account">
+                        <i class="fa fa-user"></i> <span class="title">Register</span>
+
+                    </a>
+                </li>
+                <li id="menu-item-simple" class="{{menuItemClass 'login'}}">
+                    <a href="{{pathFor 'login'}}" title="Log in">
+                        <i class="fa fa-sign-in"></i> <span class="title">Login</span>
+                    </a>
+                </li>
+            </ul>
+        </div></div>
+</template>
+
+<template name="PublicLayoutRightMenu">
+    <ul id="menu-items" class="nav navbar-nav navbar-right">
+        <li id="menu-item-simple" class="{{menuItemClass 'register'}}">
+            <a href="{{pathFor 'register'}}">
+                Register
+            </a>
+        </li>
+        <li id="menu-item-simple" class="{{menuItemClass 'login'}}">
+            <a href="{{pathFor 'login'}}">
+                Login
+            </a>
+        </li>
+    </ul>
+</template>
+
+<template name="PrivateLayoutLoggedInMenu">
+    <ul id="menu-items" class="nav navbar-nav">
+        <li id="menu-item-simple" class="{{menuItemClass 'admin_dashboard'}}">
+            <a href="{{pathFor 'admin_dashboard'}}">
+                Admin Dashboard
+            </a>
+        </li>
+        <li id="menu-item-simple" class="{{menuItemClass 'mosque_dashboard'}}">
+            <a href="{{pathFor 'mosque_dashboard_noid'}}">
+                Mosque Dashboard
+            </a>
+        </li>
+        <li id="menu-item-simple" class="{{menuItemClass 'imam_dashboard'}}">
+            <a href="{{pathFor 'imam_dashboard'}}">
+                Imam Dashboard
+            </a>
+        </li>
+        <li id="menu-item-simple" class="{{menuItemClass 'third_party_dashboard'}}">
+            <a href="{{pathFor 'third_party_dashboard'}}">
+                Third-Party Dashboard
+            </a>
+        </li>
+    </ul>
+</template>
+
+<template name="PrivateLayoutRightMenu">
+    <li role="presentation" id="menu-item-simple" class="{{menuItemClass 'logout'}}">
+        <a href="{{pathFor 'logout'}}">
+            Logout
+        </a>
+    </li>
+</template>
